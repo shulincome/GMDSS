@@ -1,0 +1,891 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{4CC0D012-DB20-4EE1-9967-DA925AFCEC94}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Sailor_6300_Radiotelex_D</RootNamespace>
+    <AssemblyName>Sailor_6300_Radiotelex_D</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <ExpressionBlendVersion>12.0.41002.1</ExpressionBlendVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="PresentationFramework.Aero" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="commands\DelegateCommands.cs" />
+    <Compile Include="common\RelayCommand.cs" />
+    <Compile Include="common\ViewModelBase.cs" />
+    <Compile Include="Edit_value.xaml.cs">
+      <DependentUpon>Edit_value.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="grid_message_saveControl.xaml.cs">
+      <DependentUpon>grid_message_saveControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Contacts.cs" />
+    <Compile Include="Model\Messages.cs" />
+    <Compile Include="Model\Model_Sailor6300.cs" />
+    <Compile Include="Msg_Sendtext.xaml.cs">
+      <DependentUpon>Msg_Sendtext.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\SendText.cs" />
+    <Compile Include="Sailor_6300_Radiotelex.xaml.cs">
+      <DependentUpon>Sailor_6300_Radiotelex.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UsrCtrl_Basic.xaml.cs">
+      <DependentUpon>UsrCtrl_Basic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UsrCtrl_Contacts.xaml.cs">
+      <DependentUpon>UsrCtrl_Contacts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UsrCtrl_Scan.xaml.cs">
+      <DependentUpon>UsrCtrl_Scan.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UsrCtrl_System.xaml.cs">
+      <DependentUpon>UsrCtrl_System.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModel\ViewModel_Sailor6300.cs" />
+    <Page Include="common\Dictionary_Msg.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Dictionary_DT.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Edit_value.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="grid_message_saveControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Msg_Sendtext.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Sailor_6300_Radiotelex.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UsrCtrl_Basic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UsrCtrl_Contacts.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UsrCtrl_Scan.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UsrCtrl_System.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+    <Resource Include="Resource\day\earth_horizon_800x530.png" />
+    <Resource Include="Resource\day\earth_horizon_800x530_dark.png" />
+    <Resource Include="Resource\day\earth_horizon_800x530_sailor.png" />
+    <Resource Include="Resource\day\earth_horizon_800x600.png" />
+    <Resource Include="Resource\day\earth_horizon_800x600_sailor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\1.1.断电 闭盖 up.bmp" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outError_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outError_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outError_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outError_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outError_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outError_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outNone_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outNone_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outNone_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outNone_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outNone_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outNone_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outOk_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outOk_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outOk_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outOk_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outOk_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inError_outOk_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inGray_outGray_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inGray_outGray_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inGray_outGray_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inGray_outGray_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inGray_outGray_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inGray_outGray_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inGray_outNone_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inGray_outNone_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inGray_outNone_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inGray_outNone_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inGray_outNone_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inGray_outNone_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outError_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outError_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outError_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outError_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outError_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outError_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outGray_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outGray_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outGray_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outGray_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outGray_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outGray_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outOk_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outOk_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outOk_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outOk_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outOk_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inNone_outOk_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outError_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outError_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outError_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outError_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outError_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outError_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outNone_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outNone_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outNone_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outNone_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outNone_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outNone_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outOk_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outOk_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outOk_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outOk_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outOk_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_dualAnt_inOk_outOk_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inError_outNone_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inError_outNone_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inError_outNone_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inError_outNone_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inError_outNone_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inError_outNone_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inGray_outNone_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inGray_outNone_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inGray_outNone_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inGray_outNone_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inGray_outNone_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inGray_outNone_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outError_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outError_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outError_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outError_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outError_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outError_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outGray_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outGray_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outGray_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outGray_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outGray_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outGray_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outNone_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outNone_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outNone_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outNone_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outNone_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outNone_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outOk_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outOk_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outOk_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outOk_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outOk_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inNone_outOk_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inOk_outNone_error_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inOk_outNone_error_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inOk_outNone_ok_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inOk_outNone_ok_pressed.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inOk_outNone_warning_normal.png" />
+    <Resource Include="Resource\day\tlx_ant_singleAnt_inOk_outNone_warning_pressed.png" />
+    <Resource Include="Resource\day\tlx_coast_station.png" />
+    <Resource Include="Resource\day\tlx_coast_station_new_normal.png" />
+    <Resource Include="Resource\day\tlx_coast_station_new_pressed.png" />
+    <Resource Include="Resource\day\tlx_menu_call_normal.png" />
+    <Resource Include="Resource\day\tlx_menu_call_pressed.png" />
+    <Resource Include="Resource\day\tlx_menu_dsc_normal.png" />
+    <Resource Include="Resource\day\tlx_menu_dsc_pressed.png" />
+    <Resource Include="Resource\day\tlx_menu_scan_normal.png" />
+    <Resource Include="Resource\day\tlx_menu_scan_pressed.png" />
+    <Resource Include="Resource\day\tlx_option_bell.png" />
+    <Resource Include="Resource\day\tlx_option_coast_stations.png" />
+    <Resource Include="Resource\day\tlx_option_coast_station_new.png" />
+    <Resource Include="Resource\day\tlx_option_de.png" />
+    <Resource Include="Resource\day\tlx_option_wru.png" />
+    <Resource Include="Resource\day\tlx_page_coast_stations_checked.png" />
+    <Resource Include="Resource\day\tlx_page_coast_stations_normal.png" />
+    <Resource Include="Resource\day\tlx_page_coast_stations_pressed.png" />
+    <Resource Include="Resource\day\tlx_page_scan_checked.png" />
+    <Resource Include="Resource\day\tlx_page_scan_normal.png" />
+    <Resource Include="Resource\day\tlx_page_scan_pressed.png" />
+    <Resource Include="Resource\day\tlx_settings_auto_wru_normal.png" />
+    <Resource Include="Resource\day\tlx_settings_auto_wru_pressed.png" />
+    <Resource Include="Resource\day\tlx_settings_identification_normal.png" />
+    <Resource Include="Resource\day\tlx_settings_identification_pressed.png" />
+    <Resource Include="Resource\day\tlx_settings_regional_settings_normal.png" />
+    <Resource Include="Resource\day\tlx_settings_regional_settings_pressed.png" />
+    <Resource Include="Resource\day\tlx_settings_resume_time_normal.png" />
+    <Resource Include="Resource\day\tlx_settings_resume_time_pressed.png" />
+    <Resource Include="Resource\day\ttgui_battery_status_normal.png" />
+    <Resource Include="Resource\day\ttgui_battery_status_pressed.png" />
+    <Resource Include="Resource\day\ttgui_busy_arrow.png" />
+    <Resource Include="Resource\day\ttgui_button_backup_restore_normal.png" />
+    <Resource Include="Resource\day\ttgui_button_backup_restore_pressed.png" />
+    <Resource Include="Resource\day\ttgui_button_diagnostic_normal.png" />
+    <Resource Include="Resource\day\ttgui_button_diagnostic_pressed.png" />
+    <Resource Include="Resource\day\ttgui_button_terminal_mode_normal.png" />
+    <Resource Include="Resource\day\ttgui_button_terminal_mode_pressed.png" />
+    <Resource Include="Resource\day\ttgui_cfg_default_normal.png" />
+    <Resource Include="Resource\day\ttgui_cfg_default_pressed.png" />
+    <Resource Include="Resource\day\ttgui_checkbox_checked.png" />
+    <Resource Include="Resource\day\ttgui_checkbox_normal.png" />
+    <Resource Include="Resource\day\ttgui_checkbox_pressed.png" />
+    <Resource Include="Resource\day\ttgui_checkbox_pressed_checked.png" />
+    <Resource Include="Resource\day\ttgui_check_fail.png" />
+    <Resource Include="Resource\day\ttgui_check_ok.png" />
+    <Resource Include="Resource\day\ttgui_close_cross_normal.png" />
+    <Resource Include="Resource\day\ttgui_close_cross_pressed.png" />
+    <Resource Include="Resource\day\ttgui_contact.png" />
+    <Resource Include="Resource\day\ttgui_contact_new_normal.png" />
+    <Resource Include="Resource\day\ttgui_contact_new_pressed.png" />
+    <Resource Include="Resource\day\ttgui_device_msgterminal.png" />
+    <Resource Include="Resource\day\ttgui_device_sdcard.png" />
+    <Resource Include="Resource\day\ttgui_device_usb.png" />
+    <Resource Include="Resource\day\ttgui_directory_new_normal.png" />
+    <Resource Include="Resource\day\ttgui_directory_new_pressed.png" />
+    <Resource Include="Resource\day\ttgui_directory_parent_normal.png" />
+    <Resource Include="Resource\day\ttgui_directory_parent_pressed.png" />
+    <Resource Include="Resource\day\ttgui_event_cleared.png" />
+    <Resource Include="Resource\day\ttgui_event_distress.png" />
+    <Resource Include="Resource\day\ttgui_event_error.png" />
+    <Resource Include="Resource\day\ttgui_event_info.png" />
+    <Resource Include="Resource\day\ttgui_event_new_distress_message.png" />
+    <Resource Include="Resource\day\ttgui_event_new_message.png" />
+    <Resource Include="Resource\day\ttgui_event_question.png" />
+    <Resource Include="Resource\day\ttgui_event_warning.png" />
+    <Resource Include="Resource\day\ttgui_file_home.png" />
+    <Resource Include="Resource\day\ttgui_file_home_normal.png" />
+    <Resource Include="Resource\day\ttgui_file_home_pressed.png" />
+    <Resource Include="Resource\day\ttgui_file_type_directory.png" />
+    <Resource Include="Resource\day\ttgui_file_type_txt.png" />
+    <Resource Include="Resource\day\ttgui_key117_normal.png" />
+    <Resource Include="Resource\day\ttgui_key147_checked.png" />
+    <Resource Include="Resource\day\ttgui_key147_normal.png" />
+    <Resource Include="Resource\day\ttgui_key294_normal.png" />
+    <Resource Include="Resource\day\ttgui_key58_checked.png" />
+    <Resource Include="Resource\day\ttgui_key58_normal.png" />
+    <Resource Include="Resource\day\ttgui_key87_checked.png" />
+    <Resource Include="Resource\day\ttgui_key87_normal.png" />
+    <Resource Include="Resource\day\ttgui_keyboard_normal.png" />
+    <Resource Include="Resource\day\ttgui_keyboard_pressed.png" />
+    <Resource Include="Resource\day\ttgui_key_arrow_down.png" />
+    <Resource Include="Resource\day\ttgui_key_arrow_left.png" />
+    <Resource Include="Resource\day\ttgui_key_arrow_right.png" />
+    <Resource Include="Resource\day\ttgui_key_arrow_up.png" />
+    <Resource Include="Resource\day\ttgui_key_backspace.png" />
+    <Resource Include="Resource\day\ttgui_key_enter.png" />
+    <Resource Include="Resource\day\ttgui_key_shift.png" />
+    <Resource Include="Resource\day\ttgui_lock_normal.png" />
+    <Resource Include="Resource\day\ttgui_lock_pressed.png" />
+    <Resource Include="Resource\day\ttgui_mark_checked.png" />
+    <Resource Include="Resource\day\ttgui_mark_normal.png" />
+    <Resource Include="Resource\day\ttgui_menu_contacts_normal.png" />
+    <Resource Include="Resource\day\ttgui_menu_contacts_pressed.png" />
+    <Resource Include="Resource\day\ttgui_menu_message_normal.png" />
+    <Resource Include="Resource\day\ttgui_menu_message_pressed.png" />
+    <Resource Include="Resource\day\ttgui_menu_normal.png" />
+    <Resource Include="Resource\day\ttgui_menu_position_normal.png" />
+    <Resource Include="Resource\day\ttgui_menu_position_pressed.png" />
+    <Resource Include="Resource\day\ttgui_menu_pressed.png" />
+    <Resource Include="Resource\day\ttgui_menu_sat_network_normal.png" />
+    <Resource Include="Resource\day\ttgui_menu_sat_network_pressed.png" />
+    <Resource Include="Resource\day\ttgui_menu_system_normal.png" />
+    <Resource Include="Resource\day\ttgui_menu_system_pressed.png" />
+    <Resource Include="Resource\day\ttgui_message_distress.png" />
+    <Resource Include="Resource\day\ttgui_message_error.png" />
+    <Resource Include="Resource\day\ttgui_message_info.png" />
+    <Resource Include="Resource\day\ttgui_message_new_distress_message.png" />
+    <Resource Include="Resource\day\ttgui_message_new_message.png" />
+    <Resource Include="Resource\day\ttgui_message_question.png" />
+    <Resource Include="Resource\day\ttgui_message_warning.png" />
+    <Resource Include="Resource\day\ttgui_msg_status_delivered.png" />
+    <Resource Include="Resource\day\ttgui_msg_status_delivered_prio.png" />
+    <Resource Include="Resource\day\ttgui_msg_status_failed.png" />
+    <Resource Include="Resource\day\ttgui_msg_status_failed_prio.png" />
+    <Resource Include="Resource\day\ttgui_msg_status_no_info.png" />
+    <Resource Include="Resource\day\ttgui_msg_status_no_info_prio.png" />
+    <Resource Include="Resource\day\ttgui_msg_status_sending.png" />
+    <Resource Include="Resource\day\ttgui_msg_status_sending_prio.png" />
+    <Resource Include="Resource\day\ttgui_msg_status_waiting.png" />
+    <Resource Include="Resource\day\ttgui_msg_status_waiting_prio.png" />
+    <Resource Include="Resource\day\ttgui_option_cancel.png" />
+    <Resource Include="Resource\day\ttgui_option_contacts.png" />
+    <Resource Include="Resource\day\ttgui_option_contact_new.png" />
+    <Resource Include="Resource\day\ttgui_option_delete.png" />
+    <Resource Include="Resource\day\ttgui_option_menu_arrow_down.png" />
+    <Resource Include="Resource\day\ttgui_option_menu_arrow_left.png" />
+    <Resource Include="Resource\day\ttgui_option_menu_arrow_right.png" />
+    <Resource Include="Resource\day\ttgui_option_menu_arrow_up.png" />
+    <Resource Include="Resource\day\ttgui_option_ok.png" />
+    <Resource Include="Resource\day\ttgui_option_print.png" />
+    <Resource Include="Resource\day\ttgui_option_request.png" />
+    <Resource Include="Resource\day\ttgui_option_store.png" />
+    <Resource Include="Resource\day\ttgui_page_about_checked.png" />
+    <Resource Include="Resource\day\ttgui_page_about_normal.png" />
+    <Resource Include="Resource\day\ttgui_page_about_pressed.png" />
+    <Resource Include="Resource\day\ttgui_page_advanced_checked.png" />
+    <Resource Include="Resource\day\ttgui_page_advanced_normal.png" />
+    <Resource Include="Resource\day\ttgui_page_advanced_pressed.png" />
+    <Resource Include="Resource\day\ttgui_page_backup_restore_checked.png" />
+    <Resource Include="Resource\day\ttgui_page_backup_restore_normal.png" />
+    <Resource Include="Resource\day\ttgui_page_backup_restore_pressed.png" />
+    <Resource Include="Resource\day\ttgui_page_contacts_checked.png" />
+    <Resource Include="Resource\day\ttgui_page_contacts_normal.png" />
+    <Resource Include="Resource\day\ttgui_page_contacts_pressed.png" />
+    <Resource Include="Resource\day\ttgui_page_inbox_checked.png" />
+    <Resource Include="Resource\day\ttgui_page_inbox_normal.png" />
+    <Resource Include="Resource\day\ttgui_page_inbox_pressed.png" />
+    <Resource Include="Resource\day\ttgui_page_new_message_checked.png" />
+    <Resource Include="Resource\day\ttgui_page_new_message_normal.png" />
+    <Resource Include="Resource\day\ttgui_page_new_message_pressed.png" />
+    <Resource Include="Resource\day\ttgui_page_outbox_checked.png" />
+    <Resource Include="Resource\day\ttgui_page_outbox_normal.png" />
+    <Resource Include="Resource\day\ttgui_page_outbox_pressed.png" />
+    <Resource Include="Resource\day\ttgui_page_position_status_checked.png" />
+    <Resource Include="Resource\day\ttgui_page_position_status_normal.png" />
+    <Resource Include="Resource\day\ttgui_page_position_status_pressed.png" />
+    <Resource Include="Resource\day\ttgui_page_power_battery_checked.png" />
+    <Resource Include="Resource\day\ttgui_page_power_battery_normal.png" />
+    <Resource Include="Resource\day\ttgui_page_power_battery_pressed.png" />
+    <Resource Include="Resource\day\ttgui_page_sat_network_status_checked.png" />
+    <Resource Include="Resource\day\ttgui_page_sat_network_status_normal.png" />
+    <Resource Include="Resource\day\ttgui_page_sat_network_status_pressed.png" />
+    <Resource Include="Resource\day\ttgui_page_sent_items_checked.png" />
+    <Resource Include="Resource\day\ttgui_page_sent_items_normal.png" />
+    <Resource Include="Resource\day\ttgui_page_sent_items_pressed.png" />
+    <Resource Include="Resource\day\ttgui_page_settings_checked.png" />
+    <Resource Include="Resource\day\ttgui_page_settings_normal.png" />
+    <Resource Include="Resource\day\ttgui_page_settings_pressed.png" />
+    <Resource Include="Resource\day\ttgui_read.png" />
+    <Resource Include="Resource\day\ttgui_read_priority.png" />
+    <Resource Include="Resource\day\ttgui_sat_status_error_normal.png" />
+    <Resource Include="Resource\day\ttgui_sat_status_error_pressed.png" />
+    <Resource Include="Resource\day\ttgui_sat_status_normal.png" />
+    <Resource Include="Resource\day\ttgui_sat_status_ok_normal.png" />
+    <Resource Include="Resource\day\ttgui_sat_status_ok_pressed.png" />
+    <Resource Include="Resource\day\ttgui_sat_status_pressed.png" />
+    <Resource Include="Resource\day\ttgui_sat_status_warning_normal.png" />
+    <Resource Include="Resource\day\ttgui_sat_status_warning_pressed.png" />
+    <Resource Include="Resource\day\ttgui_scroll_arrow_down_normal.png" />
+    <Resource Include="Resource\day\ttgui_scroll_arrow_down_pressed.png" />
+    <Resource Include="Resource\day\ttgui_scroll_arrow_left_normal.png" />
+    <Resource Include="Resource\day\ttgui_scroll_arrow_left_pressed.png" />
+    <Resource Include="Resource\day\ttgui_scroll_arrow_right_normal.png" />
+    <Resource Include="Resource\day\ttgui_scroll_arrow_right_pressed.png" />
+    <Resource Include="Resource\day\ttgui_scroll_arrow_up_normal.png" />
+    <Resource Include="Resource\day\ttgui_scroll_arrow_up_pressed.png" />
+    <Resource Include="Resource\day\ttgui_selecter_arrow_down_normal.png" />
+    <Resource Include="Resource\day\ttgui_selecter_arrow_down_pressed.png" />
+    <Resource Include="Resource\day\ttgui_selecter_arrow_up_normal.png" />
+    <Resource Include="Resource\day\ttgui_selecter_arrow_up_pressed.png" />
+    <Resource Include="Resource\day\ttgui_settings_autoprint_normal.png" />
+    <Resource Include="Resource\day\ttgui_settings_autoprint_pressed.png" />
+    <Resource Include="Resource\day\ttgui_settings_id_normal.png" />
+    <Resource Include="Resource\day\ttgui_settings_id_pressed.png" />
+    <Resource Include="Resource\day\ttgui_settings_manual_position_normal.png" />
+    <Resource Include="Resource\day\ttgui_settings_manual_position_pressed.png" />
+    <Resource Include="Resource\day\ttgui_settings_nmea_in_normal.png" />
+    <Resource Include="Resource\day\ttgui_settings_nmea_in_pressed.png" />
+    <Resource Include="Resource\day\ttgui_settings_nmea_out_normal.png" />
+    <Resource Include="Resource\day\ttgui_settings_nmea_out_pressed.png" />
+    <Resource Include="Resource\day\ttgui_settings_password_normal.png" />
+    <Resource Include="Resource\day\ttgui_settings_password_pressed.png" />
+    <Resource Include="Resource\day\ttgui_settings_power_battery_normal.png" />
+    <Resource Include="Resource\day\ttgui_settings_power_battery_pressed.png" />
+    <Resource Include="Resource\day\ttgui_settings_screen_normal.png" />
+    <Resource Include="Resource\day\ttgui_settings_screen_pressed.png" />
+    <Resource Include="Resource\day\ttgui_status_error.png" />
+    <Resource Include="Resource\day\ttgui_status_info.png" />
+    <Resource Include="Resource\day\ttgui_status_warning.png" />
+    <Resource Include="Resource\day\ttgui_sysdevice_3027.png" />
+    <Resource Include="Resource\day\ttgui_sysdevice_3027_normal.png" />
+    <Resource Include="Resource\day\ttgui_sysdevice_3027_pressed.png" />
+    <Resource Include="Resource\day\ttgui_sysdevice_6006.png" />
+    <Resource Include="Resource\day\ttgui_sysdevice_6006_normal.png" />
+    <Resource Include="Resource\day\ttgui_sysdevice_6006_pressed.png" />
+    <Resource Include="Resource\day\ttgui_sysdevice_6080.png" />
+    <Resource Include="Resource\day\ttgui_sysdevice_6080_normal.png" />
+    <Resource Include="Resource\day\ttgui_sysdevice_6080_pressed.png" />
+    <Resource Include="Resource\day\ttgui_sysdevice_6103.png" />
+    <Resource Include="Resource\day\ttgui_tools_checked.png" />
+    <Resource Include="Resource\day\ttgui_tools_close_normal.png" />
+    <Resource Include="Resource\day\ttgui_tools_close_pressed.png" />
+    <Resource Include="Resource\day\ttgui_tools_info_normal.png" />
+    <Resource Include="Resource\day\ttgui_tools_info_pressed.png" />
+    <Resource Include="Resource\day\ttgui_tools_normal.png" />
+    <Resource Include="Resource\day\ttgui_tools_pressed.png" />
+    <Resource Include="Resource\day\ttgui_tools_pressed_checked.png" />
+    <Resource Include="Resource\day\ttgui_unread.png" />
+    <Resource Include="Resource\day\ttgui_unread_priority.png" />
+    <Resource Include="Resource\earth_horizon__看图王.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outError_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outError_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outError_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outError_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outError_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outError_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outNone_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outNone_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outNone_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outNone_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outNone_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outNone_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outOk_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outOk_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outOk_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outOk_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outOk_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inError_outOk_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inGray_outGray_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inGray_outGray_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inGray_outGray_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inGray_outGray_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inGray_outGray_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inGray_outGray_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inGray_outNone_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inGray_outNone_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inGray_outNone_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inGray_outNone_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inGray_outNone_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inGray_outNone_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outError_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outError_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outError_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outError_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outError_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outError_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outGray_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outGray_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outGray_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outGray_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outGray_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outGray_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outOk_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outOk_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outOk_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outOk_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outOk_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inNone_outOk_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outError_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outError_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outError_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outError_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outError_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outError_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outNone_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outNone_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outNone_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outNone_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outNone_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outNone_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outOk_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outOk_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outOk_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outOk_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outOk_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_dualAnt_inOk_outOk_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inError_outNone_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inError_outNone_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inError_outNone_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inError_outNone_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inError_outNone_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inError_outNone_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inGray_outNone_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inGray_outNone_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inGray_outNone_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inGray_outNone_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inGray_outNone_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inGray_outNone_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outError_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outError_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outError_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outError_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outError_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outError_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outGray_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outGray_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outGray_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outGray_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outGray_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outGray_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outNone_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outNone_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outNone_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outNone_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outNone_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outNone_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outOk_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outOk_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outOk_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outOk_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outOk_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inNone_outOk_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inOk_outNone_error_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inOk_outNone_error_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inOk_outNone_ok_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inOk_outNone_ok_pressed.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inOk_outNone_warning_normal.png" />
+    <Resource Include="Resource\night\tlx_ant_singleAnt_inOk_outNone_warning_pressed.png" />
+    <Resource Include="Resource\night\tlx_coast_station.png" />
+    <Resource Include="Resource\night\tlx_coast_station_new_normal.png" />
+    <Resource Include="Resource\night\tlx_coast_station_new_pressed.png" />
+    <Resource Include="Resource\night\tlx_menu_call_normal.png" />
+    <Resource Include="Resource\night\tlx_menu_call_pressed.png" />
+    <Resource Include="Resource\night\tlx_menu_dsc_normal.png" />
+    <Resource Include="Resource\night\tlx_menu_dsc_pressed.png" />
+    <Resource Include="Resource\night\tlx_menu_scan_normal.png" />
+    <Resource Include="Resource\night\tlx_menu_scan_pressed.png" />
+    <Resource Include="Resource\night\tlx_option_bell.png" />
+    <Resource Include="Resource\night\tlx_option_coast_stations.png" />
+    <Resource Include="Resource\night\tlx_option_coast_station_new.png" />
+    <Resource Include="Resource\night\tlx_option_de.png" />
+    <Resource Include="Resource\night\tlx_option_wru.png" />
+    <Resource Include="Resource\night\tlx_page_coast_stations_checked.png" />
+    <Resource Include="Resource\night\tlx_page_coast_stations_normal.png" />
+    <Resource Include="Resource\night\tlx_page_coast_stations_pressed.png" />
+    <Resource Include="Resource\night\tlx_page_scan_checked.png" />
+    <Resource Include="Resource\night\tlx_page_scan_normal.png" />
+    <Resource Include="Resource\night\tlx_page_scan_pressed.png" />
+    <Resource Include="Resource\night\tlx_settings_auto_wru_normal.png" />
+    <Resource Include="Resource\night\tlx_settings_auto_wru_pressed.png" />
+    <Resource Include="Resource\night\tlx_settings_identification_normal.png" />
+    <Resource Include="Resource\night\tlx_settings_identification_pressed.png" />
+    <Resource Include="Resource\night\tlx_settings_regional_settings_normal.png" />
+    <Resource Include="Resource\night\tlx_settings_regional_settings_pressed.png" />
+    <Resource Include="Resource\night\tlx_settings_resume_time_normal.png" />
+    <Resource Include="Resource\night\tlx_settings_resume_time_pressed.png" />
+    <Resource Include="Resource\night\ttgui_battery_status_normal.png" />
+    <Resource Include="Resource\night\ttgui_battery_status_pressed.png" />
+    <Resource Include="Resource\night\ttgui_busy_arrow.png" />
+    <Resource Include="Resource\night\ttgui_button_backup_restore_normal.png" />
+    <Resource Include="Resource\night\ttgui_button_backup_restore_pressed.png" />
+    <Resource Include="Resource\night\ttgui_button_diagnostic_normal.png" />
+    <Resource Include="Resource\night\ttgui_button_diagnostic_pressed.png" />
+    <Resource Include="Resource\night\ttgui_button_terminal_mode_normal.png" />
+    <Resource Include="Resource\night\ttgui_button_terminal_mode_pressed.png" />
+    <Resource Include="Resource\night\ttgui_cfg_default_normal.png" />
+    <Resource Include="Resource\night\ttgui_cfg_default_pressed.png" />
+    <Resource Include="Resource\night\ttgui_checkbox_checked.png" />
+    <Resource Include="Resource\night\ttgui_checkbox_normal.png" />
+    <Resource Include="Resource\night\ttgui_checkbox_pressed.png" />
+    <Resource Include="Resource\night\ttgui_checkbox_pressed_checked.png" />
+    <Resource Include="Resource\night\ttgui_check_fail.png" />
+    <Resource Include="Resource\night\ttgui_check_ok.png" />
+    <Resource Include="Resource\night\ttgui_close_cross_normal.png" />
+    <Resource Include="Resource\night\ttgui_close_cross_pressed.png" />
+    <Resource Include="Resource\night\ttgui_contact.png" />
+    <Resource Include="Resource\night\ttgui_contact_new_normal.png" />
+    <Resource Include="Resource\night\ttgui_contact_new_pressed.png" />
+    <Resource Include="Resource\night\ttgui_device_msgterminal.png" />
+    <Resource Include="Resource\night\ttgui_device_sdcard.png" />
+    <Resource Include="Resource\night\ttgui_device_usb.png" />
+    <Resource Include="Resource\night\ttgui_directory_new_normal.png" />
+    <Resource Include="Resource\night\ttgui_directory_new_pressed.png" />
+    <Resource Include="Resource\night\ttgui_directory_parent_normal.png" />
+    <Resource Include="Resource\night\ttgui_directory_parent_pressed.png" />
+    <Resource Include="Resource\night\ttgui_event_cleared.png" />
+    <Resource Include="Resource\night\ttgui_event_distress.png" />
+    <Resource Include="Resource\night\ttgui_event_error.png" />
+    <Resource Include="Resource\night\ttgui_event_info.png" />
+    <Resource Include="Resource\night\ttgui_event_new_distress_message.png" />
+    <Resource Include="Resource\night\ttgui_event_new_message.png" />
+    <Resource Include="Resource\night\ttgui_event_question.png" />
+    <Resource Include="Resource\night\ttgui_event_warning.png" />
+    <Resource Include="Resource\night\ttgui_file_home.png" />
+    <Resource Include="Resource\night\ttgui_file_home_normal.png" />
+    <Resource Include="Resource\night\ttgui_file_home_pressed.png" />
+    <Resource Include="Resource\night\ttgui_file_type_directory.png" />
+    <Resource Include="Resource\night\ttgui_file_type_txt.png" />
+    <Resource Include="Resource\night\ttgui_key117_normal.png" />
+    <Resource Include="Resource\night\ttgui_key147_checked.png" />
+    <Resource Include="Resource\night\ttgui_key147_normal.png" />
+    <Resource Include="Resource\night\ttgui_key294_normal.png" />
+    <Resource Include="Resource\night\ttgui_key58_checked.png" />
+    <Resource Include="Resource\night\ttgui_key58_normal.png" />
+    <Resource Include="Resource\night\ttgui_key87_checked.png" />
+    <Resource Include="Resource\night\ttgui_key87_normal.png" />
+    <Resource Include="Resource\night\ttgui_keyboard_normal.png" />
+    <Resource Include="Resource\night\ttgui_keyboard_pressed.png" />
+    <Resource Include="Resource\night\ttgui_key_arrow_down.png" />
+    <Resource Include="Resource\night\ttgui_key_arrow_left.png" />
+    <Resource Include="Resource\night\ttgui_key_arrow_right.png" />
+    <Resource Include="Resource\night\ttgui_key_arrow_up.png" />
+    <Resource Include="Resource\night\ttgui_key_backspace.png" />
+    <Resource Include="Resource\night\ttgui_key_enter.png" />
+    <Resource Include="Resource\night\ttgui_key_shift.png" />
+    <Resource Include="Resource\night\ttgui_lock_normal.png" />
+    <Resource Include="Resource\night\ttgui_lock_pressed.png" />
+    <Resource Include="Resource\night\ttgui_mark_checked.png" />
+    <Resource Include="Resource\night\ttgui_mark_normal.png" />
+    <Resource Include="Resource\night\ttgui_menu_contacts_normal.png" />
+    <Resource Include="Resource\night\ttgui_menu_contacts_pressed.png" />
+    <Resource Include="Resource\night\ttgui_menu_message_normal.png" />
+    <Resource Include="Resource\night\ttgui_menu_message_pressed.png" />
+    <Resource Include="Resource\night\ttgui_menu_normal.png" />
+    <Resource Include="Resource\night\ttgui_menu_position_normal.png" />
+    <Resource Include="Resource\night\ttgui_menu_position_pressed.png" />
+    <Resource Include="Resource\night\ttgui_menu_pressed.png" />
+    <Resource Include="Resource\night\ttgui_menu_sat_network_normal.png" />
+    <Resource Include="Resource\night\ttgui_menu_sat_network_pressed.png" />
+    <Resource Include="Resource\night\ttgui_menu_system_normal.png" />
+    <Resource Include="Resource\night\ttgui_menu_system_pressed.png" />
+    <Resource Include="Resource\night\ttgui_message_distress.png" />
+    <Resource Include="Resource\night\ttgui_message_error.png" />
+    <Resource Include="Resource\night\ttgui_message_info.png" />
+    <Resource Include="Resource\night\ttgui_message_new_distress_message.png" />
+    <Resource Include="Resource\night\ttgui_message_new_message.png" />
+    <Resource Include="Resource\night\ttgui_message_question.png" />
+    <Resource Include="Resource\night\ttgui_message_warning.png" />
+    <Resource Include="Resource\night\ttgui_msg_status_delivered.png" />
+    <Resource Include="Resource\night\ttgui_msg_status_delivered_prio.png" />
+    <Resource Include="Resource\night\ttgui_msg_status_failed.png" />
+    <Resource Include="Resource\night\ttgui_msg_status_failed_prio.png" />
+    <Resource Include="Resource\night\ttgui_msg_status_no_info.png" />
+    <Resource Include="Resource\night\ttgui_msg_status_no_info_prio.png" />
+    <Resource Include="Resource\night\ttgui_msg_status_sending.png" />
+    <Resource Include="Resource\night\ttgui_msg_status_sending_prio.png" />
+    <Resource Include="Resource\night\ttgui_msg_status_waiting.png" />
+    <Resource Include="Resource\night\ttgui_msg_status_waiting_prio.png" />
+    <Resource Include="Resource\night\ttgui_option_cancel.png" />
+    <Resource Include="Resource\night\ttgui_option_contacts.png" />
+    <Resource Include="Resource\night\ttgui_option_contact_new.png" />
+    <Resource Include="Resource\night\ttgui_option_delete.png" />
+    <Resource Include="Resource\night\ttgui_option_menu_arrow_down.png" />
+    <Resource Include="Resource\night\ttgui_option_menu_arrow_left.png" />
+    <Resource Include="Resource\night\ttgui_option_menu_arrow_right.png" />
+    <Resource Include="Resource\night\ttgui_option_menu_arrow_up.png" />
+    <Resource Include="Resource\night\ttgui_option_ok.png" />
+    <Resource Include="Resource\night\ttgui_option_print.png" />
+    <Resource Include="Resource\night\ttgui_option_request.png" />
+    <Resource Include="Resource\night\ttgui_option_store.png" />
+    <Resource Include="Resource\night\ttgui_page_about_checked.png" />
+    <Resource Include="Resource\night\ttgui_page_about_normal.png" />
+    <Resource Include="Resource\night\ttgui_page_about_pressed.png" />
+    <Resource Include="Resource\night\ttgui_page_advanced_checked.png" />
+    <Resource Include="Resource\night\ttgui_page_advanced_normal.png" />
+    <Resource Include="Resource\night\ttgui_page_advanced_pressed.png" />
+    <Resource Include="Resource\night\ttgui_page_backup_restore_checked.png" />
+    <Resource Include="Resource\night\ttgui_page_backup_restore_normal.png" />
+    <Resource Include="Resource\night\ttgui_page_backup_restore_pressed.png" />
+    <Resource Include="Resource\night\ttgui_page_contacts_checked.png" />
+    <Resource Include="Resource\night\ttgui_page_contacts_normal.png" />
+    <Resource Include="Resource\night\ttgui_page_contacts_pressed.png" />
+    <Resource Include="Resource\night\ttgui_page_inbox_checked.png" />
+    <Resource Include="Resource\night\ttgui_page_inbox_normal.png" />
+    <Resource Include="Resource\night\ttgui_page_inbox_pressed.png" />
+    <Resource Include="Resource\night\ttgui_page_new_message_checked.png" />
+    <Resource Include="Resource\night\ttgui_page_new_message_normal.png" />
+    <Resource Include="Resource\night\ttgui_page_new_message_pressed.png" />
+    <Resource Include="Resource\night\ttgui_page_outbox_checked.png" />
+    <Resource Include="Resource\night\ttgui_page_outbox_normal.png" />
+    <Resource Include="Resource\night\ttgui_page_outbox_pressed.png" />
+    <Resource Include="Resource\night\ttgui_page_position_status_checked.png" />
+    <Resource Include="Resource\night\ttgui_page_position_status_normal.png" />
+    <Resource Include="Resource\night\ttgui_page_position_status_pressed.png" />
+    <Resource Include="Resource\night\ttgui_page_power_battery_checked.png" />
+    <Resource Include="Resource\night\ttgui_page_power_battery_normal.png" />
+    <Resource Include="Resource\night\ttgui_page_power_battery_pressed.png" />
+    <Resource Include="Resource\night\ttgui_page_sat_network_status_checked.png" />
+    <Resource Include="Resource\night\ttgui_page_sat_network_status_normal.png" />
+    <Resource Include="Resource\night\ttgui_page_sat_network_status_pressed.png" />
+    <Resource Include="Resource\night\ttgui_page_sent_items_checked.png" />
+    <Resource Include="Resource\night\ttgui_page_sent_items_normal.png" />
+    <Resource Include="Resource\night\ttgui_page_sent_items_pressed.png" />
+    <Resource Include="Resource\night\ttgui_page_settings_checked.png" />
+    <Resource Include="Resource\night\ttgui_page_settings_normal.png" />
+    <Resource Include="Resource\night\ttgui_page_settings_pressed.png" />
+    <Resource Include="Resource\night\ttgui_read.png" />
+    <Resource Include="Resource\night\ttgui_read_priority.png" />
+    <Resource Include="Resource\night\ttgui_sat_status_error_normal.png" />
+    <Resource Include="Resource\night\ttgui_sat_status_error_pressed.png" />
+    <Resource Include="Resource\night\ttgui_sat_status_normal.png" />
+    <Resource Include="Resource\night\ttgui_sat_status_ok_normal.png" />
+    <Resource Include="Resource\night\ttgui_sat_status_ok_pressed.png" />
+    <Resource Include="Resource\night\ttgui_sat_status_pressed.png" />
+    <Resource Include="Resource\night\ttgui_sat_status_warning_normal.png" />
+    <Resource Include="Resource\night\ttgui_sat_status_warning_pressed.png" />
+    <Resource Include="Resource\night\ttgui_scroll_arrow_down_normal.png" />
+    <Resource Include="Resource\night\ttgui_scroll_arrow_down_pressed.png" />
+    <Resource Include="Resource\night\ttgui_scroll_arrow_left_normal.png" />
+    <Resource Include="Resource\night\ttgui_scroll_arrow_left_pressed.png" />
+    <Resource Include="Resource\night\ttgui_scroll_arrow_right_normal.png" />
+    <Resource Include="Resource\night\ttgui_scroll_arrow_right_pressed.png" />
+    <Resource Include="Resource\night\ttgui_scroll_arrow_up_normal.png" />
+    <Resource Include="Resource\night\ttgui_scroll_arrow_up_pressed.png" />
+    <Resource Include="Resource\night\ttgui_selecter_arrow_down_normal.png" />
+    <Resource Include="Resource\night\ttgui_selecter_arrow_down_pressed.png" />
+    <Resource Include="Resource\night\ttgui_selecter_arrow_up_normal.png" />
+    <Resource Include="Resource\night\ttgui_selecter_arrow_up_pressed.png" />
+    <Resource Include="Resource\night\ttgui_settings_autoprint_normal.png" />
+    <Resource Include="Resource\night\ttgui_settings_autoprint_pressed.png" />
+    <Resource Include="Resource\night\ttgui_settings_id_normal.png" />
+    <Resource Include="Resource\night\ttgui_settings_id_pressed.png" />
+    <Resource Include="Resource\night\ttgui_settings_manual_position_normal.png" />
+    <Resource Include="Resource\night\ttgui_settings_manual_position_pressed.png" />
+    <Resource Include="Resource\night\ttgui_settings_nmea_in_normal.png" />
+    <Resource Include="Resource\night\ttgui_settings_nmea_in_pressed.png" />
+    <Resource Include="Resource\night\ttgui_settings_nmea_out_normal.png" />
+    <Resource Include="Resource\night\ttgui_settings_nmea_out_pressed.png" />
+    <Resource Include="Resource\night\ttgui_settings_password_normal.png" />
+    <Resource Include="Resource\night\ttgui_settings_password_pressed.png" />
+    <Resource Include="Resource\night\ttgui_settings_power_battery_normal.png" />
+    <Resource Include="Resource\night\ttgui_settings_power_battery_pressed.png" />
+    <Resource Include="Resource\night\ttgui_settings_screen_normal.png" />
+    <Resource Include="Resource\night\ttgui_settings_screen_pressed.png" />
+    <Resource Include="Resource\night\ttgui_status_error.png" />
+    <Resource Include="Resource\night\ttgui_status_info.png" />
+    <Resource Include="Resource\night\ttgui_status_warning.png" />
+    <Resource Include="Resource\night\ttgui_sysdevice_3027.png" />
+    <Resource Include="Resource\night\ttgui_sysdevice_3027_normal.png" />
+    <Resource Include="Resource\night\ttgui_sysdevice_3027_pressed.png" />
+    <Resource Include="Resource\night\ttgui_sysdevice_6006.png" />
+    <Resource Include="Resource\night\ttgui_sysdevice_6006_normal.png" />
+    <Resource Include="Resource\night\ttgui_sysdevice_6006_pressed.png" />
+    <Resource Include="Resource\night\ttgui_sysdevice_6080.png" />
+    <Resource Include="Resource\night\ttgui_sysdevice_6080_normal.png" />
+    <Resource Include="Resource\night\ttgui_sysdevice_6080_pressed.png" />
+    <Resource Include="Resource\night\ttgui_sysdevice_6103.png" />
+    <Resource Include="Resource\night\ttgui_tools_checked.png" />
+    <Resource Include="Resource\night\ttgui_tools_close_normal.png" />
+    <Resource Include="Resource\night\ttgui_tools_close_pressed.png" />
+    <Resource Include="Resource\night\ttgui_tools_info_normal.png" />
+    <Resource Include="Resource\night\ttgui_tools_info_pressed.png" />
+    <Resource Include="Resource\night\ttgui_tools_normal.png" />
+    <Resource Include="Resource\night\ttgui_tools_pressed.png" />
+    <Resource Include="Resource\night\ttgui_tools_pressed_checked.png" />
+    <Resource Include="Resource\night\ttgui_unread.png" />
+    <Resource Include="Resource\night\ttgui_unread_priority.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\1.2.断电 开盖 up.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\1.3.断电 开盖 down.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\1.4.1通电 开盖 up.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\1.4.2通电 开盖 down.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\2.断电 闭盖 down.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\3.通电 闭盖 up.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\4.通电 闭盖 down.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resource\右边框.bmp" />
+    <Resource Include="Resource\左边框.bmp" />
+    <None Include="Resource\2.断电 闭盖 down_看图王.bmp" />
+    <None Include="Resource\3.通电 闭盖 up_看图王.bmp" />
+    <None Include="Resource\4.通电 闭盖 down_看图王.bmp" />
+    <Resource Include="Resource\day\earth_horizon__看图王.png" />
+    <Content Include="Resource\day\ttgui_stylesheet.css" />
+    <Resource Include="Resource\earth_horizon_800x530.png" />
+    <Resource Include="Resource\earth_horizon_800x600.png" />
+    <Content Include="Resource\night\ttgui_stylesheet.css" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

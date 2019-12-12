@@ -1,0 +1,2140 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero"
+	mc:Ignorable="d"
+	x:Class="Sailor_6300_Radiotelex_D.UsrCtrl_System"
+	x:Name="UserControl"
+	d:DesignWidth="790" d:DesignHeight="521.5">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="myThumb" TargetType="{x:Type Thumb}">
+        	<Border x:Name="border" CornerRadius="4" Background="#A5A5A5" BorderBrush="#FFC8C8C8" BorderThickness="1" Margin="0,0,0,0" Width="25" d:DesignHeight="19.833" />
+            <ControlTemplate.Triggers>
+                <Trigger Property="IsDragging" Value="True">
+                    <Setter Property="Background" TargetName="border" Value="#7F7F7F"/>
+                	<Setter Property="Margin" TargetName="border" Value="-3,0"/>
+                </Trigger>
+            </ControlTemplate.Triggers>
+        </ControlTemplate>
+        <ControlTemplate x:Key="myRepBt" TargetType="{x:Type RepeatButton}">
+        	<Border Margin="0,2,0,2"  
+        		BorderThickness="0.7"  
+        		BorderBrush="#BBBBBB">
+        		<Border.Background>
+        			<LinearGradientBrush StartPoint="0.5,0" EndPoint="0.5,1">
+        				<GradientStop Color="White" Offset="0"/>
+        				<GradientStop Color="LightGray" Offset="1"/>
+        			</LinearGradientBrush>
+        		</Border.Background>
+        	</Border>
+        </ControlTemplate>
+        <ControlTemplate x:Key="rbtForScrollBar" TargetType="{x:Type RepeatButton}">
+        	<Grid x:Name="grid1" Margin="0,-3,3,-3" Width="119.333">
+        		<Rectangle StrokeThickness="0" Height="Auto" Width="Auto" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" RadiusX="3" RadiusY="3" Margin="-2,0,0,0" Fill="#FF828282"/>
+                 
+        	</Grid>
+        </ControlTemplate>
+    	<ControlTemplate x:Key="ScrollTmp" TargetType="{x:Type ScrollBar}">
+    		<Grid>
+    			<Grid.ColumnDefinitions>
+    				<ColumnDefinition MaxWidth="20"/>
+    				<ColumnDefinition Width="*"/>
+    				<ColumnDefinition MaxWidth="20"/>
+    			</Grid.ColumnDefinitions>
+    			<RepeatButton Template="{StaticResource rbtForScrollBar}" Grid.Column="0"  
+    				Margin="-1,1,0,1"  
+    				Command="ScrollBar.LineLeftCommand" Width="35" Height="35" >
+    				<RepeatButton.RenderTransform>
+    					<TransformGroup>
+    						<ScaleTransform/>
+    						<SkewTransform/>
+    						<RotateTransform/>
+    						<TranslateTransform/>
+    					</TransformGroup>
+    				</RepeatButton.RenderTransform>
+
+    			</RepeatButton>
+    			<Grid x:Name="grid1" Margin="-3,-3,3,93" Width="Auto" Height="Auto" Grid.ColumnSpan="3">
+    				<Rectangle StrokeThickness="0" Height="30" Width="30" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" RadiusX="3" RadiusY="3" Margin="-1,0" Fill="#FF828282"/>
+    				<Image x:Name="imgUp" Source="Resource/day/ttgui_scroll_arrow_up_normal.png" Height="30" Width="30" />
+    			</Grid>
+    			<Track Grid.Column="1" x:Name="PART_Track"  
+    				Maximum="{TemplateBinding Maximum}"  
+    				Minimum="{TemplateBinding Minimum}"  
+    				Value="{TemplateBinding Value}" d:IsHidden="True">
+    				<Track.DecreaseRepeatButton>
+    					<RepeatButton Template="{StaticResource myRepBt}"  
+    						Command="ScrollBar.PageLeftCommand"/>
+    				</Track.DecreaseRepeatButton>
+    				<Track.IncreaseRepeatButton>
+    					<RepeatButton Template="{StaticResource myRepBt}"  
+    						Command="ScrollBar.PageRightCommand" Margin="0"/>
+    				</Track.IncreaseRepeatButton>
+    				<Track.Thumb>
+    					<Thumb Width="40.5" Template="{StaticResource myThumb}" Margin="-12,-8,-16.833,-3.167" Height="32" HorizontalAlignment="Left"/>
+    				</Track.Thumb>
+    			</Track>
+    			<RepeatButton Template="{StaticResource rbtForScrollBar}" Grid.Column="2"  
+    				Margin="10,1,-10,1"  
+    				Command="ScrollBar.LineRightCommand" d:IsHidden="True"  
+                                  />
+    		</Grid>
+    	</ControlTemplate>
+        <Style x:Key="CheckBoxStyle_Msg" TargetType="{x:Type CheckBox}">
+        	<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+        	<Setter Property="BorderThickness" Value="1"/>
+        	<Setter Property="Template">
+        		<Setter.Value>
+        			<ControlTemplate TargetType="{x:Type CheckBox}">
+        				<StackPanel Orientation="Vertical">
+        					<VisualStateManager.VisualStateGroups>
+        						<VisualStateGroup x:Name="CommonStates">
+        							<VisualState x:Name="Normal"/>
+        							<VisualState x:Name="Disabled"/>
+        							<VisualState x:Name="MouseOver">
+        								<Storyboard>
+        									<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="image_False">
+        										<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        									</DoubleAnimationUsingKeyFrames>
+        									<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="image_True">
+        										<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        									</DoubleAnimationUsingKeyFrames>
+        									<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="image_False">
+        										<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        									</DoubleAnimationUsingKeyFrames>
+        									<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="image_True">
+        										<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        									</DoubleAnimationUsingKeyFrames>
+        								</Storyboard>
+        							</VisualState>
+        							<VisualState x:Name="Pressed">
+        								<Storyboard>
+        									<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="image_False">
+        										<EasingDoubleKeyFrame KeyTime="0" Value="1.2"/>
+        									</DoubleAnimationUsingKeyFrames>
+        									<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="image_True">
+        										<EasingDoubleKeyFrame KeyTime="0" Value="1.2"/>
+        									</DoubleAnimationUsingKeyFrames>
+        									<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="image_False">
+        										<EasingDoubleKeyFrame KeyTime="0" Value="1.2"/>
+        									</DoubleAnimationUsingKeyFrames>
+        									<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="image_True">
+        										<EasingDoubleKeyFrame KeyTime="0" Value="1.2"/>
+        									</DoubleAnimationUsingKeyFrames>
+        								</Storyboard>
+        							</VisualState>
+        						</VisualStateGroup>
+        						<VisualStateGroup x:Name="CheckStates">
+        							<VisualState x:Name="Checked"/>
+        							<VisualState x:Name="Unchecked">
+        								<Storyboard>
+        									<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="image_True">
+        										<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+        									</ObjectAnimationUsingKeyFrames>
+        								</Storyboard>
+        							</VisualState>
+        							<VisualState x:Name="Indeterminate"/>
+        						</VisualStateGroup>
+        					</VisualStateManager.VisualStateGroups>
+        					<Image x:Name="image_False" HorizontalAlignment="Left" Height="58" Margin="0,0,-8,0" Width="58" Source="Resource/day/ttgui_checkbox_normal.png" RenderTransformOrigin="0.5,0.5">
+        						<Image.RenderTransform>
+        							<TransformGroup>
+        								<ScaleTransform/>
+        								<SkewTransform/>
+        								<RotateTransform/>
+        								<TranslateTransform/>
+        							</TransformGroup>
+        						</Image.RenderTransform>
+        					</Image>
+        					<Image x:Name="image_True" HorizontalAlignment="Left" Height="58" Margin="0,-58,0,0" Width="58" Source="Resource/day/ttgui_checkbox_checked.png" RenderTransformOrigin="0.5,0.5">
+        						<Image.RenderTransform>
+        							<TransformGroup>
+        								<ScaleTransform/>
+        								<SkewTransform/>
+        								<RotateTransform/>
+        								<TranslateTransform/>
+        							</TransformGroup>
+        						</Image.RenderTransform>
+        					</Image>
+        				</StackPanel>
+        				<ControlTemplate.Triggers>
+        					<Trigger Property="HasContent" Value="true">
+        						<Setter Property="Padding" Value="4,0,0,0"/>
+        					</Trigger>
+        					<Trigger Property="IsEnabled" Value="false">
+        						<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.GrayTextBrushKey}}"/>
+        					</Trigger>
+        				</ControlTemplate.Triggers>
+        			</ControlTemplate>
+        		</Setter.Value>
+        	</Setter>
+        </Style>
+
+        <Storyboard x:Key="Storyboard_About_to_Power">
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_About">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="0,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="-790,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Power">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="790,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_Power">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        		<DiscreteObjectKeyFrame KeyTime="0:0:0.4" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Power">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_About">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_About_to_Settings">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_Settings">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Settings">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="790,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_About">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Settings">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_About">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="0,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="-790,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_About">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_About_to_Advanced">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_About">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_Advanced">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Advanced">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="790,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Advanced">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_About">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="0,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="-790,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_About">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Power_to_About">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_About">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_About">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="-790,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_About">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Power">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="0,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="790,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Power">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Power_to_Settings">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_Settings">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Settings">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="790,-3,-6,93"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="6,-3,-6,93"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Settings">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Power">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="0,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="-790,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Power">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Power_to_Advanced">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_Advanced">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Advanced">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="790,-3,-6,93"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="6,-3,-6,93"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Advanced">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Power">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="0,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="-790,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Power">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Settings_to_About">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_About">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_About">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="-790,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_About">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Settings">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="6,-3,-6,93"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="790,-3,0,93"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Settings">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Settings_to_Power">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_Power">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Power">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="-790,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Power">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Settings">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="6,-3,-6,93"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="790,-3,0,93"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Settings">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Settings_to_Advanced">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_Advanced">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Advanced">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="790,-3,0,93"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0,-3,0,93"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Advanced">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Settings">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="6,-3,-6,93"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="-790,-3,0,93"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Settings">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Advanced_to_About">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_About">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_About">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="-790,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_About">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Advanced">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Advanced">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="6,-3,-6,93"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="790,-3,0,93"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Advanced_to_Power">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_Power">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Power">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="-790,0,0,90"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0,0,0,90"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Power">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Advanced">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="6,-3,-6,93"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="790,-3,0,93"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Advanced">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Advanced_to_Settings">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Cav_Settings">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Settings">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="-790,-3,0,93"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="0,-3,0,93"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Settings">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ThicknessAnimationUsingKeyFrames Storyboard.TargetProperty="(FrameworkElement.Margin)" Storyboard.TargetName="Cav_Advanced">
+        		<EasingThicknessKeyFrame KeyTime="0" Value="6,-3,-6,93"/>
+        		<EasingThicknessKeyFrame KeyTime="0:0:0.4" Value="790,-3,0,93"/>
+        	</ThicknessAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Opacity)" Storyboard.TargetName="Cav_Advanced">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.4" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Sailor6006_Message_Open">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cav_Message">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cav_Message">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Sailor6006_Message_Close">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cav_Message">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cav_Message">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Cav_Power_Open">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Cav_Power_Settings">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Cav_Power_Settings">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Date_Settings_Open">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Edit_Date">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Edit_Date">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Edit_Date">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Date_Settings_Close">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Edit_Date">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Edit_Date">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Edit_Date">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Edit_Screen_open">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Edit_Screen">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Edit_Screen">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Edit_Screen_close">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Edit_Screen">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Edit_Screen">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Eridt_Call_settings">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Edit_Call_settings">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Edit_Call_settings">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Edit_Call_settings">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Eridt_Call_settings_close">
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Edit_Call_settings">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Edit_Call_settings">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Edit_Call_settings">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Password">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Password">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Password">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="1"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="Password">
+        		<DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Visible}"/>
+        		<DiscreteObjectKeyFrame KeyTime="0:0:0.3" Value="{x:Static Visibility.Visible}"/>
+        	</ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_Password_close">
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Password">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        	<DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Password">
+        		<EasingDoubleKeyFrame KeyTime="0" Value="1"/>
+        		<EasingDoubleKeyFrame KeyTime="0:0:0.3" Value="0"/>
+        	</DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    	<LinearGradientBrush x:Key="VerticalScrollBarBackground" EndPoint="1,0" StartPoint="0,0">
+    		<GradientStop Color="#E1E1E1" Offset="0"/>
+    		<GradientStop Color="#EDEDED" Offset="0.20"/>
+    		<GradientStop Color="#EDEDED" Offset="0.80"/>
+    		<GradientStop Color="#E3E3E3" Offset="1"/>
+    	</LinearGradientBrush>
+    	<SolidColorBrush x:Key="ScrollBarDisabledBackground" Color="#F4F4F4"/>
+    	<Style x:Key="ScrollBarButton" TargetType="{x:Type RepeatButton}">
+    		<Setter Property="OverridesDefaultStyle" Value="true"/>
+    		<Setter Property="Focusable" Value="false"/>
+    		<Setter Property="IsTabStop" Value="false"/>
+    		<Setter Property="Template">
+    			<Setter.Value>
+    				<ControlTemplate TargetType="{x:Type RepeatButton}">
+    					<Themes:ScrollChrome x:Name="Chrome" RenderMouseOver="{TemplateBinding IsMouseOver}" RenderPressed="{TemplateBinding IsPressed}" SnapsToDevicePixels="true" Themes:ScrollChrome.ScrollGlyph="{TemplateBinding Themes:ScrollChrome.ScrollGlyph}"/>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    	</Style>
+    	<Style x:Key="VerticalScrollBarPageButton" TargetType="{x:Type RepeatButton}">
+    		<Setter Property="OverridesDefaultStyle" Value="true"/>
+    		<Setter Property="Background" Value="Transparent"/>
+    		<Setter Property="Focusable" Value="false"/>
+    		<Setter Property="IsTabStop" Value="false"/>
+    		<Setter Property="Template">
+    			<Setter.Value>
+    				<ControlTemplate TargetType="{x:Type RepeatButton}">
+    					<Rectangle Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    	</Style>
+    	<Style x:Key="ScrollBarThumb" TargetType="{x:Type Thumb}">
+    		<Setter Property="OverridesDefaultStyle" Value="true"/>
+    		<Setter Property="IsTabStop" Value="false"/>
+    		<Setter Property="Template">
+    			<Setter.Value>
+    				<ControlTemplate TargetType="{x:Type Thumb}">
+    					<Border x:Name="border" CornerRadius="4" Background="#A5A5A5" BorderBrush="#FFC8C8C8" BorderThickness="1" Margin="0" />
+    					<ControlTemplate.Triggers>
+                            <Trigger Property="IsDragging" Value="True">
+                                <Setter Property="Background" TargetName="border" Value="#7F7F7F"/>
+                                <Setter Property="Margin" TargetName="border" Value="-3,0"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    	</Style>
+    	<LinearGradientBrush x:Key="HorizontalScrollBarBackground" EndPoint="0,1" StartPoint="0,0">
+    		<GradientStop Color="#E1E1E1" Offset="0"/>
+    		<GradientStop Color="#EDEDED" Offset="0.20"/>
+    		<GradientStop Color="#EDEDED" Offset="0.80"/>
+    		<GradientStop Color="#E3E3E3" Offset="1"/>
+    	</LinearGradientBrush>
+    	<Style x:Key="HorizontalScrollBarPageButton" TargetType="{x:Type RepeatButton}">
+    		<Setter Property="OverridesDefaultStyle" Value="true"/>
+    		<Setter Property="Background" Value="Transparent"/>
+    		<Setter Property="Focusable" Value="false"/>
+    		<Setter Property="IsTabStop" Value="false"/>
+    		<Setter Property="Template">
+    			<Setter.Value>
+    				<ControlTemplate TargetType="{x:Type RepeatButton}">
+    					<Rectangle Fill="{TemplateBinding Background}" Height="{TemplateBinding Height}" Width="{TemplateBinding Width}"/>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    	</Style>
+    	<Style x:Key="ScrollBarStyle1" TargetType="{x:Type ScrollBar}">
+    		<Setter Property="Background" Value="{StaticResource VerticalScrollBarBackground}"/>
+    		<Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+    		<Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
+    		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+    		<Setter Property="Width" Value="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"/>
+    		<Setter Property="MinWidth" Value="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"/>
+    		<Setter Property="Template">
+    			<Setter.Value>
+    				<ControlTemplate TargetType="{x:Type ScrollBar}">
+    					<Grid x:Name="Bg" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+    						<Grid.RowDefinitions>
+    							<RowDefinition MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}"/>
+    							<RowDefinition Height="0.00001*"/>
+    							<RowDefinition MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}"/>
+    						</Grid.RowDefinitions>
+    						<RepeatButton Command="{x:Static ScrollBar.LineLeftCommand}" IsEnabled="{TemplateBinding IsMouseOver}" >
+    							<Grid>
+    								<Image Margin="-7,-17,0,10" Source="Resource/day/ttgui_scroll_arrow_left_normal.png" Stretch="Fill"/>
+    								
+    								</Grid>
+									</RepeatButton>
+    						<Track x:Name="PART_Track" IsDirectionReversed="true" IsEnabled="{TemplateBinding IsMouseOver}" Grid.Row="1">
+    							<Track.DecreaseRepeatButton>
+    								<RepeatButton Command="{x:Static ScrollBar.PageUpCommand}" Style="{StaticResource VerticalScrollBarPageButton}"/>
+    							</Track.DecreaseRepeatButton>
+    							<Track.IncreaseRepeatButton>
+    								<RepeatButton Command="{x:Static ScrollBar.PageDownCommand}" Style="{StaticResource VerticalScrollBarPageButton}"/>
+    							</Track.IncreaseRepeatButton>
+    							<Track.Thumb>
+    								<Thumb Style="{StaticResource ScrollBarThumb}" Themes:ScrollChrome.ScrollGlyph="VerticalGripper"/>
+    							</Track.Thumb>
+    						</Track>
+    						<RepeatButton Command="{x:Static ScrollBar.LineDownCommand}" IsEnabled="{TemplateBinding IsMouseOver}" Grid.Row="2" Style="{StaticResource ScrollBarButton}" />
+    					</Grid>
+    					<ControlTemplate.Triggers>
+    						<Trigger Property="IsEnabled" Value="false">
+    							<Setter Property="Background" TargetName="Bg" Value="{StaticResource ScrollBarDisabledBackground}"/>
+    						</Trigger>
+    					</ControlTemplate.Triggers>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    		<Setter Property="Orientation" Value="Horizontal"/>
+    		<Style.Triggers>
+    			<Trigger Property="Orientation" Value="Horizontal">
+    				<Setter Property="Width" Value="Auto"/>
+    				<Setter Property="MinWidth" Value="0"/>
+    				<Setter Property="Height" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}"/>
+    				<Setter Property="MinHeight" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}"/>
+    				<Setter Property="Background" Value="{StaticResource HorizontalScrollBarBackground}"/>
+    				<Setter Property="Template">
+    					<Setter.Value>
+    						<ControlTemplate TargetType="{x:Type ScrollBar}">
+    							<Grid x:Name="Bg" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+    								<Grid.ColumnDefinitions>
+    									<ColumnDefinition MaxWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}"/>
+    									<ColumnDefinition Width="0.00001*"/>
+    									<ColumnDefinition MaxWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}"/>
+    								</Grid.ColumnDefinitions>
+    								<RepeatButton Command="{x:Static ScrollBar.LineLeftCommand}" IsEnabled="{TemplateBinding IsMouseOver}" Style="{StaticResource ScrollBarButton}" Themes:ScrollChrome.ScrollGlyph="LeftArrow"/>
+    								<Track x:Name="PART_Track" Grid.Column="1" IsEnabled="{TemplateBinding IsMouseOver}">
+    									<Track.DecreaseRepeatButton>
+    										<RepeatButton Command="{x:Static ScrollBar.PageLeftCommand}" Style="{StaticResource HorizontalScrollBarPageButton}"/>
+    									</Track.DecreaseRepeatButton>
+    									<Track.IncreaseRepeatButton>
+    										<RepeatButton Command="{x:Static ScrollBar.PageRightCommand}" Style="{StaticResource HorizontalScrollBarPageButton}"/>
+    									</Track.IncreaseRepeatButton>
+    									<Track.Thumb>
+    										<Thumb Style="{StaticResource ScrollBarThumb}" Themes:ScrollChrome.ScrollGlyph="HorizontalGripper"/>
+    									</Track.Thumb>
+    								</Track>
+    								<RepeatButton Grid.Column="2" Command="{x:Static ScrollBar.LineRightCommand}" IsEnabled="{TemplateBinding IsMouseOver}" Style="{StaticResource ScrollBarButton}" Themes:ScrollChrome.ScrollGlyph="RightArrow"/>
+    							</Grid>
+    							<ControlTemplate.Triggers>
+    								<Trigger Property="IsEnabled" Value="false">
+    									<Setter Property="Background" TargetName="Bg" Value="{StaticResource ScrollBarDisabledBackground}"/>
+    								</Trigger>
+    							</ControlTemplate.Triggers>
+    						</ControlTemplate>
+    					</Setter.Value>
+    				</Setter>
+    			</Trigger>
+    		</Style.Triggers>
+    	</Style>
+    	<Style x:Key="ScrollBarStyle2" TargetType="{x:Type ScrollBar}">
+    		<Setter Property="Background" Value="{StaticResource VerticalScrollBarBackground}"/>
+    		<Setter Property="Stylus.IsPressAndHoldEnabled" Value="false"/>
+    		<Setter Property="Stylus.IsFlicksEnabled" Value="false"/>
+    		<Setter Property="Foreground" Value="{DynamicResource {x:Static SystemColors.ControlTextBrushKey}}"/>
+    		<Setter Property="Width" Value="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"/>
+    		<Setter Property="MinWidth" Value="{DynamicResource {x:Static SystemParameters.VerticalScrollBarWidthKey}}"/>
+    		<Setter Property="Template">
+    			<Setter.Value>
+    				<ControlTemplate TargetType="{x:Type ScrollBar}">
+    					<Grid x:Name="Bg" Background="{TemplateBinding Background}" SnapsToDevicePixels="true">
+    						<Grid.RowDefinitions>
+    							<RowDefinition MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}"/>
+    							<RowDefinition Height="0.00001*"/>
+    							<RowDefinition MaxHeight="{DynamicResource {x:Static SystemParameters.VerticalScrollBarButtonHeightKey}}"/>
+    						</Grid.RowDefinitions>
+    						<RepeatButton Command="{x:Static ScrollBar.LineUpCommand}" IsEnabled="{TemplateBinding IsMouseOver}" Style="{StaticResource ScrollBarButton}" Themes:ScrollChrome.ScrollGlyph="UpArrow"/>
+    						<Track x:Name="PART_Track" IsDirectionReversed="true" IsEnabled="{TemplateBinding IsMouseOver}" Grid.Row="1">
+    							<Track.DecreaseRepeatButton>
+    								<RepeatButton Command="{x:Static ScrollBar.PageUpCommand}" Style="{StaticResource VerticalScrollBarPageButton}"/>
+    							</Track.DecreaseRepeatButton>
+    							<Track.IncreaseRepeatButton>
+    								<RepeatButton Command="{x:Static ScrollBar.PageDownCommand}" Style="{StaticResource VerticalScrollBarPageButton}"/>
+    							</Track.IncreaseRepeatButton>
+    							<Track.Thumb>
+    								<Thumb Style="{StaticResource ScrollBarThumb}" Themes:ScrollChrome.ScrollGlyph="VerticalGripper"/>
+    							</Track.Thumb>
+    						</Track>
+    						<RepeatButton Command="{x:Static ScrollBar.LineDownCommand}" IsEnabled="{TemplateBinding IsMouseOver}" Grid.Row="2" Style="{StaticResource ScrollBarButton}" Themes:ScrollChrome.ScrollGlyph="DownArrow"/>
+    					</Grid>
+    					<ControlTemplate.Triggers>
+    						<Trigger Property="IsEnabled" Value="false">
+    							<Setter Property="Background" TargetName="Bg" Value="{StaticResource ScrollBarDisabledBackground}"/>
+    						</Trigger>
+    					</ControlTemplate.Triggers>
+    				</ControlTemplate>
+    			</Setter.Value>
+    		</Setter>
+    		<Style.Triggers>
+    			<Trigger Property="Orientation" Value="Horizontal">
+    				<Setter Property="Width" Value="Auto"/>
+    				<Setter Property="MinWidth" Value="0"/>
+    				<Setter Property="Height" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}"/>
+    				<Setter Property="MinHeight" Value="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarHeightKey}}"/>
+    				<Setter Property="Background" Value="{StaticResource HorizontalScrollBarBackground}"/>
+    				<Setter Property="Template">
+    					<Setter.Value>
+    						<ControlTemplate TargetType="{x:Type ScrollBar}">
+    							<Grid x:Name="Bg"  SnapsToDevicePixels="true" Margin="21.333,0,11,0" Background="#7F8C8C8C">
+    								<Grid.RowDefinitions>
+    									<RowDefinition Height="13*"/>
+    									<RowDefinition Height="14*"/>
+    								</Grid.RowDefinitions>
+    								<Grid.ColumnDefinitions>
+    									<ColumnDefinition MaxWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}"/>
+    									<ColumnDefinition Width="0.00001*"/>
+    									<ColumnDefinition MaxWidth="{DynamicResource {x:Static SystemParameters.HorizontalScrollBarButtonWidthKey}}"/>
+    								</Grid.ColumnDefinitions>
+    								<Rectangle Fill="#FF0E0E0E" Margin="3.98,-3.625,0,-3.792" RadiusX="3" RadiusY="3" Grid.ColumnSpan="1" Grid.RowSpan="2"/>
+    								<RepeatButton x:Name="repeatButton" Command="{x:Static ScrollBar.LineLeftCommand}" IsEnabled="{TemplateBinding IsMouseOver}" Margin="-32.52,-3.791,13.02,-3.792" Grid.ColumnSpan="1" Grid.RowSpan="2" Width="Auto" Height="Auto" RenderTransformOrigin="0.5,0.5">
+    									<RepeatButton.RenderTransform>
+    										<TransformGroup>
+    											<ScaleTransform/>
+    											<SkewTransform/>
+    											<RotateTransform/>
+    											<TranslateTransform/>
+    										</TransformGroup>
+    									</RepeatButton.RenderTransform>
+    									<Grid>
+    										<Rectangle Fill="#FF3C3C3C" Margin="-3.813,-3.625,-3.355,-3.042" RadiusX="3" RadiusY="3"/>
+    										<Image Source="Resource/day/ttgui_scroll_arrow_left_normal.png" OpacityMask="{x:Null}" Margin="0,0,0,-1.667"/>
+    									</Grid>
+    								</RepeatButton>
+    								<Track x:Name="PART_Track" Grid.Column="1" IsEnabled="{TemplateBinding IsMouseOver}" Grid.RowSpan="2">
+    									<Track.DecreaseRepeatButton>
+    										<RepeatButton Command="{x:Static ScrollBar.PageLeftCommand}" Style="{StaticResource HorizontalScrollBarPageButton}" Margin="0,0,-0.25,0"/>
+    									</Track.DecreaseRepeatButton>
+    									<Track.IncreaseRepeatButton>
+    										<RepeatButton Command="{x:Static ScrollBar.PageRightCommand}" Style="{StaticResource HorizontalScrollBarPageButton}" HorizontalAlignment="Right" Width="262.981"/>
+    									</Track.IncreaseRepeatButton>
+    									<Track.Thumb>
+    										<Thumb Style="{StaticResource ScrollBarThumb}" Margin="0,0,0,0" />
+    									</Track.Thumb>
+    								</Track>
+    								<Rectangle Fill="#FF0E0E0E" Margin="0,-3.625,0,-3.792" RadiusX="3" RadiusY="3" Grid.ColumnSpan="1" Grid.RowSpan="2" Grid.Column="2"/>
+    								<RepeatButton x:Name="RightButton" Grid.Column="2" Command="{x:Static ScrollBar.LineRightCommand}" IsEnabled="{TemplateBinding IsMouseOver}" Margin="17,-3.625,-37.333,-3.792" Grid.RowSpan="2" RenderTransformOrigin="0.5,0.5" >
+    									<RepeatButton.RenderTransform>
+    										<TransformGroup>
+    											<ScaleTransform/>
+    											<SkewTransform/>
+    											<RotateTransform/>
+    											<TranslateTransform/>
+    										</TransformGroup>
+    									</RepeatButton.RenderTransform>
+    									<Grid>
+    										<Rectangle Fill="#FF3C3C3C" RadiusX="3" RadiusY="3" StrokeThickness="0" Margin="-5.083,-3.333,-4.75,-3.167"/>
+    										<Image Source="Resource/day/ttgui_scroll_arrow_right_normal.png"/>
+    									</Grid>
+    								</RepeatButton>
+    							</Grid>
+    							<ControlTemplate.Triggers>
+    								<Trigger Property="IsPressed" Value="True" SourceName="RightButton">
+    									<Setter Property="RenderTransform" TargetName="RightButton">
+    										<Setter.Value>
+    											<TransformGroup>
+    												<ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+    												<SkewTransform/>
+    												<RotateTransform/>
+    												<TranslateTransform/>
+    											</TransformGroup>
+    										</Setter.Value>
+    									</Setter>
+    								</Trigger>
+    								<Trigger Property="IsPressed" Value="True" SourceName="repeatButton">
+    									<Setter Property="RenderTransform" TargetName="repeatButton">
+    										<Setter.Value>
+    											<TransformGroup>
+    												<ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+    												<SkewTransform/>
+    												<RotateTransform/>
+    												<TranslateTransform/>
+    											</TransformGroup>
+    										</Setter.Value>
+    									</Setter>
+    								</Trigger>
+    							</ControlTemplate.Triggers>
+    						</ControlTemplate>
+    					</Setter.Value>
+    				</Setter>
+    			</Trigger>
+    		</Style.Triggers>
+    	</Style>
+    </UserControl.Resources>
+
+
+	<Grid x:Name="LayoutRoot">
+        <Image x:Name="Img_Back" Source="Resource/day/earth_horizon_800x530_dark.png" Stretch="Fill" RenderTransformOrigin="0.5,0.5"/>
+        <TextBlock HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Foreground="White" FontFamily="Droid Sans" FontSize="16" Margin="0,498.5,0,0" Text="Menu" TextAlignment="Center"/>
+		<Path Data="M319.245,619.5 L1114.141,618" HorizontalAlignment="Left" Height="2.5" Stretch="Fill" VerticalAlignment="Top" Width="754.15" RenderTransformOrigin="0.5,0.5" StrokeThickness="2" Margin="19.464,431.432,0,0">
+			<Path.Stroke>
+				<RadialGradientBrush>
+					<GradientStop Color="#FF0A0909" Offset="1"/>
+					<GradientStop Color="White" Offset="0.589"/>
+				</RadialGradientBrush>
+			</Path.Stroke>
+			<Path.RenderTransform>
+				<TransformGroup>
+					<ScaleTransform ScaleX="1.05" ScaleY="-1"/>
+					<SkewTransform/>
+					<RotateTransform/>
+					<TranslateTransform/>
+				</TransformGroup>
+			</Path.RenderTransform>
+		</Path>
+		<TextBlock HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Foreground="White" FontFamily="Droid Sans" FontSize="16" Margin="524.096,498.5,0,0" Text="Advanced" TextAlignment="Center"/>
+		<TextBlock HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Foreground="White" FontFamily="Droid Sans" FontSize="16" Margin="419.096,498.5,0,0" Text="Settings" TextAlignment="Center"/>
+		<TextBlock HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Foreground="White" FontFamily="Droid Sans" FontSize="16" Margin="314.096,498.5,0,0" TextAlignment="Center" Text="Power"/>
+		<TextBlock HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" Foreground="White" FontFamily="Droid Sans" FontSize="16" Margin="214.096,498.5,0,0" Text="About" TextAlignment="Center"/>
+		<Image x:Name="Img_Advanced" Margin="524.096,431.5,165.904,0" Source="Resource/day/ttgui_page_advanced_normal.png" Stretch="Fill"/>
+		<Image x:Name="Img_Power" Margin="314.096,431.5,375.904,0" Source="Resource/day/ttgui_page_power_battery_normal.png" Stretch="Fill"/>
+		<Image x:Name="Img_Settings" Margin="419.096,431.5,270.904,0" Source="Resource/day/ttgui_page_settings_normal.png" Stretch="Fill"/>
+		<Image x:Name="Img_About" Margin="214.096,431.5,475.904,0" Source="Resource/day/ttgui_page_about_normal.png" Stretch="Fill"/>
+		<Image x:Name="Img_Menu" Margin="0,439.5,720,0" Source="Resource/day/ttgui_menu_normal.png" Stretch="Fill"/>
+		<Image x:Name="Img_Advanced_pre" Margin="524.096,431.5,165.904,0" Source="Resource/day/ttgui_page_advanced_checked.png" Stretch="Fill" Visibility="Collapsed"/>
+		<Image x:Name="Img_Power_pre" Margin="314.096,431.5,375.904,0" Source="Resource/day/ttgui_page_power_battery_checked.png" Stretch="Fill" Visibility="Collapsed"/>
+		<Image x:Name="Img_Settings_pre" Margin="419.096,431.5,270.904,0" Source="Resource/day/ttgui_page_settings_checked.png" Stretch="Fill" RenderTransformOrigin="0.435,0.483" Visibility="Collapsed"/>
+		<Image x:Name="Img_About_pre" Margin="209.096,431.5,480.904,0" Source="Resource/day/ttgui_page_about_checked.png" Stretch="Fill"/>
+		<Image x:Name="Img_Menu_pre" Margin="0,439.5,720,0" Source="Resource/day/ttgui_menu_pressed.png" Stretch="Fill" Visibility="Collapsed"/>
+		<Button x:Name="Btn_Menu" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Margin="3.334,439.5,720,10" MouseLeftButtonDown="Btn_Menu_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Menu_MouseLeftButtonUp"/>
+		<Button x:Name="Btn_About" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Margin="209.096,433.925,480.904,-2.425" Width="90" Height="90" Click="Btn_About_Click"/>
+		<Button x:Name="Btn_Power" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Margin="319.096,433.925,390.904,-2.425" Width="90" Height="90" Click="Btn_Power_Click"/>
+		<Button x:Name="Btn_Settings" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Margin="429.096,433.925,280.904,-2.425" Width="90" Height="90" Click="Btn_Settings_Click"/>
+		<Button x:Name="Btn_Advaced" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Margin="535.762,431.5,174.237,0" Width="90" Height="90" Click="Btn_Advaced_Click"/>
+		<Canvas x:Name="Cav_Power" Margin="0,0,0,90" Visibility="Collapsed" d:IsLocked="True">
+			<Rectangle Fill="White" HorizontalAlignment="Left" Height="431.5" StrokeThickness="0" VerticalAlignment="Top" Width="790" Stroke="Black" Opacity="0"/>
+			<TextBlock HorizontalAlignment="Left" Height="38.056" TextWrapping="Wrap" VerticalAlignment="Top" Width="259.038" Foreground="White" FontSize="21.333" FontFamily="Droid Sans" Canvas.Left="38.057" Canvas.Top="47.202"><Run Text="Power source"/></TextBlock>
+			<TextBlock HorizontalAlignment="Left" Height="38.056" TextWrapping="Wrap" Text="Unknown" VerticalAlignment="Top" Width="130.038" Foreground="White" FontSize="24" FontFamily="Droid Sans" Canvas.Left="62.724" Canvas.Top="85.258"/>
+			<TextBlock HorizontalAlignment="Left" Height="38.056" TextWrapping="Wrap" Text="Battery charge state" VerticalAlignment="Top" Width="259.038" Foreground="White" FontSize="21.333" FontFamily="Droid Sans" Canvas.Left="38.057" Canvas.Top="123.314"/>
+			<TextBlock HorizontalAlignment="Left" Height="38.056" TextWrapping="Wrap" Text="Idel" VerticalAlignment="Top" Width="130.038" Foreground="White" FontSize="24" FontFamily="Droid Sans" Canvas.Left="62.724" Canvas.Top="161.37"/>
+			<TextBlock HorizontalAlignment="Left" Height="38.056" TextWrapping="Wrap" Text="Battery voltage level" VerticalAlignment="Top" Width="268.038" Foreground="White" FontSize="21.333" FontFamily="Droid Sans" Canvas.Left="38.057" Canvas.Top="199.426"/>
+			<TextBlock HorizontalAlignment="Left" Height="38.056" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="130.038" Foreground="White" FontSize="24" FontFamily="Droid Sans" Canvas.Left="62.724" Canvas.Top="237.482"/>
+			<TextBlock HorizontalAlignment="Left" Height="38.056" TextWrapping="Wrap" Text="Battery current level" VerticalAlignment="Top" Width="268.038" Foreground="White" FontSize="21.333" FontFamily="Droid Sans" Canvas.Left="38.057" Canvas.Top="275.538"/>
+			<TextBlock HorizontalAlignment="Left" Height="38.056" TextWrapping="Wrap" Text="-" VerticalAlignment="Top" Width="130.038" Foreground="White" FontSize="24" FontFamily="Droid Sans" Canvas.Left="62.724" Canvas.Top="313.594"/>
+			<TextBlock HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.038" Foreground="White" FontSize="21.333" FontFamily="Droid Sans" Text="Battery alarm" Canvas.Left="505.557" Canvas.Top="50.258"/>
+			<TextBlock HorizontalAlignment="Left" Height="42.056" TextWrapping="Wrap" Text="The battery voltage is below the configured limit of 23.5v." VerticalAlignment="Top" Width="313.443" Foreground="White" FontSize="16" FontFamily="Droid Sans" Canvas.Left="466.557" Canvas.Top="90.258"/>
+			<Image Source="Resource/day/ttgui_status_warning.png" Height="35" Stretch="Fill" VerticalAlignment="Top" Canvas.Left="465.557" Canvas.Top="50.258" Width="35"/>
+			<Button x:Name="Btn_Pw_Settings" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Height="40.765" Canvas.Left="649.5" Canvas.Top="381" Width="117.167" MouseLeftButtonDown="Btn_Pw_Settings_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Pw_Settings_MouseLeftButtonUp"/>
+			<Rectangle x:Name="Rect_shadow_Power" Fill="Black" Height="602" StrokeThickness="0" Width="790" Stroke="Black" Opacity="0.2" Canvas.Top="-79.5" Visibility="Collapsed"/>
+			<Canvas x:Name="Cav_Power_Settings" Height="362.817" Canvas.Left="32.75" Canvas.Top="110.038" Width="709.345" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+				<Canvas.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Canvas.RenderTransform>
+				<Rectangle RadiusY="6" RadiusX="6" StrokeThickness="11" Stroke="#FFFDFDFD" HorizontalAlignment="Right" Width="709.345" Fill="#FF0E0E0E" Height="362.817">
+					<Rectangle.Effect>
+						<BlurEffect Radius="3"/>
+					</Rectangle.Effect>
+				</Rectangle>
+				<TextBlock HorizontalAlignment="Left" Height="38.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="400.666" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" FontWeight="Bold" Text="Power supply" Canvas.Top="19.438" Canvas.Left="18.609"/>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="608.903" Canvas.Top="62.856" Canvas.Left="18.609">
+					<Path.Stroke>
+						<RadialGradientBrush Center="0,0.5" GradientOrigin="0,0.5" RadiusX="0.9">
+							<GradientStop Color="White" Offset="0.877"/>
+							<GradientStop Color="Black" Offset="1"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<Canvas x:Name="Cav_Btn_close_Power" RenderTransformOrigin="0.5,0.5" Height="59" Width="59" Canvas.Top="14.247" Canvas.Left="631.167">
+					<Canvas.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleY="0.8" ScaleX="0.8"/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Canvas.RenderTransform>
+					<Rectangle HorizontalAlignment="Left" Height="58" RadiusY="7" RadiusX="7" Stroke="White" VerticalAlignment="Top" Width="58">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="White"/>
+								<GradientStop Color="#FFF7F7F7" Offset="1"/>
+								<GradientStop Color="#FF343030" Offset="0.113"/>
+								<GradientStop Color="#FF343030" Offset="0.927"/>
+								<GradientStop Color="#FF151414" Offset="0.219"/>
+								<GradientStop Color="#FF151414" Offset="0.774"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<Image x:Name="img_close1" Source="Resource/day/ttgui_close_cross_pressed.png" Stretch="Fill" Height="58" Width="58"/>
+				</Canvas>
+				<Canvas x:Name="Cav_Btn_Close_Power_pre" RenderTransformOrigin="0.5,0.5" Height="59" Width="59" Canvas.Top="15.105" Canvas.Left="632.512" Visibility="Collapsed">
+					<Rectangle HorizontalAlignment="Left" Height="58" RadiusY="7" RadiusX="7" Stroke="White" VerticalAlignment="Top" Width="58">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="White"/>
+								<GradientStop Color="#FFF7F7F7" Offset="1"/>
+								<GradientStop Color="#FF343030" Offset="0.113"/>
+								<GradientStop Color="#FF343030" Offset="0.927"/>
+								<GradientStop Color="#FF151414" Offset="0.219"/>
+								<GradientStop Color="#FF151414" Offset="0.774"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<Image x:Name="img_close_pre1" Source="Resource/day/ttgui_close_cross_pressed.png" Stretch="Fill" Height="58" Width="58"/>
+				</Canvas>
+				<Rectangle x:Name="Rect_Battery_Setiings" HorizontalAlignment="Left" Height="270.589" StrokeThickness="2" VerticalAlignment="Top" Width="664.57" Stroke="#FFA8A1A1" RadiusX="6" RadiusY="6" RenderTransformOrigin="0.5,0.5" Canvas.Top="68.921" Canvas.Left="18.609"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Max charge current" TextAlignment="Right" Canvas.Top="126.584" Canvas.Left="196.609"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Max charge voltage" TextAlignment="Right" Canvas.Top="157.002" Canvas.Left="196.609"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Folat voltage" TextAlignment="Right" Canvas.Top="187.42" Canvas.Left="196.609"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Min alarm voltage" TextAlignment="Right" Canvas.Top="217.838" Canvas.Left="196.609"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="10.0A" Canvas.Top="126.584" Canvas.Left="436.609"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="190.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" Text="Battery settings" Canvas.Top="83.166" Canvas.Left="125"/>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="190.596" Canvas.Top="118.584" Canvas.Left="125">
+					<Path.Stroke>
+						<RadialGradientBrush Center="0,0.5" GradientOrigin="0,0.5" RadiusX="0.9">
+							<GradientStop Color="White" Offset="0.877"/>
+							<GradientStop Color="Black" Offset="1"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<Image Height="100" Source="Resource/day/ttgui_settings_power_battery_normal.png" Stretch="Fill" Width="100" Canvas.Top="74.105" Canvas.Left="25"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Max alarm voltage" TextAlignment="Right" Canvas.Top="248.256" Canvas.Left="196.609"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="249.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Min alarm temperature" TextAlignment="Right" Canvas.Top="278.674" Canvas.Left="154.609"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="249.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Max alarm temperature" TextAlignment="Right" Canvas.Top="309.092" Canvas.Left="154.609"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="28.8V" Canvas.Top="157.002" Canvas.Left="436.609"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="27.2V" Canvas.Top="187.42" Canvas.Left="436.609"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Canvas.Top="217.838" Canvas.Left="436.609" Text="23.5V"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="29.5V" Canvas.Top="248.256" Canvas.Left="436.609"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="-5℃" Canvas.Top="278.674" Canvas.Left="436.609"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Canvas.Top="309.092" Canvas.Left="436.609"><Run Text="5"/><Run Language="zh-cn" Text="5"/><Run Text="℃"/></TextBlock>
+				<Button x:Name="Btn_Power_Close" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="46.667" Height="46.418" MouseLeftButtonDown="Btn_Sailor6006_Close_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Sailor6006_Close_MouseLeftButtonUp" Canvas.Top="19.438" Canvas.Left="636.512"/>
+			</Canvas>
+		</Canvas>
+		<Canvas x:Name="Cav_Settings" Margin="2,0,-6,90">
+			<Rectangle Fill="White" HorizontalAlignment="Left" Height="431.5" StrokeThickness="0" VerticalAlignment="Top" Width="790" Stroke="Black" Opacity="0"/>
+			<Canvas x:Name="Cav_Date" Height="105" Canvas.Left="10" Width="770">
+				<Rectangle HorizontalAlignment="Left" Height="105" StrokeThickness="2" VerticalAlignment="Top" Width="770" Stroke="#FFA8A1A1" RadiusX="6" RadiusY="6"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="274.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" Text="Date and Time format" Canvas.Left="115" Canvas.Top="5"/>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="274.596" Canvas.Left="115" Canvas.Top="35.418">
+					<Path.Stroke>
+						<RadialGradientBrush Center="0,0.5" GradientOrigin="0,0.5" RadiusX="0.9">
+							<GradientStop Color="White" Offset="0.877"/>
+							<GradientStop Color="Black" Offset="1"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<TextBlock HorizontalAlignment="Left" Height="26.164" TextWrapping="Wrap" VerticalAlignment="Top" Width="148.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Date format" TextAlignment="Right" Canvas.Left="349.5" Canvas.Top="43.418"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Time format" TextAlignment="Right" Canvas.Left="277.5" Canvas.Top="74.582"/>
+				<TextBlock HorizontalAlignment="Left" Height="26.164" TextWrapping="Wrap" VerticalAlignment="Top" Width="152.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="0427580151" Canvas.Left="517.404" Canvas.Top="43.418"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="113.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="1.02" Canvas.Left="517.404" Canvas.Top="74.582"/>
+				<Image Source="Resource/day/tlx_settings_regional_settings_normal.png" Stretch="Fill" Height="100" Canvas.Left="10" Width="100"/>
+				<Image Height="100" Source="Resource/day/tlx_settings_regional_settings_pressed.png" Stretch="Fill" Width="100"/>
+			</Canvas>
+			<Canvas x:Name="Cav_Screen_Settings" Height="100" Canvas.Left="10" Canvas.Top="110" Width="770">
+				<Rectangle HorizontalAlignment="Left" Height="100" StrokeThickness="2" VerticalAlignment="Top" Width="770" Stroke="#FFA8A1A1" RadiusX="6" RadiusY="6"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="195.096" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" Text="Screen Settings" Canvas.Left="105" Canvas.Top="6"/>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="195.096" Canvas.Left="105" Canvas.Top="36.418">
+					<Path.Stroke>
+						<RadialGradientBrush Center="0,0.5" GradientOrigin="0,0.5" RadiusX="0.9">
+							<GradientStop Color="White" Offset="0.877"/>
+							<GradientStop Color="Black" Offset="1"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="263.646" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Automatic night mode shift" TextAlignment="Right" Canvas.Left="181" Canvas.Top="58.418"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="286.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="20% amblent light intensity" Canvas.Left="473.404" Canvas.Top="58.418"/>
+				<Image Source="Resource/day/ttgui_settings_screen_normal.png" Stretch="Fill" Height="100" Width="100"/>
+			</Canvas>
+			<Canvas x:Name="Cav_Call_Settings" Height="100" Canvas.Left="10" Canvas.Top="215" Width="770">
+				<Rectangle HorizontalAlignment="Left" Height="100" StrokeThickness="2" VerticalAlignment="Top" Width="770" Stroke="#FFA8A1A1" RadiusX="6" RadiusY="6"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="168.096" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" Text="Call Settings" Canvas.Left="105" Canvas.Top="5"/>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="168.096" Canvas.Left="105" Canvas.Top="35.418">
+					<Path.Stroke>
+						<RadialGradientBrush Center="0,0.5" GradientOrigin="0,0.5" RadiusX="0.9">
+							<GradientStop Color="White" Offset="0.877"/>
+							<GradientStop Color="Black" Offset="1"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Slave delay" TextAlignment="Right" Canvas.Left="231" Canvas.Top="35.418"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="334.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" TextAlignment="Right" Canvas.Left="117" Canvas.Top="68.836"><Run Text="Automatic identific"/><Run Language="zh-cn" Text="a"/><Run Text="tion(DE/WRU"/><Run Language="zh-cn" Text=")"/></TextBlock>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="0 ms" Canvas.Left="490.096" Canvas.Top="35.418"/>
+				<Image Source="Resource/day/tlx_settings_auto_wru_normal.png" Stretch="Fill" Height="100" Width="100"/>
+				<Image Source="Resource/day/tlx_settings_auto_wru_pressed.png" Stretch="Fill" Height="100" Width="100"/>
+				<CheckBox x:Name="Ch_Auto_Copy" Content="CheckBox" Height="50.211" Style="{DynamicResource CheckBoxStyle_Msg}" Canvas.Left="468.096" Canvas.Top="49.043" Width="50.57"/>
+			</Canvas>
+			<Canvas x:Name="Cav_Identification" Height="106.5" Canvas.Left="10" Canvas.Top="320" Width="770">
+				<Rectangle HorizontalAlignment="Left" Height="106.5" StrokeThickness="2" VerticalAlignment="Top" Width="770" Stroke="#FFA8A1A1" RadiusX="6" RadiusY="6"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="168.096" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" Canvas.Left="105" Canvas.Top="5"><Run FontSize="21.333" Language="zh-cn" Text="I"/><Run FontSize="21.333" Text="dentific"/><Run FontSize="21.333" Language="zh-cn" Text="a"/><Run FontSize="21.333" Text="tion"/></TextBlock>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="168.096" Canvas.Left="105" Canvas.Top="35.418">
+					<Path.Stroke>
+						<RadialGradientBrush Center="0,0.5" GradientOrigin="0,0.5" RadiusX="0.9">
+							<GradientStop Color="White" Offset="0.877"/>
+							<GradientStop Color="Black" Offset="1"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="9-digit MMSI code" TextAlignment="Right" Canvas.Left="231" Canvas.Top="35.418"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="313.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" TextAlignment="Right" Text="5-digit  call code" Canvas.Left="138" Canvas.Top="68.836"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="111111111" Canvas.Left="490.096" Canvas.Top="35.418"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="11111" Canvas.Left="490.096" Canvas.Top="68.836"/>
+				<Image Source="Resource/day/tlx_settings_auto_wru_normal.png" Stretch="Fill" Height="100" Width="100"/>
+				<Image Source="Resource/day/tlx_settings_auto_wru_pressed.png" Stretch="Fill" Height="100" Width="100"/>
+			</Canvas>
+			<Button x:Name="Btn_Date" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="770" Height="105" Canvas.Left="10" Click="Btn_Date_Click"/>
+			<Button x:Name="Btn_Screen" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="770" Height="100" Canvas.Left="10" Canvas.Top="110" Click="Btn_Screen_Click"/>
+			<Button x:Name="Btn_Call_Settings" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="770" Height="100" Canvas.Left="10" Canvas.Top="215" Click="Btn_Call_Settings_Click"/>
+			<Button x:Name="Btn_Identification" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="770" Height="105" Canvas.Left="10" Canvas.Top="321.5" Click="Btn_Identification_Click"/>
+			<Rectangle x:Name="Rect_shadow_Settings" Fill="Black" HorizontalAlignment="Left" Height="602" StrokeThickness="0" VerticalAlignment="Top" Width="790" Stroke="Black" Opacity="0.2" Canvas.Top="-79.5" Visibility="Collapsed"/>
+			<Canvas x:Name="Edit_Date" Height="428.317" Canvas.Left="206.988" Canvas.Top="21.5" Width="455.845" RenderTransformOrigin="0.5,0.5">
+				<Canvas.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Canvas.RenderTransform>
+				<Rectangle RadiusY="6" RadiusX="6" StrokeThickness="11" Stroke="#FFFDFDFD" HorizontalAlignment="Right" Width="455.845" Fill="#FF0E0E0E" Height="428.317">
+					<Rectangle.Effect>
+						<BlurEffect Radius="3"/>
+					</Rectangle.Effect>
+				</Rectangle>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="327.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" Canvas.Left="70.082" Canvas.Top="19.333"><Run Language="zh-cn" Text="Edit"/><Run Language="zh-cn" Text=" "/><Run Text="Date and Time format"/></TextBlock>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="327.596" Canvas.Left="70.082" Canvas.Top="49.751">
+					<Path.Stroke>
+						<RadialGradientBrush>
+							<GradientStop Color="White" Offset="0.404"/>
+							<GradientStop Color="#FF060606" Offset="0.93"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<Canvas x:Name="Date_1" Height="50.001" Canvas.Left="20.333" Canvas.Top="62.751" Width="207.417">
+					<Rectangle x:Name="Rect_date1" HorizontalAlignment="Left" Height="50.001" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5"  >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform />
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle x:Name="Rect_Date1" HorizontalAlignment="Left" Height="50.001" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed"  >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.2" />
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<TextBlock HorizontalAlignment="Left" Height="29.099" TextWrapping="Wrap" VerticalAlignment="Top" Width="139.922" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="67.495" Canvas.Top="10.902" Text="dd MMM yyyy"/>
+					<Ellipse HorizontalAlignment="Left" Height="29.099" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" Canvas.Left="9" Canvas.Top="10.001">
+						<Ellipse.Effect>
+							<BlurEffect Radius="3"/>
+						</Ellipse.Effect>
+						<Ellipse.Fill>
+							<RadialGradientBrush>
+								<GradientStop Color="White" Offset="0"/>
+								<GradientStop Color="Gray" Offset="1"/>
+							</RadialGradientBrush>
+						</Ellipse.Fill>
+					</Ellipse>
+					<Ellipse x:Name="Elp_1" HorizontalAlignment="Left" Height="29.099" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" RenderTransformOrigin="0.492,0.513" Canvas.Left="9" Canvas.Top="10.001">
+						<Ellipse.Effect>
+							<BlurEffect Radius="3"/>
+						</Ellipse.Effect>
+						<Ellipse.Fill>
+							<RadialGradientBrush>
+								<GradientStop Color="#FF199E31" Offset="0"/>
+								<GradientStop Color="#FF2CC949" Offset="1"/>
+							</RadialGradientBrush>
+						</Ellipse.Fill>
+					</Ellipse>
+				</Canvas>
+				<Canvas x:Name="Date_2" Height="50.001" Canvas.Left="20.333" Canvas.Top="129.068" Width="207.417">
+					<Rectangle x:Name="Rect_date2" HorizontalAlignment="Left" Height="50.001" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5"  >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform />
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle x:Name="Rect_Date2" HorizontalAlignment="Left" Height="50.001" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed"  >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.2" />
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<TextBlock HorizontalAlignment="Left" Height="29.099" TextWrapping="Wrap" VerticalAlignment="Top" Width="139.922" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="67.495" Canvas.Top="10.902" Text="MM/dd-yyyy"/>
+					<Ellipse HorizontalAlignment="Left" Height="29.099" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" Canvas.Left="9" Canvas.Top="10.001">
+						<Ellipse.Effect>
+							<BlurEffect Radius="3"/>
+						</Ellipse.Effect>
+						<Ellipse.Fill>
+							<RadialGradientBrush>
+								<GradientStop Color="White" Offset="0"/>
+								<GradientStop Color="Gray" Offset="1"/>
+							</RadialGradientBrush>
+						</Ellipse.Fill>
+					</Ellipse>
+					<Ellipse x:Name="Elp_2" HorizontalAlignment="Left" Height="29.099" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" RenderTransformOrigin="0.492,0.513" Canvas.Left="9" Canvas.Top="10.001" Visibility="Collapsed">
+						<Ellipse.Effect>
+							<BlurEffect Radius="3"/>
+						</Ellipse.Effect>
+						<Ellipse.Fill>
+							<RadialGradientBrush>
+								<GradientStop Color="#FF199E31" Offset="0"/>
+								<GradientStop Color="#FF2CC949" Offset="1"/>
+							</RadialGradientBrush>
+						</Ellipse.Fill>
+					</Ellipse>
+				</Canvas>
+				<Canvas x:Name="Date_3" Height="50.001" Canvas.Left="20.333" Canvas.Top="195.069" Width="207.417">
+					<Rectangle x:Name="Rect_date3" HorizontalAlignment="Left" Height="50.001" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5"  >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform />
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle x:Name="Rect_Date3" HorizontalAlignment="Left" Height="50.001" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed"  >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.2" />
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<TextBlock HorizontalAlignment="Left" Height="29.099" TextWrapping="Wrap" VerticalAlignment="Top" Width="139.922" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="67.495" Canvas.Top="10.902" Text="dd/MM-yyyy"/>
+					<Ellipse HorizontalAlignment="Left" Height="29.099" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" Canvas.Left="9" Canvas.Top="10.001">
+						<Ellipse.Effect>
+							<BlurEffect Radius="3"/>
+						</Ellipse.Effect>
+						<Ellipse.Fill>
+							<RadialGradientBrush>
+								<GradientStop Color="White" Offset="0"/>
+								<GradientStop Color="Gray" Offset="1"/>
+							</RadialGradientBrush>
+						</Ellipse.Fill>
+					</Ellipse>
+					<Ellipse x:Name="Elp_3" HorizontalAlignment="Left" Height="29.099" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" RenderTransformOrigin="0.492,0.513" Canvas.Left="9" Canvas.Top="10.001" Visibility="Collapsed">
+						<Ellipse.Effect>
+							<BlurEffect Radius="3"/>
+						</Ellipse.Effect>
+						<Ellipse.Fill>
+							<RadialGradientBrush>
+								<GradientStop Color="#FF199E31" Offset="0"/>
+								<GradientStop Color="#FF2CC949" Offset="1"/>
+							</RadialGradientBrush>
+						</Ellipse.Fill>
+					</Ellipse>
+				</Canvas>
+				<Canvas x:Name="Date_4" Height="50.001" Canvas.Left="20.333" Canvas.Top="258.57" Width="207.417">
+					<Rectangle x:Name="Rect_date4" HorizontalAlignment="Left" Height="50.001" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5"  >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform />
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle x:Name="Rect_Date4" HorizontalAlignment="Left" Height="50.001" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed"  >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.2" />
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<TextBlock HorizontalAlignment="Left" Height="29.099" TextWrapping="Wrap" VerticalAlignment="Top" Width="139.922" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="67.495" Canvas.Top="10.902" Text="yyyy-MM-dd"/>
+					<Ellipse HorizontalAlignment="Left" Height="29.099" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" Canvas.Left="9" Canvas.Top="10.001">
+						<Ellipse.Effect>
+							<BlurEffect Radius="3"/>
+						</Ellipse.Effect>
+						<Ellipse.Fill>
+							<RadialGradientBrush>
+								<GradientStop Color="White" Offset="0"/>
+								<GradientStop Color="Gray" Offset="1"/>
+							</RadialGradientBrush>
+						</Ellipse.Fill>
+					</Ellipse>
+					<Ellipse x:Name="Elp_4" HorizontalAlignment="Left" Height="29.099" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" RenderTransformOrigin="0.492,0.513" Canvas.Left="9" Canvas.Top="10.001" Visibility="Collapsed">
+						<Ellipse.Effect>
+							<BlurEffect Radius="3"/>
+						</Ellipse.Effect>
+						<Ellipse.Fill>
+							<RadialGradientBrush>
+								<GradientStop Color="#FF199E31" Offset="0"/>
+								<GradientStop Color="#FF2CC949" Offset="1"/>
+							</RadialGradientBrush>
+						</Ellipse.Fill>
+					</Ellipse>
+				</Canvas>
+				<Canvas x:Name="Date_OK" Height="44.5" Canvas.Left="41.5" Canvas.Top="356.834" Width="120">
+					<Rectangle x:Name="Rect_OK" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+								<GradientStop Color="#FE033430" Offset="0.468"/>
+								<GradientStop Color="#FE033631" Offset="0.569"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+								<GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+								<GradientStop Color="White" Offset="1"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle x:Name="Rect_OK_pre" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+								<GradientStop Color="#FE033430" Offset="0.468"/>
+								<GradientStop Color="#FE033631" Offset="0.569"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+								<GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+								<GradientStop Color="White" Offset="1"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.1"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Image Source="Resource/day/ttgui_option_ok.png" Stretch="Fill" Height="30" Canvas.Left="26.137" Canvas.Top="7.5" Width="33.999"/>
+					<TextBlock HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="36.692" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="65.136" Canvas.Top="11.5" Text="OK" TextDecorations="{x:Null}"/>
+				</Canvas>
+				<Canvas x:Name="Date_Cancle" Height="44.5" Canvas.Left="286.819" Canvas.Top="356.834" Width="126">
+					<Rectangle x:Name="Rect_Cancle" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="44.5" Width="126">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+								<GradientStop Color="#FFFBFBFB" Offset="0"/>
+								<GradientStop Color="White" Offset="1"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<Rectangle x:Name="Rect_Cancle_pre" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="44.5" Width="126" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.1"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+								<GradientStop Color="#FFFBFBFB" Offset="0"/>
+								<GradientStop Color="White" Offset="1"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<Image Source="Resource/day/ttgui_option_cancel.png" Stretch="Fill" Height="30" Canvas.Left="7.667" Canvas.Top="7.5" Width="33.999"/>
+					<TextBlock HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="72.776" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="46.666" Canvas.Top="11.5"><Run Text="C" TextDecorations="Underline"/><Run Text="ancel"/></TextBlock>
+				</Canvas>
+				<TextBlock x:Name="TB_Date_Time" HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="248.848" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Canvas.Left="99.636" Canvas.Top="321.416" Text="07/01-2017 11:14 am" TextAlignment="Center"/>
+				<Canvas x:Name="Time_1" Height="50.001" Canvas.Left="278.965" Canvas.Top="62.751" Width="152.713">
+					<Rectangle x:Name="Rect_time12" HorizontalAlignment="Left" Height="50.001" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="147.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5"  >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform />
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle x:Name="Rect_Time12" HorizontalAlignment="Left" Height="50.001" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="147.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed"  >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.2" />
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<TextBlock HorizontalAlignment="Left" Height="29.099" TextWrapping="Wrap" VerticalAlignment="Top" Width="87.589" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="59.828" Canvas.Top="10.902" Text="12 hour"/>
+					<Ellipse HorizontalAlignment="Left" Height="29.099" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" Canvas.Left="9" Canvas.Top="10.001">
+						<Ellipse.Effect>
+							<BlurEffect Radius="3"/>
+						</Ellipse.Effect>
+						<Ellipse.Fill>
+							<RadialGradientBrush>
+								<GradientStop Color="White" Offset="0"/>
+								<GradientStop Color="Gray" Offset="1"/>
+							</RadialGradientBrush>
+						</Ellipse.Fill>
+					</Ellipse>
+					<Ellipse x:Name="Elp_12" HorizontalAlignment="Left" Height="29.099" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" RenderTransformOrigin="0.492,0.513" Canvas.Left="9" Canvas.Top="10.001">
+						<Ellipse.Effect>
+							<BlurEffect Radius="3"/>
+						</Ellipse.Effect>
+						<Ellipse.Fill>
+							<RadialGradientBrush>
+								<GradientStop Color="#FF199E31" Offset="0"/>
+								<GradientStop Color="#FF2CC949" Offset="1"/>
+							</RadialGradientBrush>
+						</Ellipse.Fill>
+					</Ellipse>
+				</Canvas>
+				<Canvas x:Name="Time_2" Height="50.001" Canvas.Left="278.965" Canvas.Top="129.068" Width="152.713">
+					<Rectangle x:Name="Rect_time24" HorizontalAlignment="Left" Height="50.001" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="147.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5"  >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform />
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle x:Name="Rect_Time24" HorizontalAlignment="Left" Height="50.001" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="147.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed"  >
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.2" />
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<TextBlock HorizontalAlignment="Left" Height="29.099" TextWrapping="Wrap" VerticalAlignment="Top" Width="87.589" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="59.828" Canvas.Top="10.902" Text="24 hour"/>
+					<Ellipse HorizontalAlignment="Left" Height="29.099" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" Canvas.Left="9" Canvas.Top="10.001">
+						<Ellipse.Effect>
+							<BlurEffect Radius="3"/>
+						</Ellipse.Effect>
+						<Ellipse.Fill>
+							<RadialGradientBrush>
+								<GradientStop Color="White" Offset="0"/>
+								<GradientStop Color="Gray" Offset="1"/>
+							</RadialGradientBrush>
+						</Ellipse.Fill>
+					</Ellipse>
+					<Ellipse x:Name="Elp_24" HorizontalAlignment="Left" Height="29.099" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" RenderTransformOrigin="0.492,0.513" Canvas.Left="9" Canvas.Top="10.001" Visibility="Collapsed">
+						<Ellipse.Effect>
+							<BlurEffect Radius="3"/>
+						</Ellipse.Effect>
+						<Ellipse.Fill>
+							<RadialGradientBrush>
+								<GradientStop Color="#FF199E31" Offset="0"/>
+								<GradientStop Color="#FF2CC949" Offset="1"/>
+							</RadialGradientBrush>
+						</Ellipse.Fill>
+					</Ellipse>
+				</Canvas>
+				<Button x:Name="Btn_Date1" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="207.417" Height="50.001" Canvas.Left="20.333" Canvas.Top="62.751" MouseLeftButtonDown="Btn_Date1_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Date1_MouseLeftButtonUp"/>
+				<Button x:Name="Btn_Date2" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="207.417" Height="50.001" Canvas.Left="20.333" Canvas.Top="129.068"/>
+				<Button x:Name="Btn_Date3" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="207.417" Height="50.001" Canvas.Left="20.333" Canvas.Top="195.069"/>
+				<Button x:Name="Btn_Date4" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="207.417" Height="50.001" Canvas.Left="20.333" Canvas.Top="258.57"/>
+				<Button x:Name="Btn_Time12" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="144.359" Height="49.074" Canvas.Left="278.965" Canvas.Top="63.678" MouseLeftButtonDown="Btn_Time12_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Time12_MouseLeftButtonUp"/>
+				<Button x:Name="Btn_Time24" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="144.359" Height="49.074" Canvas.Left="278.965" Canvas.Top="129.995" MouseLeftButtonDown="Btn_Time24_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Time24_MouseLeftButtonUp"/>
+				<Button x:Name="Btn_Date_OK" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="120" Height="44.5" Canvas.Left="41.5" Canvas.Top="356.834" MouseLeftButtonDown="Btn_Date_OK_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Date_OK_MouseLeftButtonUp"/>
+				<Button x:Name="Btn_Date_Cancle" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="126" Height="44.5" Canvas.Left="286.819" Canvas.Top="356.834" MouseLeftButtonDown="Btn_Date_Cancle_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Date_Cancle_MouseLeftButtonUp"/>
+			</Canvas>
+			<Canvas x:Name="Edit_Screen" Height="207.175" Canvas.Left="96.519" Canvas.Top="44.914" Width="628.071" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+				<Canvas.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Canvas.RenderTransform>
+				<Rectangle RadiusY="6" RadiusX="6" StrokeThickness="11" Stroke="#FFFDFDFD" HorizontalAlignment="Right" Width="628.071" Fill="#FF0E0E0E" Height="207.175" Canvas.Left="-10" Canvas.Top="10">
+					<Rectangle.Effect>
+						<BlurEffect Radius="3"/>
+					</Rectangle.Effect>
+				</Rectangle>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="494.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" Canvas.Top="13.333" Canvas.Left="48.028" TextAlignment="Center" Text="Edit screen settings"/>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="518.286" Canvas.Top="48.751" Canvas.Left="48.028">
+					<Path.Stroke>
+						<RadialGradientBrush>
+							<GradientStop Color="White" Offset="0.404"/>
+							<GradientStop Color="#FF060606" Offset="0.93"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<TextBlock HorizontalAlignment="Left" Height="26.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="568.096" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Canvas.Top="56.751" Canvas.Left="24.028" TextAlignment="Center" Text="Automatic night mode shift   20% amblent light intensity."/>
+				<Canvas x:Name="Screen_OK" Height="44.5" Canvas.Left="107.5" Canvas.Top="145.031" Width="120">
+					<Rectangle x:Name="Rect_OK_screen" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+								<GradientStop Color="#FE033430" Offset="0.468"/>
+								<GradientStop Color="#FE033631" Offset="0.569"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+								<GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+								<GradientStop Color="White" Offset="1"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle x:Name="Rect_OK_screen_pre" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+								<GradientStop Color="#FE033430" Offset="0.468"/>
+								<GradientStop Color="#FE033631" Offset="0.569"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+								<GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+								<GradientStop Color="White" Offset="1"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.1"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Image Source="Resource/day/ttgui_option_ok.png" Stretch="Fill" Height="30" Canvas.Left="26.137" Canvas.Top="7.5" Width="33.999"/>
+					<TextBlock HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="36.692" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="65.136" Canvas.Top="11.5" Text="OK" TextDecorations="{x:Null}"/>
+				</Canvas>
+				<Canvas x:Name="Screen_Cancle" Height="44.5" Canvas.Left="386.819" Canvas.Top="145.031" Width="126">
+					<Rectangle x:Name="Rect_Cancle1" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="44.5" Width="126">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+								<GradientStop Color="#FFFBFBFB" Offset="0"/>
+								<GradientStop Color="White" Offset="1"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<Rectangle x:Name="Rect_Cancle_screen_pre" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="44.5" Width="126" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.1"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+								<GradientStop Color="#FFFBFBFB" Offset="0"/>
+								<GradientStop Color="White" Offset="1"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<Image Source="Resource/day/ttgui_option_cancel.png" Stretch="Fill" Height="30" Canvas.Left="7.667" Canvas.Top="7.5" Width="33.999"/>
+					<TextBlock HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="72.776" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="46.666" Canvas.Top="11.5"><Run Text="C" TextDecorations="Underline"/><Run Text="ancel"/></TextBlock>
+				</Canvas>
+				<Button x:Name="Btn_Screen_OK" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="120" Height="44.5" Canvas.Left="107.5" Canvas.Top="145.031" MouseLeftButtonDown="Btn_Screen_OK_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Screen_OK_MouseLeftButtonUp"/>
+				<Button x:Name="Btn_Screen_Cancle" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="126" Height="44.5" Canvas.Left="386.819" Canvas.Top="145.031" MouseLeftButtonDown="Btn_Screen_Cancle_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Screen_Cancle_MouseLeftButtonUp"/>
+				<ScrollBar Height="27.417" Canvas.Left="48.028" Canvas.Top="98.169" Width="506.472" Orientation="Horizontal" Style="{DynamicResource ScrollBarStyle2}" Cursor="Hand"/>
+			</Canvas>
+			<Canvas x:Name="Edit_Call_settings" Height="374.903" Canvas.Left="131.547" Canvas.Top="56.597" Width="606.043" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+				<Canvas.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Canvas.RenderTransform>
+				<Rectangle RadiusY="6" RadiusX="6" StrokeThickness="11" Stroke="#FFFDFDFD" HorizontalAlignment="Right" Width="606.043" Fill="#FF0E0E0E" Height="374.903">
+					<Rectangle.Effect>
+						<BlurEffect Radius="3"/>
+					</Rectangle.Effect>
+				</Rectangle>
+				<TextBlock HorizontalAlignment="Left" Height="35.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="432.155" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" TextAlignment="Center" Text="Edit call settings" Canvas.Top="10" Canvas.Left="81.091"/>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="518.286" Canvas.Top="45.418" Canvas.Left="18.333">
+					<Path.Stroke>
+						<RadialGradientBrush>
+							<GradientStop Color="White" Offset="0.404"/>
+							<GradientStop Color="#FF060606" Offset="0.93"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<Canvas x:Name="Call_settings_OK" Height="44.5" Width="120" Canvas.Top="312.403" Canvas.Left="87.472">
+					<Rectangle x:Name="Rect_OK_call" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+								<GradientStop Color="#FE033430" Offset="0.468"/>
+								<GradientStop Color="#FE033631" Offset="0.569"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+								<GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+								<GradientStop Color="White" Offset="1"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle x:Name="Rect_OK_call_pre" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+								<GradientStop Color="#FE033430" Offset="0.468"/>
+								<GradientStop Color="#FE033631" Offset="0.569"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+								<GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+								<GradientStop Color="White" Offset="1"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.1"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Image Source="Resource/day/ttgui_option_ok.png" Stretch="Fill" Height="30" Canvas.Left="26.137" Canvas.Top="7.5" Width="33.999"/>
+					<TextBlock HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="36.692" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="65.136" Canvas.Top="11.5" Text="OK" TextDecorations="{x:Null}"/>
+				</Canvas>
+				<Canvas x:Name="Call_settings_Cancle" Height="44.5" Width="126" Canvas.Top="312.403" Canvas.Left="366.791">
+					<Rectangle x:Name="Rect_Cancle_call" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="44.5" Width="126">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+								<GradientStop Color="#FFFBFBFB" Offset="0"/>
+								<GradientStop Color="White" Offset="1"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<Rectangle x:Name="Rect_Cancle_call_pre" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="44.5" Width="126" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.1"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+								<GradientStop Color="#FFFBFBFB" Offset="0"/>
+								<GradientStop Color="White" Offset="1"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<Image Source="Resource/day/ttgui_option_cancel.png" Stretch="Fill" Height="30" Canvas.Left="7.667" Canvas.Top="7.5" Width="33.999"/>
+					<TextBlock HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="72.776" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="46.666" Canvas.Top="11.5"><Run Text="C" TextDecorations="Underline"/><Run Text="ancel"/></TextBlock>
+				</Canvas>
+				<Button x:Name="Btn_Call_settings_OK" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="120" Height="44.5" Canvas.Top="312.403" Canvas.Left="87.472" MouseLeftButtonDown="Btn_Call_settings_OK_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Call_settings_OK_MouseLeftButtonUp"/>
+				<Button x:Name="Btn_Call_settings_Cancle" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="126" Height="44.5" Canvas.Top="312.403" Canvas.Left="366.791" MouseLeftButtonDown="Btn_Call_settings_Cancle_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Call_settings_Cancle_MouseLeftButtonUp"/>
+				<Canvas x:Name="Cav_xiaojianpan" Height="247" Canvas.Left="400.246" Canvas.Top="59.169" Width="184">
+					<Image Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill" Height="58" Width="58"/>
+					<Image Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill" Height="58" Canvas.Left="63" Width="58"/>
+					<Image Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill" Height="58" Canvas.Left="126" Width="58"/>
+					<Image Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill" Height="58" Canvas.Top="63" Width="58"/>
+					<Image Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill" Height="58" Canvas.Left="63" Canvas.Top="63" Width="58"/>
+					<Image Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill" Height="58" Canvas.Left="126" Canvas.Top="63" Width="58"/>
+					<Image Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill" Height="58" Canvas.Top="126" Width="58"/>
+					<Image Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill" Height="58" Canvas.Left="63" Canvas.Top="126" Width="58"/>
+					<Image Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill" Height="58" Canvas.Left="126" Canvas.Top="126" Width="58"/>
+					<Image Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill" Height="58" Canvas.Top="189" Width="58"/>
+					<Image Source="Resource/day/ttgui_key117_normal.png" Stretch="Fill" Height="58" Canvas.Left="67" Canvas.Top="189" Width="117"/>
+					<Image x:Name="img_1" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Height="58" Width="58"/>
+					<Image x:Name="img_2" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Height="58" Canvas.Left="64" Width="58"/>
+					<Image x:Name="img_3" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Height="58" Canvas.Left="126" Width="58"/>
+					<Image x:Name="img_4" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Height="58" Canvas.Top="63" Width="58"/>
+					<Image x:Name="img_5" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Height="58" Canvas.Left="63" Canvas.Top="63" Width="58"/>
+					<Image x:Name="img_6" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Height="58" Canvas.Left="126" Canvas.Top="63" Width="58"/>
+					<Image x:Name="img_7" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Height="58" Canvas.Top="126" Width="58"/>
+					<Image x:Name="img_8" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Height="58" Canvas.Left="63" Canvas.Top="126" Width="58"/>
+					<Image x:Name="img_9" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Height="58" Canvas.Left="126" Canvas.Top="126" Width="58"/>
+					<Image x:Name="img_0" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Height="58" Canvas.Top="189" Width="58"/>
+					<Image x:Name="img_back_space" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Height="58" Canvas.Left="64" Canvas.Top="189" Width="120"/>
+					<Image Source="Resource/day/ttgui_key_backspace.png" Stretch="Fill" Height="58" Canvas.Left="67" Canvas.Top="189" Width="117"/>
+					<TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Canvas.Left="2.403" Canvas.Top="11.932">
+						<TextBlock.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform AngleX="0.573"/>
+								<RotateTransform/>
+								<TranslateTransform X="0.157"/>
+							</TransformGroup>
+						</TextBlock.RenderTransform>
+					</TextBlock>
+					<TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Canvas.Left="1.403" Canvas.Top="200.932">
+						<TextBlock.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform AngleX="0.573"/>
+								<RotateTransform/>
+								<TranslateTransform X="0.157"/>
+							</TransformGroup>
+						</TextBlock.RenderTransform>
+					</TextBlock>
+					<TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="9" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Canvas.Left="129.403" Canvas.Top="137.432">
+						<TextBlock.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform AngleX="0.573"/>
+								<RotateTransform/>
+								<TranslateTransform X="0.157"/>
+							</TransformGroup>
+						</TextBlock.RenderTransform>
+					</TextBlock>
+					<TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Canvas.Left="65.403" Canvas.Top="136.932">
+						<TextBlock.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform AngleX="0.573"/>
+								<RotateTransform/>
+								<TranslateTransform X="0.157"/>
+							</TransformGroup>
+						</TextBlock.RenderTransform>
+					</TextBlock>
+					<TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Canvas.Left="3.403" Canvas.Top="137.932">
+						<TextBlock.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform AngleX="0.573"/>
+								<RotateTransform/>
+								<TranslateTransform X="0.157"/>
+							</TransformGroup>
+						</TextBlock.RenderTransform>
+					</TextBlock>
+					<TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Canvas.Left="129.403" Canvas.Top="75.432">
+						<TextBlock.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform AngleX="0.573"/>
+								<RotateTransform/>
+								<TranslateTransform X="0.157"/>
+							</TransformGroup>
+						</TextBlock.RenderTransform>
+					</TextBlock>
+					<TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Canvas.Left="65.903" Canvas.Top="73.932">
+						<TextBlock.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform AngleX="0.573"/>
+								<RotateTransform/>
+								<TranslateTransform X="0.157"/>
+							</TransformGroup>
+						</TextBlock.RenderTransform>
+					</TextBlock>
+					<TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="4" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Canvas.Left="2.403" Canvas.Top="74.932">
+						<TextBlock.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform AngleX="0.573"/>
+								<RotateTransform/>
+								<TranslateTransform X="0.157"/>
+							</TransformGroup>
+						</TextBlock.RenderTransform>
+					</TextBlock>
+					<TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Canvas.Left="127.403" Canvas.Top="11.932">
+						<TextBlock.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform AngleX="0.573"/>
+								<RotateTransform/>
+								<TranslateTransform X="0.157"/>
+							</TransformGroup>
+						</TextBlock.RenderTransform>
+					</TextBlock>
+					<TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Canvas.Left="68.403" Canvas.Top="10.932">
+						<TextBlock.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform AngleX="0.573"/>
+								<RotateTransform/>
+								<TranslateTransform X="0.157"/>
+							</TransformGroup>
+						</TextBlock.RenderTransform>
+					</TextBlock>
+					<TextBlock HorizontalAlignment="Left" Height="46.9" TextWrapping="Wrap" VerticalAlignment="Top" Width="61.859" FontFamily="Droid Sans Dotted Zero" FontSize="18.667" Foreground="White" Text="Back space" TextAlignment="Center" Canvas.Left="102.641" Canvas.Top="194"/>
+					<Button x:Name="Btn_1" Content="" HorizontalAlignment="Left" Height="46.9" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000"  Cursor="Hand" Canvas.Left="3.667" Canvas.Top="4.599" />
+					<Button x:Name="Btn_0" Content="Button"  HorizontalAlignment="Left" Height="46.9" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand" Canvas.Left="3.667" Canvas.Top="194"/>
+					<Button x:Name="Btn_9" Content="Button"  HorizontalAlignment="Left" Height="46.9" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand" Canvas.Left="129.75" Canvas.Top="129.86"/>
+					<Button x:Name="Btn_8" Content="Button"  HorizontalAlignment="Left" Height="46.9" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand" Canvas.Left="67" Canvas.Top="129.86"/>
+					<Button x:Name="Btn_7" Content="Button"  HorizontalAlignment="Left" Height="46.9" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand" Canvas.Left="3.421" Canvas.Top="129.86"/>
+					<Button x:Name="Btn_6" Content="Button"  HorizontalAlignment="Left" Height="46.9" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand" Canvas.Left="129.75" Canvas.Top="66.667"/>
+					<Button x:Name="Btn_5" Content="Button"  HorizontalAlignment="Left" Height="46.9" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand" Canvas.Left="64" Canvas.Top="66.667"/>
+					<Button x:Name="Btn_4" Content="Button"  HorizontalAlignment="Left" Height="46.9" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand" Canvas.Left="3.421" Canvas.Top="66.627"/>
+					<Button x:Name="Btn_3" Content="Button"  HorizontalAlignment="Left" Height="46.9" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand" Canvas.Left="127" Canvas.Top="4.599"/>
+					<Button x:Name="Btn_2" Content="Button"  HorizontalAlignment="Left" Height="46.9" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand" Canvas.Left="67" Canvas.Top="4.599"/>
+					<Button x:Name="Btn_Back_space" Content="Button" HorizontalAlignment="Left" Height="44.901" VerticalAlignment="Top" Width="109" Background="#00F5F5F5" BorderBrush="#01707070" Foreground="#02000000" OpacityMask="#00000000" Cursor="Hand" Canvas.Left="67" Canvas.Top="194"/>
+				</Canvas>
+				<TextBlock HorizontalAlignment="Left" Height="29.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="169.441" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" TextAlignment="Right" Text="Slave delay" Canvas.Top="77.524" Canvas.Left="87.472"/>
+				<TextBlock HorizontalAlignment="Left" Height="29.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="238.58" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" TextAlignment="Right" Text="Auto DE/WRU exchange" Canvas.Top="128.524" Canvas.Left="18.333"/>
+				<CheckBox x:Name="Ch_Auto" Content="CheckBox" Height="50.211" Style="{DynamicResource CheckBoxStyle_Msg}" Canvas.Left="268.883" Canvas.Top="112.731" Width="50.57"/>
+				<Rectangle Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Fill="Black" Height="44.432" Canvas.Left="271.453" Width="48" Canvas.Top="68.481"/>
+				<TextBox x:Name="TB_Sd"  PreviewMouseDown="TextBox_PreviewMouseDown" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" MaxLength="5" InputMethod.IsInputMethodEnabled="False" PreviewKeyDown="TB_Callcode_PreviewKeyDown_NumberOnly" HorizontalAlignment="Left" Height="31" TextWrapping="Wrap" VerticalAlignment="Top" Width="48" FontSize="26.667" FontFamily="Droid Sans" TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="#FFE2E2E2" BorderBrush="{x:Null}" CaretBrush="White" Canvas.Left="271.453" Canvas.Top="76.731" Text="11"/>
+				<TextBlock HorizontalAlignment="Left" Height="29.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="43.941" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="ms" Canvas.Top="78.313" Canvas.Left="339.805"/>
+			</Canvas>
+			<Canvas x:Name="Password" Height="223.403" Canvas.Left="173.547" Canvas.Top="105" Width="360.619" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+				<Canvas.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Canvas.RenderTransform>
+				<Rectangle RadiusY="6" RadiusX="6" StrokeThickness="11" Stroke="#FFFDFDFD" HorizontalAlignment="Right" Width="360.619" Fill="#FF0E0E0E" Height="223.403">
+					<Rectangle.Effect>
+						<BlurEffect Radius="3"/>
+					</Rectangle.Effect>
+				</Rectangle>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="291.155" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" TextAlignment="Center" Text="Password needed" Canvas.Top="12.985" Canvas.Left="33.441"/>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="299.183" Canvas.Top="48.403" Canvas.Left="33.441">
+					<Path.Stroke>
+						<RadialGradientBrush>
+							<GradientStop Color="White" Offset="0.404"/>
+							<GradientStop Color="#FF060606" Offset="0.93"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<Canvas x:Name="password_OK" Height="44.5" Width="120" Canvas.Top="153.403" Canvas.Left="40.305">
+					<Rectangle x:Name="Rect_OK_password" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+								<GradientStop Color="#FE033430" Offset="0.468"/>
+								<GradientStop Color="#FE033631" Offset="0.569"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+								<GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+								<GradientStop Color="White" Offset="1"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Rectangle x:Name="Rect_OK_password_pre" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+								<GradientStop Color="#FE033430" Offset="0.468"/>
+								<GradientStop Color="#FE033631" Offset="0.569"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+								<GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+								<GradientStop Color="White" Offset="1"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.1"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+					</Rectangle>
+					<Image Source="Resource/day/ttgui_option_ok.png" Stretch="Fill" Height="30" Canvas.Left="26.137" Canvas.Top="7.5" Width="33.999"/>
+					<TextBlock HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="36.692" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="65.136" Canvas.Top="11.5" Text="OK" TextDecorations="{x:Null}"/>
+				</Canvas>
+				<Canvas x:Name="password_Cancle" Height="44.5" Width="126" Canvas.Top="153.403" Canvas.Left="190.624">
+					<Rectangle x:Name="Rect_Cancle3" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="44.5" Width="126">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+								<GradientStop Color="#FFFBFBFB" Offset="0"/>
+								<GradientStop Color="White" Offset="1"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<Rectangle x:Name="Rect_Cancle_password_pre" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="44.5" Width="126" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.1"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+								<GradientStop Color="#FFFBFBFB" Offset="0"/>
+								<GradientStop Color="White" Offset="1"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<Image Source="Resource/day/ttgui_option_cancel.png" Stretch="Fill" Height="30" Canvas.Left="7.667" Canvas.Top="7.5" Width="33.999"/>
+					<TextBlock HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="72.776" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Canvas.Left="46.666" Canvas.Top="11.5"><Run Text="C" TextDecorations="Underline"/><Run Text="ancel"/></TextBlock>
+				</Canvas>
+				<Button x:Name="Btn_Password_OK" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="120" Height="44.5" Canvas.Top="153.403" Canvas.Left="40.305"/>
+				<Button x:Name="Btn_Password_Cancle" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="126" Height="44.5" Canvas.Top="153.403" Canvas.Left="190.624"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="257.155" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Configuration password" Canvas.Top="53.403" Canvas.Left="16.972"/>
+				<Rectangle HorizontalAlignment="Left" Height="48.582" StrokeThickness="2" VerticalAlignment="Top" Width="315.152" Stroke="#FFA8A1A1" RadiusX="6" RadiusY="6" Canvas.Left="23.472" Canvas.Top="83.821"/>
+			</Canvas>
+		</Canvas>
+		<Canvas x:Name="Cav_About" Margin="0,0,0,90" Visibility="Collapsed">
+			<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="489.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="29.333" RenderTransformOrigin="0.277,0.407" Canvas.Left="171.5"><Run Text="SA"/><Run Language="zh-cn" Text="IL"/><Run Text="OR"/><Run Language="zh-cn" Text=" 6300 MF/HF Radiotelex "/></TextBlock>
+			<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="419.596" Canvas.Left="171.5" Canvas.Top="35.418">
+				<Path.Stroke>
+					<RadialGradientBrush Center="0,0.5" GradientOrigin="0,0.5" RadiusX="0.9">
+						<GradientStop Color="White" Offset="0.877"/>
+						<GradientStop Color="Black" Offset="1"/>
+					</RadialGradientBrush>
+				</Path.Stroke>
+			</Path>
+			<TextBlock HorizontalAlignment="Left" Height="27.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="489.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" TextAlignment="Center" RenderTransformOrigin="0.277,0.407" Text="System Primary" Canvas.Left="134.93" Canvas.Top="43.418"/>
+			<Canvas x:Name="Cav_Sailor6006" Height="115" Canvas.Left="10" Canvas.Top="85.836" Width="770">
+				<Rectangle x:Name="Rect_6006" HorizontalAlignment="Left" Height="115" StrokeThickness="2" VerticalAlignment="Top" Width="770" Stroke="#FFA8A1A1" RadiusX="6" RadiusY="6" RenderTransformOrigin="0.5,0.5"/>
+				<Rectangle x:Name="Rect_Sailor_6006" HorizontalAlignment="Left" Height="115" StrokeThickness="2" VerticalAlignment="Top" Width="770" Stroke="#FFA8A1A1" RadiusX="6" RadiusY="6" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+					<Rectangle.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleX="1.02" ScaleY="1.15"/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Rectangle.RenderTransform>
+				</Rectangle>
+				<Image Source="Resource/day/ttgui_sysdevice_6006_normal.png" Stretch="Fill" Height="115" Width="140"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="385.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" Canvas.Left="161.5" Canvas.Top="5"><Run Text="SA"/><Run Language="zh-cn" Text="IL"/><Run Text="OR"/><Run Language="zh-cn" Text=" 6006 Message Terminal "/></TextBlock>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="385.596" Canvas.Left="161.5" Canvas.Top="35.418">
+					<Path.Stroke>
+						<RadialGradientBrush Center="0,0.5" GradientOrigin="0,0.5" RadiusX="0.9">
+							<GradientStop Color="White" Offset="0.877"/>
+							<GradientStop Color="Black" Offset="1"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Serial number" TextAlignment="Right" Canvas.Left="161.5" Canvas.Top="38.418"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Software version" TextAlignment="Right" Canvas.Left="161.5" Canvas.Top="68.836"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="0427580151" Canvas.Left="409.096" Canvas.Top="40.418"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="1.02" Canvas.Left="409.096" Canvas.Top="68.836"/>
+				<Image x:Name="Img_Sailor_6006" Height="115" Source="Resource/day/ttgui_sysdevice_6006_pressed.png" Stretch="Fill" Width="140" Visibility="Collapsed"/>
+				<Button x:Name="Btn_Sailor6006" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="770" Height="115" MouseLeftButtonDown="Btn_Sailor6006_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Sailor6006_MouseLeftButtonUp"/>
+			</Canvas>
+			<Canvas x:Name="Cav_Sailor6081" Height="115" Canvas.Left="10" Canvas.Top="217.441" Width="770">
+				<Rectangle x:Name="Rect_6081" HorizontalAlignment="Left" Height="115" StrokeThickness="2" VerticalAlignment="Top" Width="770" Stroke="#FFA8A1A1" RadiusX="6" RadiusY="6" RenderTransformOrigin="0.5,0.5"/>
+				<Rectangle x:Name="Rect_Sailor_6081" HorizontalAlignment="Left" Height="115" StrokeThickness="2" VerticalAlignment="Top" Width="770" Stroke="#FFA8A1A1" RadiusX="6" RadiusY="6" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+					<Rectangle.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleX="1.02" ScaleY="1.15"/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Rectangle.RenderTransform>
+				</Rectangle>
+				<Image Source="Resource/day/ttgui_sysdevice_6080_normal.png" Stretch="Fill" Height="115" Width="140"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="385.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" Text="SAILOR 6081 PSU and Charger  " Canvas.Left="161.5" Canvas.Top="5"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Serial number" TextAlignment="Right" Canvas.Left="161.5" Canvas.Top="38.418"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Software version" TextAlignment="Right" Canvas.Left="161.5" Canvas.Top="68.836"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="0423530021" Canvas.Left="409.096" Canvas.Top="40.418"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="220.596" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="1.01" Canvas.Left="409.096" Canvas.Top="68.836"/>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="385.596" Canvas.Left="161.5" Canvas.Top="35.418">
+					<Path.Stroke>
+						<RadialGradientBrush Center="0,0.5" GradientOrigin="0,0.5" RadiusX="0.9">
+							<GradientStop Color="White" Offset="0.877"/>
+							<GradientStop Color="Black" Offset="1"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<Image x:Name="Img_Sailor_6081" Height="115" Source="Resource/day/ttgui_sysdevice_6080_pressed.png" Stretch="Fill" Width="140" Visibility="Collapsed"/>
+				<Button x:Name="Btn_Sailor6081" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="770" Height="115" MouseLeftButtonDown="Btn_Sailor6081_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Sailor6081_MouseLeftButtonUp"/>
+			</Canvas>
+			<Rectangle x:Name="Rect_shadow" Fill="Black" HorizontalAlignment="Left" Height="602" StrokeThickness="0" VerticalAlignment="Top" Width="790" Stroke="Black" Opacity="0.2" Canvas.Top="-79.5" Visibility="Collapsed"/>
+			<Canvas x:Name="Cav_Message" Height="280.317" Canvas.Left="96.821" Canvas.Top="38.418" Width="640.345" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+				<Canvas.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Canvas.RenderTransform>
+				<Rectangle RadiusY="6" RadiusX="6" StrokeThickness="11" Stroke="#FFFDFDFD" HorizontalAlignment="Right" Width="640.345" Fill="#FF0E0E0E" Height="280.317">
+					<Rectangle.Effect>
+						<BlurEffect Radius="3"/>
+					</Rectangle.Effect>
+				</Rectangle>
+				<TextBlock HorizontalAlignment="Left" Height="38.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="400.666" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" FontWeight="Bold" Canvas.Top="20.191" Canvas.Left="14.109"><Run Text="SA"/><Run Language="zh-cn" Text="IL"/><Run Text="OR"/><Run Language="zh-cn" Text=" 6006 Message Terminal"/></TextBlock>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="400.666" Canvas.Top="63.609" Canvas.Left="14.109">
+					<Path.Stroke>
+						<RadialGradientBrush Center="0,0.5" GradientOrigin="0,0.5" RadiusX="0.9">
+							<GradientStop Color="White" Offset="0.877"/>
+							<GradientStop Color="Black" Offset="1"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<Canvas x:Name="Cav_Btn_Legal" Height="46.418" Canvas.Left="419.775" Canvas.Top="20.191" Width="138.226">
+					<Rectangle x:Name="Rect_Legal" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="46.418" Width="138.226">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+								<GradientStop Color="#FFFBFBFB" Offset="0"/>
+								<GradientStop Color="White" Offset="1"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<Rectangle x:Name="Rect_Legal_pre" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="46.418" Width="138.226" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+						<Rectangle.RenderTransform>
+							<TransformGroup>
+								<ScaleTransform ScaleX="1.05" ScaleY="1.15"/>
+								<SkewTransform/>
+								<RotateTransform/>
+								<TranslateTransform/>
+							</TransformGroup>
+						</Rectangle.RenderTransform>
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+								<GradientStop Color="#FFFBFBFB" Offset="0"/>
+								<GradientStop Color="White" Offset="1"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+								<GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="129.334" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Canvas.Top="8" Canvas.Left="8.892" Text="Legal notices"/>
+				</Canvas>
+				<Canvas x:Name="Cav_Btn_close" RenderTransformOrigin="0.5,0.5" Height="59" Canvas.Left="564.667" Canvas.Top="15" Width="59">
+					<Canvas.RenderTransform>
+						<TransformGroup>
+							<ScaleTransform ScaleY="0.8" ScaleX="0.8"/>
+							<SkewTransform/>
+							<RotateTransform/>
+							<TranslateTransform/>
+						</TransformGroup>
+					</Canvas.RenderTransform>
+					<Rectangle HorizontalAlignment="Left" Height="58" RadiusY="7" RadiusX="7" Stroke="White" VerticalAlignment="Top" Width="58">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="White"/>
+								<GradientStop Color="#FFF7F7F7" Offset="1"/>
+								<GradientStop Color="#FF343030" Offset="0.113"/>
+								<GradientStop Color="#FF343030" Offset="0.927"/>
+								<GradientStop Color="#FF151414" Offset="0.219"/>
+								<GradientStop Color="#FF151414" Offset="0.774"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<Image x:Name="img_close" Source="Resource/day/ttgui_close_cross_pressed.png" Stretch="Fill" Height="58" Width="58"/>
+				</Canvas>
+				<Canvas x:Name="Cav_Btn_close_Pre" RenderTransformOrigin="0.5,0.5" Height="59" Canvas.Left="566.012" Canvas.Top="15.858" Width="59" Visibility="Collapsed">
+					<Rectangle HorizontalAlignment="Left" Height="58" RadiusY="7" RadiusX="7" Stroke="White" VerticalAlignment="Top" Width="58">
+						<Rectangle.Fill>
+							<LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+								<GradientStop Color="White"/>
+								<GradientStop Color="#FFF7F7F7" Offset="1"/>
+								<GradientStop Color="#FF343030" Offset="0.113"/>
+								<GradientStop Color="#FF343030" Offset="0.927"/>
+								<GradientStop Color="#FF151414" Offset="0.219"/>
+								<GradientStop Color="#FF151414" Offset="0.774"/>
+							</LinearGradientBrush>
+						</Rectangle.Fill>
+					</Rectangle>
+					<Image x:Name="img_close_pre" Source="Resource/day/ttgui_close_cross_pressed.png" Stretch="Fill" Height="58" Width="58"/>
+				</Canvas>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Canvas.Top="79.691" Canvas.Left="144.109" Text="Serial number" TextAlignment="Right"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Canvas.Top="115.109" Canvas.Left="144.109" Text="Software version" TextAlignment="Right"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Canvas.Top="145.527" Canvas.Left="144.109" Text="Bulld number" TextAlignment="Right"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Canvas.Top="175.945" Canvas.Left="144.109" Text="IP address" TextAlignment="Right"/>
+				<TextBlock x:Name="TB_Serial" HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Canvas.Top="79.858" Canvas.Left="386.109" Text="0427580151"/>
+				<TextBlock x:Name="TB_Software" HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Canvas.Top="115.109" Canvas.Left="386.109" Text="1.02"/>
+				<TextBlock x:Name="TB_Bulld" HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Canvas.Top="145.527" Canvas.Left="386.109" Text="5"/>
+				<TextBlock x:Name="TB_IP" HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="207.166" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Canvas.Top="175.945" Canvas.Left="386.109" Text="169.254.104.39"/>
+				<Button x:Name="Btn_Sailor6006_Legal" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="138.226" Height="46.418"  Canvas.Left="419.775" Canvas.Top="20.191" MouseLeftButtonDown="Btn_Sailor6006_Legal_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Sailor6006_Legal_MouseLeftButtonUp"/>
+				<Button x:Name="Btn_Sailor6006_Close" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="46.667" Height="46.418"  Canvas.Left="570.012" Canvas.Top="20.191" MouseLeftButtonDown="Btn_Sailor6006_Close_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Sailor6006_Close_MouseLeftButtonUp"/>
+			</Canvas>
+		</Canvas>
+		<Canvas x:Name="Cav_Advanced" Margin="6,-3,-6,93" Visibility="Collapsed" d:IsLocked="True">
+			<Rectangle Fill="White" HorizontalAlignment="Left" Height="431.5" StrokeThickness="0" VerticalAlignment="Top" Width="790" Stroke="Black" Opacity="0"/>
+			<Canvas x:Name="Cav_Generate" Height="105" Canvas.Left="10" Width="770" Canvas.Top="20.025">
+				<Rectangle HorizontalAlignment="Left" Height="105" StrokeThickness="2" VerticalAlignment="Top" Width="770" Stroke="#FFA8A1A1" RadiusX="6" RadiusY="6"/>
+				<TextBlock HorizontalAlignment="Left" Height="30.418" TextWrapping="Wrap" VerticalAlignment="Top" Width="342.249" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="26.667" RenderTransformOrigin="0.277,0.407" Text="Generate diagnostic report" Canvas.Left="115" Canvas.Top="5"/>
+				<Path Data="M15.526,98.235 L710.526,101.235" Fill="White" HorizontalAlignment="Left" Height="3" Stretch="Fill" StrokeThickness="2" VerticalAlignment="Top" Width="342.249" Canvas.Left="115" Canvas.Top="35.418">
+					<Path.Stroke>
+						<RadialGradientBrush Center="0,0.5" GradientOrigin="0,0.5" RadiusX="0.9">
+							<GradientStop Color="White" Offset="0.877"/>
+							<GradientStop Color="Black" Offset="1"/>
+						</RadialGradientBrush>
+					</Path.Stroke>
+				</Path>
+				<TextBlock HorizontalAlignment="Left" Height="26.164" TextWrapping="Wrap" VerticalAlignment="Top" Width="383.096" Foreground="White" FontFamily="Droid Sans" TextDecorations="{x:Null}" FontSize="21.333" RenderTransformOrigin="0.277,0.407" Text="Create a file with diagnostic data." Canvas.Left="115" Canvas.Top="43.418"/>
+				<Image Source="Resource/day/tlx_settings_regional_settings_normal.png" Stretch="Fill" Height="100" Canvas.Left="10" Width="100"/>
+				<Image Height="100" Source="Resource/day/tlx_settings_regional_settings_pressed.png" Stretch="Fill" Width="100"/>
+			</Canvas>
+			<Button x:Name="Btn_Generate" Content="Button" OpacityMask="#00000000" Foreground="#01000000" BorderBrush="#00707070" Background="#00000000" RenderTransformOrigin="0.527,0.554" Cursor="Hand" Width="770" Height="105"  Canvas.Left="10" Canvas.Top="20.025"/>
+		</Canvas>
+		<Canvas x:Name="Cav_Pw_Setting" Margin="649.5,381,23.333,99.735" Visibility="Collapsed" d:IsLocked="True">
+			<Rectangle Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="40.765" Width="117.167">
+				<Rectangle.Fill>
+					<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+						<GradientStop Color="#FFFBFBFB" Offset="0"/>
+						<GradientStop Color="White" Offset="1"/>
+						<GradientStop Color="Black" Offset="0.091"/>
+						<GradientStop Color="#FF020000" Offset="0.925"/>
+					</LinearGradientBrush>
+				</Rectangle.Fill>
+			</Rectangle>
+			<Rectangle x:Name="Rect_Settings" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" RenderTransformOrigin="0.5,0.5" Height="40.765" Width="117.167" Visibility="Collapsed">
+				<Rectangle.RenderTransform>
+					<TransformGroup>
+						<ScaleTransform ScaleX="1.1" ScaleY="1.1"/>
+						<SkewTransform/>
+						<RotateTransform/>
+						<TranslateTransform/>
+					</TransformGroup>
+				</Rectangle.RenderTransform>
+				<Rectangle.Fill>
+					<LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+						<GradientStop Color="#FFFBFBFB" Offset="0"/>
+						<GradientStop Color="White" Offset="1"/>
+						<GradientStop Color="Black" Offset="0.091"/>
+						<GradientStop Color="#FF020000" Offset="0.925"/>
+					</LinearGradientBrush>
+				</Rectangle.Fill>
+			</Rectangle>
+			<TextBlock HorizontalAlignment="Left" Height="26.494" TextWrapping="Wrap" VerticalAlignment="Top" Width="97" FontFamily="Droid Sans Dotted Zero" Foreground="White" TextAlignment="Center" FontSize="21.333" Canvas.Left="9.667" Canvas.Top="7.168"><Run Text="Se"/><Run Text="t" TextDecorations="Underline"/><Run Text="tings..."/></TextBlock>
+		</Canvas>
+	</Grid>
+</UserControl>

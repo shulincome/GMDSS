@@ -1,0 +1,553 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	xmlns:local="clr-namespace:Sailor_6300_Radiotelex_D"
+	mc:Ignorable="d"
+	x:Class="Sailor_6300_Radiotelex_D.Msg_Sendtext"
+	x:Name="UserControl"
+	d:DesignWidth="696.974" d:DesignHeight="543.568">
+    <UserControl.Resources>
+
+
+        <Storyboard x:Key="OnMouseLeftButtonDown1">
+            <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="ARQ">
+                <DiscreteObjectKeyFrame KeyTime="0" Value="{x:Static Visibility.Collapsed}"/>
+            </ObjectAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="OnMouseLeftButtonUp1"/>
+        <Storyboard x:Key="Storyboard_Edit_value">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Edit_value">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Edit_value">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+
+    </UserControl.Resources>
+    <UserControl.Triggers>
+        <EventTrigger RoutedEvent="FrameworkElement.Loaded">
+            <BeginStoryboard Storyboard="{StaticResource Storyboard_Edit_value}"/>
+        </EventTrigger>
+    </UserControl.Triggers>
+
+    <Grid x:Name="LayoutRoot">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="131*"/>
+            <ColumnDefinition Width="566*"/>
+        </Grid.ColumnDefinitions>
+        <Border BorderBrush="White" BorderThickness="9" CornerRadius="6" Grid.ColumnSpan="2">
+            <Border.Effect>
+                <BlurEffect Radius="10"/>
+            </Border.Effect>
+        </Border>
+        <Rectangle HorizontalAlignment="Left" Height="543.568" RadiusY="6" RadiusX="6" Stroke="White" StrokeThickness="7" VerticalAlignment="Top" Width="696.974" Fill="#FF0F0F0F" Grid.ColumnSpan="2" />
+        <TextBlock HorizontalAlignment="Left" Height="38.068" Margin="130,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="421.5" Foreground="White" FontFamily="Droid Sans Dotted Zero" FontSize="32" TextAlignment="Center" Grid.ColumnSpan="2"><Run Language="zh-cn" Text="Call setup"/></TextBlock>
+        <Path Data="M67.859,24.901333 L378.52567,24.901333" Stretch="Fill" Margin="29.333,40.735,52.448,483.5" StrokeThickness="2" Grid.ColumnSpan="2">
+            <Path.Stroke>
+                <RadialGradientBrush>
+                    <GradientStop Color="White" Offset="0.59"/>
+                    <GradientStop Color="#FF292727" Offset="1"/>
+                </RadialGradientBrush>
+            </Path.Stroke>
+        </Path>
+        <Rectangle x:Name="ARQ" HorizontalAlignment="Left" Height="50.001" Margin="20.333,60.067,0,0" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2"  >
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="selective" HorizontalAlignment="Left" Height="50" Margin="114.192,60.068,0,0" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207.417" Stroke="#7BFFFFFF" Grid.Column="1"/>
+        <Rectangle x:Name="broadcast" HorizontalAlignment="Left" Height="50" Margin="342.359,60.068,0,0" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207" Stroke="#7BFFFFFF" Grid.Column="1"/>
+        <Rectangle x:Name="contacts" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Margin="21,120.068,468.557,373.5" Grid.ColumnSpan="2">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFBFBFB" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="coast_contacts" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Margin="21,178,468.557,315.568" Grid.ColumnSpan="2">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFBFBFB" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="manual" HorizontalAlignment="Left" Height="50" Margin="21,248.001,0,0" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="341.667" Stroke="#7BFFFFFF" Grid.ColumnSpan="2"/>
+        <Rectangle x:Name="intership" HorizontalAlignment="Left" Height="50" Margin="21,306.334,0,0" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="341.667" Stroke="#7BFFFFFF" Grid.ColumnSpan="2"/>
+        <Rectangle x:Name="coast_station" HorizontalAlignment="Left" Height="50" Margin="21,365.667,0,0" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="341.667" Stroke="#7BFFFFFF" Grid.ColumnSpan="2"/>
+        <Rectangle x:Name="distress" HorizontalAlignment="Left" Height="50" Margin="20.333,425.334,0,0" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="341.667" Stroke="#7BFFFFFF" Grid.ColumnSpan="2"/>
+        <Rectangle x:Name="call" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="135.5" RenderTransformOrigin="0.5,0.5" Margin="118,484.334,0,0" Grid.ColumnSpan="2">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+                    <GradientStop Color="#FE033430" Offset="0.468"/>
+                    <GradientStop Color="#FE033631" Offset="0.569"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+                    <GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="cancel" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Margin="313.859,484.334,115.615,14.734" Grid.Column="1">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFBFBFB" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Grid Margin="20.333,60.067,15.615,14.734" Grid.ColumnSpan="2">
+            <Rectangle x:Name="ARQ_Copy" HorizontalAlignment="Left" Height="50.001" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed"  >
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.03" ScaleY="1.15" />
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="selective_Copy" HorizontalAlignment="Left" Height="50" Margin="225.859,0.001,0,0" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207.417" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.03" ScaleY="1.15"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="broadcast_Copy" HorizontalAlignment="Left" Height="50" Margin="454.026,0.001,0,0" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="207" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.03" ScaleY="1.15"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="contacts_Copy" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Margin="0.667,60,452.942,358.766" Height="50" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.03" ScaleY="1.15"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FFFBFBFB" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle x:Name="coast_contacts_Copy" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Margin="0.667,117.933,452.942,300.833" Height="50" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.03" ScaleY="1.15"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FFFBFBFB" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle x:Name="manual_Copy" HorizontalAlignment="Left" Height="50" Margin="0.667,187.934,0,0" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="341.667" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.03" ScaleY="1.15"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="intership_Copy" HorizontalAlignment="Left" Height="50" Margin="0.667,246.267,0,0" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="341.667" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.03" ScaleY="1.15"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="coast_station_Copy" HorizontalAlignment="Left" Height="50" Margin="0.667,305.6,0,0" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="341.667" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.03" ScaleY="1.15"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="distress_Copy" HorizontalAlignment="Left" Height="50" Margin="0,365.267,0,0" RadiusY="6" RadiusX="6" StrokeThickness="2" VerticalAlignment="Top" Width="341.667" Stroke="#7BFFFFFF" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.03" ScaleY="1.15"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="call_Copy" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="135.5" RenderTransformOrigin="0.5,0.5" Margin="97.667,424.267,0,0" Visibility="Collapsed">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+                        <GradientStop Color="#FE033430" Offset="0.468"/>
+                        <GradientStop Color="#FE033631" Offset="0.569"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+                        <GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.03" ScaleY="1.15"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="cancel_Copy" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Margin="426.859,424.267,98.667,0" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.03" ScaleY="1.15"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FFFBFBFB" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+        <TextBlock HorizontalAlignment="Left" Height="29.099" Margin="69.161,72.568,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="99" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Grid.ColumnSpan="2"><Run Language="zh-cn" Text="A" TextDecorations="Underline"/><Run Language="zh-cn" Text="RQ"/></TextBlock>
+        <Image Margin="10,99.167,22,354.401" Source="Resource/day/ttgui_page_contacts_normal.png" Stretch="Fill"/>
+        <Image Margin="10,155.751,22,297.817" Source="Resource/day/tlx_page_coast_stations_normal.png" Stretch="Fill"/>
+        <Ellipse HorizontalAlignment="Left" Height="29.099" Margin="29.333,70.068,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834">
+            <Ellipse.Effect>
+                <BlurEffect Radius="3"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="Gray" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse x:Name="Elp_A" HorizontalAlignment="Left" Height="29.099" Margin="29.333,70.068,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" RenderTransformOrigin="0.492,0.513">
+            <Ellipse.Effect>
+                <BlurEffect Radius="3"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF199E31" Offset="0"/>
+                    <GradientStop Color="#FF2CC949" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse HorizontalAlignment="Left" Height="29.099" Margin="121.833,70.068,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" Grid.Column="1">
+            <Ellipse.Effect>
+                <BlurEffect Radius="3"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="Gray" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse HorizontalAlignment="Left" Height="29.099" Margin="350,70.068,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" Grid.Column="1">
+            <Ellipse.Effect>
+                <BlurEffect/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="Gray" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <TextBlock HorizontalAlignment="Left" Height="29.099" Margin="158.667,72.568,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154.192" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Grid.Column="1"><Run Text="S" TextDecorations="Underline"/><Run Text="elective  FEC"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="29.099" Margin="386.834,72.568,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="154.192" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Grid.Column="1"><Run Language="zh-cn" Text="B" TextDecorations="Underline"/><Run Language="zh-cn" Text="roadcast"/><Run Text="  FEC"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="29.099" Margin="95,131.448,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="106.667" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Grid.ColumnSpan="2"><Run Text="C" TextDecorations="Underline"/><Run Text="ontacts"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="29.099" Margin="92,188.448,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="142.667" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Grid.ColumnSpan="2"><Run Text="C"/><Run Text="o" TextDecorations="Underline"/><Run Text="ast stations"/></TextBlock>
+        <Ellipse HorizontalAlignment="Left" Height="29.099" Margin="29.333,259.012,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834">
+            <Ellipse.Effect>
+                <BlurEffect Radius="3"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="Gray" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse HorizontalAlignment="Left" Height="29.099" Margin="29.333,316.818,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834">
+            <Ellipse.Effect>
+                <BlurEffect Radius="3"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="Gray" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse HorizontalAlignment="Left" Height="29.099" Margin="29.333,377,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834">
+            <Ellipse.Effect>
+                <BlurEffect Radius="3"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="Gray" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse HorizontalAlignment="Left" Height="29.099" Margin="29.333,436,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834">
+            <Ellipse.Effect>
+                <BlurEffect Radius="3"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="White" Offset="0"/>
+                    <GradientStop Color="Gray" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Image Margin="3.167,491.834,528.813,21.734" Source="Resource/day/ttgui_option_ok.png" Stretch="Fill" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="45.141,495.834,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="76.359" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Grid.Column="1"><Run Text="Ca"/><Run Text="l" TextDecorations="Underline"/><Run Text="l"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="29.099" Margin="66.167,262.651,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245.667" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Grid.ColumnSpan="2"><Run Text="M" TextDecorations="Underline"/><Run Text="anual  frequency"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="29.099" Margin="66.167,316.818,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="245.667" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Grid.ColumnSpan="2"><Run Text="ITU "/><Run Text="i" TextDecorations="Underline"/><Run Text="ntership Channel"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="29.099" Margin="66.167,377,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="295.833" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Grid.ColumnSpan="2" TextDecorations="{x:Null}"><Run Text="I"/><Run Text="T" TextDecorations="Underline"/><Run Text="U c"/><Run Text="o"/><Run Text="ast stations channel"/></TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="29.099" Margin="66.167,436,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="285.667" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Grid.ColumnSpan="2"><Run Text="ITU "/><Run Text="d" TextDecorations="Underline"/><Run Text="istress/safety channel"/></TextBlock>
+        <Ellipse x:Name="Elp_S" HorizontalAlignment="Left" Height="29.099" Margin="121.833,70.068,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" RenderTransformOrigin="0.492,0.513" Visibility="Collapsed" Grid.Column="1">
+            <Ellipse.Effect>
+                <BlurEffect Radius="3"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF199E31" Offset="0"/>
+                    <GradientStop Color="#FF2CC949" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse x:Name="Elp_B" HorizontalAlignment="Left" Height="29.099" Margin="350,70.068,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" RenderTransformOrigin="0.492,0.513" Grid.Column="1" Visibility="Collapsed">
+            <Ellipse.Effect>
+                <BlurEffect Radius="3"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF199E31" Offset="0"/>
+                    <GradientStop Color="#FF2CC949" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse x:Name="Elp_Manual" HorizontalAlignment="Left" Height="29.099" Margin="29.333,259.012,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" RenderTransformOrigin="0.492,0.513">
+            <Ellipse.Effect>
+                <BlurEffect Radius="3"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF199E31" Offset="0"/>
+                    <GradientStop Color="#FF2CC949" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse x:Name="Elp_Intership" HorizontalAlignment="Left" Height="29.099" Margin="29.333,316.818,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" RenderTransformOrigin="0.492,0.513" Visibility="Collapsed">
+            <Ellipse.Effect>
+                <BlurEffect Radius="3"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF199E31" Offset="0"/>
+                    <GradientStop Color="#FF2CC949" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse x:Name="Elp_Coast" HorizontalAlignment="Left" Height="29.099" Margin="29.333,377,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" RenderTransformOrigin="0.492,0.513" Visibility="Collapsed">
+            <Ellipse.Effect>
+                <BlurEffect Radius="3"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF199E31" Offset="0"/>
+                    <GradientStop Color="#FF2CC949" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Ellipse x:Name="Elp_Distress" HorizontalAlignment="Left" Height="29.099" Margin="29.333,436,0,0" Stroke="#7BFFFFFF" StrokeThickness="0" VerticalAlignment="Top" Width="31.834" RenderTransformOrigin="0.492,0.513" Visibility="Collapsed">
+            <Ellipse.Effect>
+                <BlurEffect Radius="3"/>
+            </Ellipse.Effect>
+            <Ellipse.Fill>
+                <RadialGradientBrush>
+                    <GradientStop Color="#FF199E31" Offset="0"/>
+                    <GradientStop Color="#FF2CC949" Offset="1"/>
+                </RadialGradientBrush>
+            </Ellipse.Fill>
+        </Ellipse>
+        <Canvas x:Name="Call_code" Margin="265.672,248.001,64.448,244.068" Grid.Column="1">
+            <Rectangle x:Name="call_code" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="51.499" Canvas.Left="113.192" Width="121.667">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FFFBFBFB" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label Content="Call code" HorizontalAlignment="Left" Height="43.849" VerticalAlignment="Top" Width="108.192" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Top="7.177"/>
+            <TextBox x:Name="Tb_CallCode" x:FieldModifier="public"  HorizontalAlignment="Left" Height="32.738" TextWrapping="Wrap" VerticalAlignment="Top" Width="121.667" FontSize="21.333" FontFamily="Droid Sans"  TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="White" BorderBrush="{x:Null}" Canvas.Left="113.192" Canvas.Top="11.011" CaretBrush="White"/>
+            <Button x:Name="Btn_Callcode" Content="" Height="51.026" Canvas.Left="113.192" Width="121.667" Background="#00000000" BorderThickness="0" Foreground="#00000000" BorderBrush="#00707070" Canvas.Top="0.473" OpacityMask="#00000000" Click="Btn_Callcode_Click" Cursor="Hand"/>
+        </Canvas>
+        <Grid x:Name="Manual_freq" Margin="273.333,306.334,10,126.402" Grid.Column="1">
+            <Canvas x:Name="TX_freq" Margin="0,0,0,59.333">
+                <Rectangle Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="51.499" Canvas.Left="105.526" Width="121.667">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFBFBFB" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                            <GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+                            <GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Label Content="TX freq " HorizontalAlignment="Left" Height="43.849" VerticalAlignment="Top" Width="100.526" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Top="3.011"/>
+                <Label Content="kHz" HorizontalAlignment="Left" Height="43.849" VerticalAlignment="Top" Width="54.448" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Left="227.193" Canvas.Top="7.65"/>
+                <TextBox x:Name="TB_TX" HorizontalAlignment="Left" Height="32.738" TextWrapping="Wrap" VerticalAlignment="Top" Width="121.667" FontSize="21.333" FontFamily="Droid Sans" TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="#FF2D6093" BorderBrush="{x:Null}" Canvas.Left="105.526" Canvas.Top="10.484"/>
+                <Button x:Name="Btn_TX" Height="51.026" Canvas.Left="105.526" Width="121.667" Background="#00000000" BorderThickness="0" Foreground="#00000000" BorderBrush="#00707070" OpacityMask="#00000000" Click="Btn_TX_Click" Cursor="Hand"/>
+            </Canvas>
+            <Canvas x:Name="RX_freq" Margin="0,59.333,0,0">
+                <Rectangle Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="51.499" Canvas.Left="105.526" Width="121.667">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFBFBFB" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                            <GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+                            <GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Label Content="RX freq " HorizontalAlignment="Left" Height="43.849" VerticalAlignment="Top" Width="100.526" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White"/>
+                <Label Content="kHz" HorizontalAlignment="Left" Height="43.849" VerticalAlignment="Top" Width="54.448" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Left="227.193" Canvas.Top="3.86"/>
+                <TextBox x:Name="TB_RX" HorizontalAlignment="Left" Height="32.738" TextWrapping="Wrap" VerticalAlignment="Top" Width="121.667" FontSize="21.333" FontFamily="Droid Sans" TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="#FF2D6093" BorderBrush="{x:Null}" Canvas.Left="105.526" Canvas.Top="10.333"/>
+                <Button x:Name="Btn_RX" Content="" Height="51.026" Width="121.667" Background="#00000000" BorderThickness="0" Foreground="#00000000" BorderBrush="#00707070" OpacityMask="#00000000" Canvas.Left="105.526" Click="Btn_RX_Click" Cursor="Hand"/>
+            </Canvas>
+            <Canvas x:Name="TX_freq_B" Margin="0,-56.499,0,115.832" Visibility="Collapsed">
+                <Rectangle Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="51.499" Canvas.Left="105.526" Width="121.667">
+                    <Rectangle.Fill>
+                        <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                            <GradientStop Color="#FFFBFBFB" Offset="0"/>
+                            <GradientStop Color="White" Offset="1"/>
+                            <GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+                            <GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+                        </LinearGradientBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <Label Content="TX freq " HorizontalAlignment="Left" Height="43.849" VerticalAlignment="Top" Width="100.526" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Top="3.011"/>
+                <Label Content="kHz" HorizontalAlignment="Left" Height="43.849" VerticalAlignment="Top" Width="54.448" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Left="227.193" Canvas.Top="7.65"/>
+                <TextBox x:Name="TB_TX_broad" HorizontalAlignment="Left" Height="32.738" TextWrapping="Wrap" VerticalAlignment="Top" Width="121.667" FontSize="21.333" FontFamily="Droid Sans" TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="#FF2D6093" BorderBrush="{x:Null}" Canvas.Left="105.526" Canvas.Top="10.484"/>
+                <Button x:Name="Btn_TX_broad" Content="" Height="51.026" Width="121.667" Background="#00000000" BorderThickness="0" Foreground="#00000000" BorderBrush="#00707070" OpacityMask="#00000000" Cursor="Hand" Canvas.Left="105.526" Canvas.Top="3.011" Click="Btn_TX_broad_Click"/>
+            </Canvas>
+        </Grid>
+        <Canvas x:Name="Channel" Margin="273.333,306.353,64.448,185.716" Grid.Column="1" Visibility="Collapsed">
+            <Rectangle Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Height="51.499" Canvas.Left="105.526" Width="121.667">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                        <GradientStop Color="#FFFBFBFB" Offset="0"/>
+                        <GradientStop Color="White" Offset="1"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Label Content="Channel" HorizontalAlignment="Left" Height="43.849" VerticalAlignment="Top" Width="100.526" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Top="3.992"/>
+            <TextBlock x:Name="TB_TX_load" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="235.859" FontFamily="Droid Sans" FontSize="21.333" Foreground="White" Text="(Local TX 2222.0 kHz)" TextAlignment="Right" Canvas.Left="-8.666" Canvas.Top="66.863" Visibility="Collapsed"/>
+            <TextBlock x:Name="TB_RX_load" HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" VerticalAlignment="Top" Width="235.859" FontFamily="Droid Sans" FontSize="21.333" Foreground="White" Text="(Local RX 2222.0 kHz)" TextAlignment="Right" Canvas.Left="-8.666" Canvas.Top="92.863" Visibility="Collapsed"/>
+            <TextBox x:Name="TB_Channel" HorizontalAlignment="Left" Height="32.738" TextWrapping="Wrap" VerticalAlignment="Top" Width="121.667" FontSize="21.333" FontFamily="Droid Sans" Text="401" TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="#FF2D6093" BorderBrush="{x:Null}" Canvas.Left="105.526" Canvas.Top="10.465"/>
+            <Button x:Name="Btn_Channel" Content="" Height="51.026" Width="121.667" Background="#00000000" BorderThickness="0" Foreground="#00000000" BorderBrush="#00707070" OpacityMask="#00000000" Canvas.Left="105.526"  Cursor="Hand" Click="Btn_Channel_Click"/>
+        </Canvas>
+        <Canvas x:Name="Cav_Illegal_Channel" Grid.Column="1" Margin="273.333,371.099,52.448,68.234" Visibility="Collapsed">
+        	<Image Source="Resource/day/ttgui_status_warning.png" Stretch="Fill" Height="35" Width="35"/>
+        	<TextBlock x:Name="TB_Illegal_Channel" HorizontalAlignment="Left" Height="58.168" TextWrapping="Wrap" VerticalAlignment="Top" Width="219.672" FontFamily="Droid Sans" FontSize="21.333" Foreground="White" Text="Channel 1 not in ITU coast station list." Canvas.Left="8.526" Canvas.Top="46.067"/>
+        	<TextBlock HorizontalAlignment="Left" Height="35" TextWrapping="Wrap" VerticalAlignment="Top" Width="199.672" FontFamily="Droid Sans Dotted Zero" FontSize="26.667" Foreground="White" Text="Illegal Channel" Canvas.Left="40.526"/>
+        </Canvas>   
+	    <Image Margin="325.525,491.834,206.455,21.734" Source="Resource/day/ttgui_option_cancel.png" Stretch="Fill" Grid.Column="1"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="360.525,495.834,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83.526" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Grid.Column="1"><Run Text="C" TextDecorations="Underline"/><Run Text="ancel"/></TextBlock>
+        <Button x:Name="Btn_ARQ" Content="Button" HorizontalAlignment="Left" Height="50" Margin="21,60.093,0,0" VerticalAlignment="Top" Width="207.417" Background="{x:Null}" BorderThickness="1,0,0,0" Foreground="#01000000" BorderBrush="#00707070" OpacityMask="#00000000" Cursor="Hand" MouseLeftButtonDown="Btn_ARQ_MouseLeftButtonDown" MouseLeftButtonUp="Btn_ARQ_MouseLeftButtonUp" Grid.ColumnSpan="2"/>
+        <Button x:Name="Btn_Selective" Content="Button" HorizontalAlignment="Left" Height="50" Margin="114.192,60.068,0,0" VerticalAlignment="Top" Width="207.417" Background="{x:Null}" BorderThickness="1,0,0,0" Foreground="#01000000" BorderBrush="#00707070" OpacityMask="#00000000" Cursor="Hand" MouseLeftButtonDown="Btn_Selective_MouseLeftButtonDown" Grid.Column="1" />
+        <Button x:Name="Btn_Broadcast" Content="Button" HorizontalAlignment="Left" Height="50.025" Margin="342.359,60.068,0,0" VerticalAlignment="Top" Width="207.417" Background="{x:Null}" BorderThickness="1,0,0,0" Foreground="#01000000" BorderBrush="#00707070" OpacityMask="#00000000" Cursor="Hand" MouseLeftButtonDown="Btn_Broadcast_MouseLeftButtonDown" MouseLeftButtonUp="Btn_Broadcast_MouseLeftButtonUp" Grid.Column="1"/>
+        <Button x:Name="Btn_Manual" Content="Button" HorizontalAlignment="Left" Height="50" Margin="20.333,248.001,0,0" VerticalAlignment="Top" Width="341.667" Background="{x:Null}" BorderThickness="1,0,0,0" Foreground="#01000000" BorderBrush="#00707070" OpacityMask="#00000000" Cursor="Hand" Grid.ColumnSpan="2"/>
+        <Button x:Name="Btn_Intership" Content="Button" HorizontalAlignment="Left" Height="50" Margin="20.333,306.334,0,0" VerticalAlignment="Top" Width="341.667" Background="{x:Null}" BorderThickness="1,0,0,0" Foreground="#01000000" BorderBrush="#00707070" OpacityMask="#00000000" Cursor="Hand" Grid.ColumnSpan="2"/>
+        <Button x:Name="Btn_Coaststation" Content="Button" HorizontalAlignment="Left" Height="50" Margin="20.333,365.667,0,0" VerticalAlignment="Top" Width="341.667" Background="{x:Null}" BorderThickness="1,0,0,0" Foreground="#01000000" BorderBrush="#00707070" OpacityMask="#00000000" Cursor="Hand" Grid.ColumnSpan="2"/>
+        <Button x:Name="Btn_Distress" Content="Button" HorizontalAlignment="Left" Height="50" Margin="20.333,425.334,0,0" VerticalAlignment="Top" Width="341.667" Background="{x:Null}" BorderThickness="1,0,0,0" Foreground="#01000000" BorderBrush="#00707070" OpacityMask="#00000000" Cursor="Hand" Grid.ColumnSpan="2"/>
+        <Button x:Name="Btn_Call" Content="Button" HorizontalAlignment="Left" Height="45.266" Margin="118,483.568,0,0" VerticalAlignment="Top" Width="135.5" Background="{x:Null}" BorderThickness="1,0,0,0" Foreground="#01000000" BorderBrush="#00707070" OpacityMask="#00000000" Cursor="Hand" Grid.ColumnSpan="2"/>
+        <Button x:Name="Btn_Cancel" Content="Button" HorizontalAlignment="Left" Height="45.266" Margin="313.859,483.568,0,0" VerticalAlignment="Top" Width="135.5" Background="{x:Null}" BorderThickness="1,0,0,0" Foreground="#01000000" BorderBrush="#00707070" OpacityMask="#00000000" Cursor="Hand" Grid.Column="1"/>
+        <Button x:Name="Btn_Contacts" Content="Button" HorizontalAlignment="Left" Height="50" Margin="20.333,120.068,0,0" VerticalAlignment="Top" Width="208.084" Background="{x:Null}" BorderThickness="1,0,0,0" Foreground="#01000000" BorderBrush="#00707070" OpacityMask="#00000000" Cursor="Hand" Grid.ColumnSpan="2" />
+        <Button x:Name="Btn_CoastContacts" Content="Button" HorizontalAlignment="Left" Height="50" Margin="21,178,0,0" VerticalAlignment="Top" Width="208.084" Background="{x:Null}" BorderThickness="1,0,0,0" Foreground="#01000000" BorderBrush="#00707070" OpacityMask="#00000000" Cursor="Hand" Grid.ColumnSpan="2"/>
+        <Rectangle x:Name="Rect_Call_Setupshadow" Grid.ColumnSpan="2" Fill="#FF272727" HorizontalAlignment="Left" Height="625.568" RadiusY="6" RadiusX="6" Stroke="White" StrokeThickness="0" VerticalAlignment="Top" Width="875.474" Opacity="0.2" Margin="-154.5,-72,-24,-10" Visibility="Collapsed"/>
+        <local:Edit_value x:Name="Edit_value" Margin="10,81,-24,83" Grid.Column="1" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+            <local:Edit_value.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </local:Edit_value.RenderTransform>
+        </local:Edit_value>
+    </Grid>
+</UserControl>

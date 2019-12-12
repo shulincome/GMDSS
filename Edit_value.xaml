@@ -1,0 +1,655 @@
+﻿<UserControl
+	xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+	xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+	xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+	xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+	mc:Ignorable="d"
+	x:Class="Sailor_6300_Radiotelex_D.Edit_value"
+	x:Name="UserControl"
+	d:DesignWidth="579.141" d:DesignHeight="380.432" >
+    <UserControl.Resources>
+        <Storyboard x:Key="Storyboard_Callcode_warning">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="Call_code_Warning">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="Call_code_Warning">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_TX_warning">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="TX_Warning">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="TX_Warning">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+        <Storyboard x:Key="Storyboard_RX_warning">
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleX)" Storyboard.TargetName="RX_Warning">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+            <DoubleAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.RenderTransform).(TransformGroup.Children)[0].(ScaleTransform.ScaleY)" Storyboard.TargetName="RX_Warning">
+                <EasingDoubleKeyFrame KeyTime="0" Value="0"/>
+                <EasingDoubleKeyFrame KeyTime="0:0:0.2" Value="1"/>
+            </DoubleAnimationUsingKeyFrames>
+        </Storyboard>
+    </UserControl.Resources>
+    <Grid x:Name="LayoutRoot">
+        <Border BorderBrush="White" BorderThickness="9" CornerRadius="6">
+            <Border.Effect>
+                <BlurEffect Radius="20"/>
+            </Border.Effect>
+        </Border>
+        <Rectangle HorizontalAlignment="Left" Height="378.531" RadiusY="5" RadiusX="5" Stroke="#FFE6E2E2" VerticalAlignment="Top" Width="578.141" Fill="#FF131313" StrokeThickness="9" Margin="0,1.901,0,0"/>
+        <Image Margin="376.579,62.401,144.562,260.031" Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill"/>
+        <TextBlock HorizontalAlignment="Left" Height="38.068" Margin="53.591,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="421.5" Foreground="White" FontFamily="Droid Sans Dotted Zero" FontSize="32" TextAlignment="Center" Text="Edit Value"/>
+        <Path Data="M67.859,24.901333 L378.52567,24.901333" Stretch="Fill" Margin="22.333,38.068,85.615,323.031" StrokeThickness="2">
+            <Path.Stroke>
+                <RadialGradientBrush>
+                    <GradientStop Color="White" Offset="0.59"/>
+                    <GradientStop Color="#FF292727" Offset="1"/>
+                </RadialGradientBrush>
+            </Path.Stroke>
+        </Path>
+        <Image Margin="439.579,62.401,81.562,260.031" Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill"/>
+        <Image Margin="502.579,62.401,18.562,260.031" Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill"/>
+        <Image Margin="376.579,125.401,144.562,197.031" Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill"/>
+        <Image Margin="439.579,125.401,81.562,197.031" Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill"/>
+        <Image Margin="502.579,125.401,18.562,197.031" Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill"/>
+        <Image Margin="376.579,188.401,144.562,134.031" Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill"/>
+        <Image Margin="439.579,188.401,81.562,134.031" Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill"/>
+        <Image Margin="502.579,188.401,18.562,134.031" Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill"/>
+        <Image Margin="376.579,251.401,144.562,71.031" Source="Resource/day/ttgui_key58_normal.png" Stretch="Fill"/>
+        <Image Margin="443.579,251.401,18.562,71.031" Source="Resource/day/ttgui_key117_normal.png" Stretch="Fill"/>
+        <Canvas x:Name="Call_code" Margin="22.333,61.341,321.949,267.592">
+            <Rectangle x:Name="call_code" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Fill="Black" Height="39" Canvas.Left="113" Width="140" Canvas.Top="7"/>
+            <Label Content="Call code" HorizontalAlignment="Left" Height="43.849" VerticalAlignment="Top" Width="108.192" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Top="7.177"/>
+            <TextBox x:Name="TB_Callcode"   MaxLength="9" InputMethod.IsInputMethodEnabled="False" HorizontalAlignment="Left" Height="33" TextWrapping="Wrap" VerticalAlignment="Top" Width="137" FontSize="26.667" FontFamily="Droid Sans"  TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="#FFE2E2E2" BorderBrush="{x:Null}" Canvas.Left="115" Canvas.Top="11" CaretBrush="White"  RenderTransformOrigin="0.5,0.5" MouseLeftButtonDown="TB_Callcode_MouseLeftButtonDown" >
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.368"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+        </Canvas>
+        <Canvas x:Name="Cav_RXfreq" Margin="35.833,191.899,221.808,141.362">
+            <Rectangle Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Fill="Black" Height="46.432" Canvas.Left="98.5" Canvas.Top="0.739" Width="93.141"/>
+            <Label Content="RX freq " HorizontalAlignment="Left" Height="43.849" VerticalAlignment="Top" Width="88.526" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White"/>
+            <Label Content="kHz" HorizontalAlignment="Left" Height="32" VerticalAlignment="Top" Width="56" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Left="265.5" Canvas.Top="11.739"/>
+            <TextBox x:Name="TB_RX"   MaxLength="5" InputMethod.IsInputMethodEnabled="False" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="91" FontSize="26.667" FontFamily="Droid Sans" TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="#FFE2E2E2" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" CaretBrush="White" Canvas.Left="98" Canvas.Top="8.739" MouseLeftButtonDown="TB_RX_MouseLeftButtonDown">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.451"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-0.325"/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <TextBlock HorizontalAlignment="Left" Height="39" TextWrapping="Wrap" VerticalAlignment="Top" Width="9" Foreground="White" FontFamily="Droid Sans Dotted Zero" FontSize="32" TextAlignment="Center" Canvas.Left="196.5" Canvas.Top="5.739"><Run Language="zh-cn" Text="."/></TextBlock>
+            <Rectangle Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Fill="Black" Height="46.432" Canvas.Left="212.5" Canvas.Top="0.739" Width="40.141"/>
+            <TextBox x:Name="TB_RX_dec" HorizontalAlignment="Left" Height="34" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontSize="26.667" FontFamily="Droid Sans" TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="#FFE2E2E2" BorderBrush="{x:Null}" CaretBrush="White" Canvas.Left="212" Canvas.Top="6" MouseLeftButtonDown="TB_RX_dec_MouseLeftButtonDown"/>
+        </Canvas>
+        <Canvas x:Name="Cav_TXfreq" Margin="35.833,129.028,221.808,204.972">
+            <Rectangle Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Fill="Black" Height="46.432" Canvas.Left="98.5" Width="93.141"/>
+            <Label Content="TX freq " HorizontalAlignment="Left" Height="43.849" VerticalAlignment="Top" Width="88.526" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Top="0.119"/>
+            <Label Content="kHz" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="56" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Left="265.5" Canvas.Top="11"/>
+            <TextBox x:Name="TB_TX"  MaxLength="5" InputMethod.IsInputMethodEnabled="False" HorizontalAlignment="Left" Height="32" TextWrapping="Wrap" VerticalAlignment="Top" Width="91" FontSize="26.667" FontFamily="Droid Sans" TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="#FFE2E2E2" BorderBrush="{x:Null}" RenderTransformOrigin="0.5,0.5" CaretBrush="White" Canvas.Left="98" Canvas.Top="8.739" MouseLeftButtonDown="TB_TX_MouseLeftButtonDown">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleY="-0.451"/>
+                        <RotateTransform/>
+                        <TranslateTransform Y="-0.325"/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+          
+            <Rectangle Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Fill="Black" Height="46.432" Canvas.Left="212.5" Width="40.141"/>
+            <TextBox x:Name="TB_TX_dec"   MaxLength="1" InputMethod.IsInputMethodEnabled="False" HorizontalAlignment="Left" Height="31" TextWrapping="Wrap" VerticalAlignment="Top" Width="37" FontSize="26.667" FontFamily="Droid Sans" TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="#FFE2E2E2" BorderBrush="{x:Null}" CaretBrush="White" RenderTransformOrigin="0.5,0.5" Canvas.Left="214" Canvas.Top="8" MouseLeftButtonDown="TB_TX_dec_MouseLeftButtonDown">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="0.477"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0.158"/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <TextBlock HorizontalAlignment="Left" Height="39" TextWrapping="Wrap" VerticalAlignment="Top" Width="12" Foreground="White" FontFamily="Droid Sans Dotted Zero" FontSize="32" TextAlignment="Center" Canvas.Left="195.5" Canvas.Top="4.968"><Run Language="zh-cn" Text="."/></TextBlock>
+        </Canvas>
+        <Rectangle x:Name="OK" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.5,0.5" Margin="77.193,314.401,0,0">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+                    <GradientStop Color="#FE033430" Offset="0.468"/>
+                    <GradientStop Color="#FE033631" Offset="0.569"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+                    <GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="OK_Copy" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.5,0.5" Margin="77.193,314.401,0,0" Visibility="Collapsed">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+                    <GradientStop Color="#FE033430" Offset="0.468"/>
+                    <GradientStop Color="#FE033631" Offset="0.569"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+                    <GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.1" ScaleY="1.2"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+        </Rectangle>
+        <Rectangle x:Name="cancel" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Margin="376.579,314.401,81.562,21.531">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFBFBFB" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle x:Name="cancel_Copy" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Margin="376.579,314.401,81.562,21.531" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+            <Rectangle.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform ScaleX="1.1" ScaleY="1.2"/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Rectangle.RenderTransform>
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" MappingMode="RelativeToBoundingBox" StartPoint="0.5,0">
+                    <GradientStop Color="#FFFBFBFB" Offset="0"/>
+                    <GradientStop Color="White" Offset="1"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.091"/>
+                    <GradientStop Color="#FF0F0F0F" Offset="0.925"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Image Margin="94.329,321.401,454.807,29.031" Source="Resource/day/ttgui_option_ok.png" Stretch="Fill"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="133.834,325.401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="47.359" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Text="OK"/>
+        <Image Margin="388.048,321.401,161.088,29.031" Source="Resource/day/ttgui_option_cancel.png" Stretch="Fill"/>
+        <TextBlock HorizontalAlignment="Left" Height="26" Margin="423.053,325.401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="74.526" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" Text="Cancel"/>
+        <Image x:Name="img_1" Margin="376.579,62.401,144.562,260.031" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Visibility="Collapsed"/>
+        <Image x:Name="img_2" Margin="440.579,62.401,80.562,260.031" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Visibility="Collapsed"/>
+        <Image x:Name="img_3" Margin="502.579,62.401,18.562,260.031" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Visibility="Collapsed"/>
+        <Image x:Name="img_4" Margin="376.579,125.401,144.562,197.031" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Visibility="Collapsed"/>
+        <Image x:Name="img_5" Margin="439.579,125.401,81.562,197.031" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Visibility="Collapsed"/>
+        <Image x:Name="img_6" Margin="502.579,125.401,18.562,197.031" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Visibility="Collapsed"/>
+        <Image x:Name="img_7" Margin="376.579,188.401,144.562,134.031" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Visibility="Collapsed"/>
+        <Image x:Name="img_8" Margin="439.579,188.401,81.562,134.031" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Visibility="Collapsed"/>
+        <Image x:Name="img_9" Margin="502.579,188.401,18.562,134.031" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Visibility="Collapsed"/>
+        <Image x:Name="img_0" Margin="376.579,251.401,144.562,71.031" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Visibility="Collapsed"/>
+        <Image x:Name="img_back_space" Margin="440.579,251.401,18.562,71.031" Source="Resource/day/ttgui_key58_checked.png" Stretch="Fill" Visibility="Collapsed"/>
+        <Image Margin="443.579,251.401,18.562,71.031" Source="Resource/day/ttgui_key_backspace.png" Stretch="Fill"/>
+        <TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="1" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Margin="378.982,74.333,0,0">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.573"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.157"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Margin="377.982,263.333,0,0">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.573"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.157"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="9" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Margin="505.982,199.833,0,0">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.573"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.157"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="8" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Margin="441.982,199.333,0,0">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.573"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.157"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="7" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Margin="379.982,200.333,0,0">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.573"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.157"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="6" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Margin="505.982,137.833,0,0">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.573"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.157"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="5" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Margin="442.482,136.333,0,0">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.573"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.157"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="4" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Margin="378.982,137.333,0,0">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.573"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.157"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Margin="503.982,74.333,0,0">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.573"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.157"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="34.833" TextWrapping="Wrap" Text="2" VerticalAlignment="Top" Width="50" FontFamily="Droid Sans Mono Dotted" FontSize="29.333" Foreground="White" TextAlignment="Center" RenderTransformOrigin="0.5,0.5" FontWeight="Bold" Margin="444.982,73.333,0,0">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="0.573"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="0.157"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <TextBlock HorizontalAlignment="Left" Height="46.9" Margin="479.22,256.401,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="61.859" FontFamily="Droid Sans Dotted Zero" FontSize="18.667" Foreground="White" Text="Back space" TextAlignment="Center"/>
+        <Button x:Name="Btn_0" Content="Button"  HorizontalAlignment="Left" Height="46.9" Margin="380.246,256.401,0,0" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand"/>
+        <Button x:Name="Btn_9" Content="Button"  HorizontalAlignment="Left" Height="46.9" Margin="506.329,192.261,0,0" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand"/>
+        <Button x:Name="Btn_8" Content="Button"  HorizontalAlignment="Left" Height="46.9" Margin="443.579,192.261,0,0" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand"/>
+        <Button x:Name="Btn_7" Content="Button"  HorizontalAlignment="Left" Height="46.9" Margin="380,192.261,0,0" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand"/>
+        <Button x:Name="Btn_6" Content="Button"  HorizontalAlignment="Left" Height="46.9" Margin="506.329,129.068,0,0" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand"/>
+        <Button x:Name="Btn_5" Content="Button"  HorizontalAlignment="Left" Height="46.9" Margin="440.579,129.068,0,0" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand"/>
+        <Button x:Name="Btn_4" Content="Button"  HorizontalAlignment="Left" Height="46.9" Margin="380,129.028,0,0" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand"/>
+        <Button x:Name="Btn_3" Content="Button"  HorizontalAlignment="Left" Height="46.9" Margin="503.579,67,0,0" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand"/>
+        <Button x:Name="Btn_2" Content="Button"  HorizontalAlignment="Left" Height="46.9" Margin="443.579,67,0,0" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand"/>
+        <Button x:Name="Btn_1" Content="Button"  HorizontalAlignment="Left" Height="47" Margin="380,67,0,0" VerticalAlignment="Top" Width="49" Background="{x:Null}" BorderThickness="0" BorderBrush="#00707070" Foreground="{x:Null}" OpacityMask="#00000000" Cursor="Hand"/>
+        <Button x:Name="Btn_Cancel" Content="Button" HorizontalAlignment="Left" Height="44.901" Margin="376,314,0,0" VerticalAlignment="Top" Width="121.579" Background="#00F5F5F5" BorderBrush="#01707070" Foreground="#02000000" OpacityMask="#00000000" Cursor="Hand"/>
+        <Button x:Name="Btn_Back_space" Content="Button" HorizontalAlignment="Left" Height="44.901" Margin="443.579,256.401,0,0" VerticalAlignment="Top" Width="109" Background="#00F5F5F5" BorderBrush="#01707070" Foreground="#02000000" OpacityMask="#00000000" Cursor="Hand"/>
+        <Button x:Name="Btn_OK" Content="Button" HorizontalAlignment="Left" Height="40.925" Margin="77.193,314,0,0" VerticalAlignment="Top" Width="121" Background="#00F5F5F5" BorderBrush="#01707070" Foreground="#02000000" OpacityMask="#00000000" BorderThickness="0" Cursor="Hand" Click="Btn_OK_Click_1" />
+        <Canvas x:Name="Cav_Channel" Margin="27.333,129.028,296.833,204.504" Visibility="Collapsed">
+            <Rectangle x:Name="Rect_channel" Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Fill="Black" Height="46" Canvas.Left="108.192" Width="139.667"/>
+            <TextBox x:Name="TB_Channel"   MaxLength="9" InputMethod.IsInputMethodEnabled="False" HorizontalAlignment="Left" Height="42.718" TextWrapping="Wrap" VerticalAlignment="Top" Width="135.149" FontSize="26.667" FontFamily="Droid Sans"  TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="#FFE2E2E2" BorderBrush="{x:Null}" CaretBrush="White"  RenderTransformOrigin="0.5,0.5" Canvas.Left="110.489" Canvas.Top="2.44" MouseLeftButtonDown="TB_Channel_MouseLeftButtonDown">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.368"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Label Content="Channel" HorizontalAlignment="Left" Height="43.849" VerticalAlignment="Top" Width="108.192" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Top="3.051"/>
+        </Canvas>
+        <Label x:Name="Lb_Intership" Content="Valid channels   401-410,601-623,801-836&#xD;&#xA;                            1201-1234,1601-1639,&#xD;&#xA;                            1801-1811,2201-2245,&#xD;&#xA;                            2501-2531" HorizontalAlignment="Left" Height="78.849" VerticalAlignment="Top" Width="314.192" FontFamily="Droid Sans" FontSize="14.667" Foreground="White" Margin="10,188.401,0,0" Visibility="Collapsed"/>
+        <Label x:Name="Lb_Coast" Content="Valid channels   401-419,601-634,801-840,&#xA;                            1201-1299,1601-1699,&#xA;                            1801-1845,2201-2299,&#xA;                            2501-2540,12100-12156,&#xD;&#xA;                            16100-16193,22100-22135" HorizontalAlignment="Left" Height="99.056" VerticalAlignment="Top" Width="314.192" FontFamily="Droid Sans" FontSize="14.667" Foreground="White" Margin="10,188.401,0,0" Visibility="Collapsed"/>
+        <Label x:Name="Lb_Distress" Content="Valid channels   1(2174.5kHz),&#xA;                            411(4177.5kHz),&#xA;                            611(6268.0kHz),&#xA;                            801(8376.5kHz)&#xA;                            1287(12520.0kHz)&#xD;&#xA;                            1624(16695.0kHz)" HorizontalAlignment="Left" Height="112.901" VerticalAlignment="Top" Width="314.192" FontFamily="Droid Sans" FontSize="14.667" Foreground="White" Margin="10,188.401,0,0" Visibility="Collapsed"/>
+        <Canvas x:Name="RX_Warning" Margin="-84.625,122.225,99.921,76.308" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
+            <Rectangle RadiusY="6" RadiusX="6" StrokeThickness="11" Stroke="#FFFDFDFD" HorizontalAlignment="Right" Width="563.845" Fill="#FF0E0E0E" Height="181.899">
+                <Rectangle.Effect>
+                    <BlurEffect Radius="3"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Path Data="M67.859,24.901333 L378.52567,24.901333" Stretch="Fill" StrokeThickness="1.3" Height="2.833" Canvas.Left="52.266" Canvas.Top="74" Width="456.579">
+                <Path.Stroke>
+                    <RadialGradientBrush>
+                        <GradientStop Color="White" Offset="0.665"/>
+                        <GradientStop Color="#FF292727" Offset="1"/>
+                    </RadialGradientBrush>
+                </Path.Stroke>
+            </Path>
+            <TextBlock HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="415.488" FontSize="29.333" FontFamily="Droid Sans" Foreground="White" Text="Invalid recieve frequency" TextAlignment="Center" Canvas.Left="70.266" Canvas.Top="31.833"/>
+            <TextBlock HorizontalAlignment="Left" Height="34.743" TextWrapping="Wrap" VerticalAlignment="Top" Width="493.579" Foreground="White" FontSize="21.333" FontFamily="Droid Sans" Text="Valid freuquency range is  490.0-27500.0kHz. " Canvas.Left="15.266" Canvas.Top="88.124"/>
+            <Rectangle HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.5,0.5" Canvas.Left="221.959" Canvas.Top="120.581">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+                        <GradientStop Color="#FE033430" Offset="0.468"/>
+                        <GradientStop Color="#FE033631" Offset="0.569"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+                        <GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="Rect_RX_warning_OK" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Canvas.Left="218.459" Canvas.Top="119.401">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+                        <GradientStop Color="#FE033430" Offset="0.468"/>
+                        <GradientStop Color="#FE033631" Offset="0.569"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+                        <GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1.2" ScaleX="1.1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Image Source="Resource/day/ttgui_message_warning.png" Stretch="Fill" Height="50" Canvas.Left="15.266" Canvas.Top="24" Width="50"/>
+            <TextBlock HorizontalAlignment="Left" Height="35.177" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" TextAlignment="Center" Canvas.Left="221.959" Canvas.Top="129.904"><Run Text="O" TextDecorations="Underline"/><Run Text="K"/></TextBlock>
+            <Button x:Name="Btn_RX_OK" Content="Button" HorizontalAlignment="Left" Height="40.177" VerticalAlignment="Top" Width="121" Background="#00F5F5F5" BorderBrush="#01707070" Foreground="#02000000" OpacityMask="#00000000" BorderThickness="0" MouseLeftButtonDown="Btn_RX_OK_MouseLeftButtonDown" MouseLeftButtonUp="Btn_RX_OK_MouseLeftButtonUp" Canvas.Left="221.959" Canvas.Top="122.867"/>
+        </Canvas>
+        <Canvas x:Name="Call_code_Warning" Margin="-65.266,10,80.562,188.533" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
+            <Rectangle RadiusY="6" RadiusX="6" StrokeThickness="11" Stroke="#FFFDFDFD" HorizontalAlignment="Right" Width="563.845" Fill="#FF0E0E0E" Height="181.899">
+                <Rectangle.Effect>
+                    <BlurEffect Radius="3"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Path Data="M67.859,24.901333 L378.52567,24.901333" Stretch="Fill" StrokeThickness="1.3" Height="2.833" Canvas.Left="52.266" Canvas.Top="74" Width="456.579">
+                <Path.Stroke>
+                    <RadialGradientBrush>
+                        <GradientStop Color="White" Offset="0.665"/>
+                        <GradientStop Color="#FF292727" Offset="1"/>
+                    </RadialGradientBrush>
+                </Path.Stroke>
+            </Path>
+            <TextBlock HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="303.053" FontSize="32" FontFamily="Droid Sans Dotted Zero" Foreground="White" Text="Invalid call code" TextAlignment="Center" Canvas.Left="118.857" Canvas.Top="24"/>
+            <TextBlock HorizontalAlignment="Left" Height="34.743" TextWrapping="Wrap" VerticalAlignment="Top" Width="408.053" Foreground="White" FontSize="21.333" FontFamily="Droid Sans Dotted Zero" Canvas.Left="15.266" Canvas.Top="88.124"><Run Text="Call code must be  4- "/><Run Language="zh-cn" Text=" "/><Run Text="5- or 9- digit."/></TextBlock>
+            <Rectangle HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.5,0.5" Canvas.Left="221.959" Canvas.Top="120.581">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+                        <GradientStop Color="#FE033430" Offset="0.468"/>
+                        <GradientStop Color="#FE033631" Offset="0.569"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+                        <GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="Rect_callCode_warning_OK" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Canvas.Left="218.459" Canvas.Top="119.401">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+                        <GradientStop Color="#FE033430" Offset="0.468"/>
+                        <GradientStop Color="#FE033631" Offset="0.569"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+                        <GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1.2" ScaleX="1.1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Image Source="Resource/day/ttgui_message_warning.png" Stretch="Fill" Height="50" Canvas.Left="15.266" Canvas.Top="24" Width="50"/>
+            <TextBlock HorizontalAlignment="Left" Height="35.177" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" TextAlignment="Center" Canvas.Left="221.959" Canvas.Top="129.904"><Run Text="O" TextDecorations="Underline"/><Run Text="K"/></TextBlock>
+            <Button x:Name="Btn_CallCode_OK" Content="Button" HorizontalAlignment="Left" Height="40.177" VerticalAlignment="Top" Width="121" Background="#00F5F5F5" BorderBrush="#01707070" Foreground="#02000000" OpacityMask="#00000000" BorderThickness="0" MouseLeftButtonDown="Btn_CallCode_OK_MouseLeftButtonDown" MouseLeftButtonUp="Btn_CallCode_OK_MouseLeftButtonUp" Canvas.Left="221.959" Canvas.Top="122.867"/>
+        </Canvas>
+        <Canvas x:Name="TX_Warning" Margin="-88.754,61.341,104.05,137.192" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
+            <Rectangle RadiusY="6" RadiusX="6" StrokeThickness="11" Stroke="#FFFDFDFD" HorizontalAlignment="Right" Width="563.845" Fill="#FF0E0E0E" Height="181.899">
+                <Rectangle.Effect>
+                    <BlurEffect Radius="3"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Path Data="M67.859,24.901333 L378.52567,24.901333" Stretch="Fill" StrokeThickness="1.3" Height="2.833" Canvas.Left="52.266" Canvas.Top="74" Width="456.579">
+                <Path.Stroke>
+                    <RadialGradientBrush>
+                        <GradientStop Color="White" Offset="0.665"/>
+                        <GradientStop Color="#FF292727" Offset="1"/>
+                    </RadialGradientBrush>
+                </Path.Stroke>
+            </Path>
+            <TextBlock HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="415.488" FontSize="29.333" FontFamily="Droid Sans" Foreground="White" TextAlignment="Center" Canvas.Left="70.266" Canvas.Top="31.833"><Run Text="Invalid "/><Run Language="zh-cn" Text="transmit"/><Run Text=" frequency"/></TextBlock>
+            <TextBlock HorizontalAlignment="Left" Height="33.748" TextWrapping="Wrap" VerticalAlignment="Top" Width="481.579" Foreground="White" FontSize="18.667" FontFamily="Droid Sans" Canvas.Left="15.266" Canvas.Top="81.833"><Run Language="zh-cn" Text="Nearest v"/><Run Text="alid frequency range is  "/><Run Language="zh-cn" Text="1605"/><Run Text=".0-"/><Run Language="zh-cn" Text="2818"/><Run Text="."/><Run Language="zh-cn" Text="9"/><Run Text="kHz. "/></TextBlock>
+            <Rectangle HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.5,0.5" Canvas.Left="221.959" Canvas.Top="120.581">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+                        <GradientStop Color="#FE033430" Offset="0.468"/>
+                        <GradientStop Color="#FE033631" Offset="0.569"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+                        <GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="Rect_TX_warning_OK" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed" Canvas.Left="218.459" Canvas.Top="119.401">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+                        <GradientStop Color="#FE033430" Offset="0.468"/>
+                        <GradientStop Color="#FE033631" Offset="0.569"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+                        <GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1.2" ScaleX="1.1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Image Source="Resource/day/ttgui_message_warning.png" Stretch="Fill" Height="50" Canvas.Left="15.266" Canvas.Top="24" Width="50"/>
+            <TextBlock HorizontalAlignment="Left" Height="35.177" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" TextAlignment="Center" Canvas.Left="221.959" Canvas.Top="129.904"><Run Text="O" TextDecorations="Underline"/><Run Text="K"/></TextBlock>
+            <Button x:Name="Btn_TX_OK" Content="Button" HorizontalAlignment="Left" Height="40.177" VerticalAlignment="Top" Width="121" Background="#00F5F5F5" BorderBrush="#01707070" Foreground="#02000000" OpacityMask="#00000000" BorderThickness="0" MouseLeftButtonDown="Btn_TX_OK_MouseLeftButtonDown" MouseLeftButtonUp="Btn_TX_OK_MouseLeftButtonUp" Cursor="Hand" Canvas.Left="221.959" Canvas.Top="122.867"/>
+        </Canvas>
+        <Canvas x:Name="Cav_Ch_Dis" Margin="-50,11,26.562,92.975" RenderTransformOrigin="0.5,0.5" Visibility="Collapsed">
+            <Canvas.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Canvas.RenderTransform>
+            <Rectangle RadiusY="6" RadiusX="6" StrokeThickness="11" Stroke="#FFFDFDFD" HorizontalAlignment="Right" Width="602.579" Fill="#FF0E0E0E" Height="276.457">
+                <Rectangle.Effect>
+                    <BlurEffect Radius="3"/>
+                </Rectangle.Effect>
+            </Rectangle>
+            <Path Data="M67.859,24.901333 L378.52567,24.901333" Stretch="Fill" StrokeThickness="1.3" Height="2.833" Canvas.Left="37" Canvas.Top="73" Width="533.579">
+                <Path.Stroke>
+                    <RadialGradientBrush>
+                        <GradientStop Color="White" Offset="0.665"/>
+                        <GradientStop Color="#FF292727" Offset="1"/>
+                    </RadialGradientBrush>
+                </Path.Stroke>
+            </Path>
+            <TextBlock HorizontalAlignment="Left" Height="45" TextWrapping="Wrap" VerticalAlignment="Top" Width="408.053" FontSize="32" FontFamily="Droid Sans Dotted Zero" Foreground="White" Text="Invalid channel number" TextAlignment="Center" Canvas.Left="103.591" Canvas.Top="23"/>
+            <TextBlock HorizontalAlignment="Left" Height="119.626" TextWrapping="Wrap" VerticalAlignment="Top" Width="535.829" Foreground="White" FontSize="21.333" FontFamily="Droid Sans Dotted Zero" Canvas.Left="20.5" Canvas.Top="89.41"><Run Language="zh-cn" Text="Selected channel not part of the selected ITU list type."/><LineBreak/><Run Language="zh-cn" Text="Valid channels are:1(2174.5kHz),411(4177.5kHz),611(6268.0kHz),801(8376.5kHz),1287(12520.0kHz),  1624(16695.0kHz)"/></TextBlock>
+            <Rectangle HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.5,0.5" Canvas.Left="211.308" Canvas.Top="211.75">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+                        <GradientStop Color="#FE033430" Offset="0.468"/>
+                        <GradientStop Color="#FE033631" Offset="0.569"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+                        <GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Rectangle x:Name="Rect_Ch_Dis_OK" HorizontalAlignment="Left" Height="44.5" RadiusY="4" RadiusX="4" Stroke="#FFFDFDFD" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.5,0.5" Canvas.Left="214.193" Canvas.Top="209.401" Visibility="Collapsed">
+                <Rectangle.Fill>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="#FF0F0F0F" Offset="0.343"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.698"/>
+                        <GradientStop Color="#FE033430" Offset="0.468"/>
+                        <GradientStop Color="#FE033631" Offset="0.569"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.06"/>
+                        <GradientStop Color="#FFE8ECEB" Offset="0.008"/>
+                        <GradientStop Color="#FF0F0F0F" Offset="0.935"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleY="1.2" ScaleX="1.1"/>
+                        <SkewTransform/>
+                        <RotateTransform/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <Image Source="Resource/day/ttgui_message_warning.png" Stretch="Fill" Height="50" Canvas.Left="28" Canvas.Top="23" Width="50"/>
+            <TextBlock HorizontalAlignment="Left" Height="35.177" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" FontFamily="Droid Sans Dotted Zero" FontSize="21.333" Foreground="White" TextAlignment="Center" Canvas.Left="211.308" Canvas.Top="221.073"><Run Text="O" TextDecorations="Underline"/><Run Text="K"/></TextBlock>
+            <Button x:Name="Btn_Ch_Dis" Content="Button" HorizontalAlignment="Left" Height="40.177" VerticalAlignment="Top" Width="121" Background="#00F5F5F5" BorderBrush="#01707070" Foreground="#02000000" OpacityMask="#00000000" BorderThickness="0" MouseLeftButtonDown="Btn_CallCode_OK_MouseLeftButtonDown" MouseLeftButtonUp="Btn_CallCode_OK_MouseLeftButtonUp" Canvas.Left="211.308" Canvas.Top="214.036"/>
+        </Canvas>
+        <Canvas x:Name="Cav_TXfreq_Broad" Margin="27.333,62.401,230.308,271.599" Visibility="Collapsed">
+            <Rectangle Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Fill="Black" Height="46.432" Canvas.Left="98.5" Width="93.141"/>
+            <Label Content="TX freq " HorizontalAlignment="Left" Height="43.849" VerticalAlignment="Top" Width="88.526" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Top="0.119"/>
+            <Label Content="kHz" HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="56" FontFamily="Droid Sans Dotted Zero" FontSize="24" Foreground="White" Canvas.Left="265.5" Canvas.Top="11"/>
+            <TextBox x:Name="TB_TX_Broad"  PreviewMouseDown="TextBox_PreviewMouseDown" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" MaxLength="5" InputMethod.IsInputMethodEnabled="False" PreviewKeyDown="TB_Callcode_PreviewKeyDown_NumberOnly" HorizontalAlignment="Left" Height="31" TextWrapping="Wrap" VerticalAlignment="Top" Width="93" FontSize="26.667" FontFamily="Droid Sans" TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="#FFE2E2E2" BorderBrush="{x:Null}" CaretBrush="White" Canvas.Left="98.5" Canvas.Top="8"/>
+            <Rectangle Stroke="#FFE6E2E2" RadiusX="5" RadiusY="5" Fill="Black" Height="46.432" Canvas.Left="212.5" Width="40.141"/>
+            <TextBox x:Name="TB_TX_dec_broad"  PreviewMouseDown="TextBox_PreviewMouseDown" GotFocus="TextBox_GotFocus" LostFocus="TextBox_LostFocus" MaxLength="1" InputMethod.IsInputMethodEnabled="False" PreviewKeyDown="TB_Callcode_PreviewKeyDown_NumberOnly" HorizontalAlignment="Left" Height="31" TextWrapping="Wrap" VerticalAlignment="Top" Width="39" FontSize="26.667" FontFamily="Droid Sans" TextAlignment="Center" Background="{x:Null}" Foreground="White" BorderThickness="0" SelectionBrush="#FFE2E2E2" BorderBrush="{x:Null}" CaretBrush="White" RenderTransformOrigin="0.5,0.5" Canvas.Left="213.5" Canvas.Top="8">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="0.477"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0.158"/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <TextBlock HorizontalAlignment="Left" Height="39" TextWrapping="Wrap" VerticalAlignment="Top" Width="12" Foreground="White" FontFamily="Droid Sans Dotted Zero" FontSize="32" TextAlignment="Center" Canvas.Left="195.5" Canvas.Top="4.968"><Run Language="zh-cn" Text="."/></TextBlock>
+        </Canvas>
+    </Grid>
+</UserControl>
