@@ -1,0 +1,11 @@
+﻿<Window x:Class="Sailor_6300_Radiotelex_CS_E.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Sailor_6300_Radiotelex="clr-namespace:Sailor_6300_Radiotelex_D;assembly=Sailor_6300_Radiotelex_D"
+        Title="Sailor_6300_Radiotelex">
+    <Grid>
+        <Sailor_6300_Radiotelex:Sailor_6300_Radiotelex x:Name="m_UC">
+
+        </Sailor_6300_Radiotelex:Sailor_6300_Radiotelex>
+    </Grid>
+</Window>
